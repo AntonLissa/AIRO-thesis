@@ -1,0 +1,89 @@
+\section{The Evolution of Large Language Models}
+\label{sec:evolution_llm}
+
+The landscape of Natural Language Processing (NLP) and its application within Decision Support Systems (DSS) has undergone a profound transformation, moving from static statistical mappings to dynamic reasoning agents. This evolution can be traced through three major milestones: the vectorization of semantics, the mastery of sequential dependencies, and the advent of the Transformer architecture.
+
+\subsection{From Static Embeddings to Sequential Modeling}
+The first fundamental advancement in how machines represent language was the introduction of \textit{Word Embeddings}. The most influential work in this area is \textbf{Word2Vec}, proposed by Mikolov et al. \cite{mikolov2013efficient}. This model demonstrated that words could be mapped into a high-dimensional vector space where semantic relationships are preserved as geometric distances. While Word2Vec enabled early NLP tasks to capture basic conceptual analogies, these embeddings remained \textbf{static}: a single vector was assigned to a word regardless of its context (e.g., "bank" in a financial vs. geographical sense). Moreover, Word2Vec does not model word order or syntactic structure, since embeddings are learned independently of the surrounding sentence. As a consequence, it cannot capture long-range dependencies or contextual nuances that are essential in many decision-support scenarios. The representation is therefore powerful at the lexical level but fundamentally limited for tasks requiring a deeper understanding of sequence dynamics.
+
+Parallel to the development of embeddings, the state-of-the-art for processing sequences was represented by Recurrent Neural Networks (RNNs) \cite{rumelhart1986learning}. However, standard RNNs were notoriously difficult to train on long sequences due to the vanishing gradient problem, as formally analyzed by Bengio et al. \cite{bengio1994learning}. To overcome these limitations, the Long Short-Term Memory (LSTM) architecture was introduced \cite{hochreiter1997long}. By employing a gating mechanism to regulate information flow, LSTMs became a dominant architecture for sequence modeling across many NLP tasks, enabling models to maintain a form of memory over long input sequences.
+
+\subsection{The Transformer Revolution}
+The definitive breakthrough occurred with the publication of \textit{"Attention Is All You Need"} \cite{vaswani2017attention}. Vaswani et al. proposed a novel architecture entirely based on the \textbf{Self-Attention mechanism}, dispensing with recurrence and convolutions. The core innovation lies in the model's ability to weigh the significance of different parts of the input data independently of their distance in the sequence. Mathematically, the Scaled Dot-Product Attention is defined as:
+
+\begin{equation}
+    \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\end{equation}
+
+where $Q$, $K$, and $V$ represent the Query, Key, and Value matrices, and $d_k$ is the dimension of the keys. This mechanism allows the model to build a global understanding of the input, enabling the emergence of "contextual intelligence" where word representations change dynamically based on the surrounding text. In the context of NLP, this marked the move from simple pattern recognition to sophisticated reasoning, as models could now integrate informations coming from diverse and distant data points.
+A key extension introduced in the original Transformer architecture is the multi‑head self‑attention mechanism. Instead of computing a single attention map, the model projects the input into multiple sets of query, key, and value spaces and applies the attention function in parallel across these sets. The outputs from these attention heads are then concatenated and linearly transformed, allowing the model to jointly attend to diverse types of relationships in the input sequence, such as syntactic and semantic patterns simultaneously. By combining multiple attention heads, the network can capture richer representations than a single attention head would allow, without increasing the overall model depth.
+
+Another important practical advantage of Transformer architectures is their massive parallelization potential. Unlike recurrent networks, which process tokens sequentially, each attention layer in a Transformer can compute interactions between all positions in the input sequence simultaneously. This property stems directly from the self‑attention formulation and makes the architecture highly amenable to batched matrix operations on modern hardware accelerators such as GPUs and TPUs. As a result, Transformers can be trained more efficiently on large corpora, enabling the scale‑up that underpins modern large language models.
+
+\subsection{Scaling Laws and Emergent Abilities}
+The evolution culminated in the transition from task-specific models to \textit{Large Language Models} (LLMs). This shift was driven by the discovery of scaling laws \cite{kaplan2020scaling}, which suggested that model performance, and consequently capabilities on NLP tasks, improve  with increases in parameter count, dataset size, and compute, which can indirectly improve the performance of systems that leverage NLP components, including DSS applications. 
+
+Furthermore, the introduction of the Pre-training and Fine-tuning paradigm, popularized by BERT \cite{devlin2019bert} and the GPT series \cite{radford2019language}, enabled these systems to internalize vast amounts of world knowledge. This trajectory led to the discovery of \textit{emergent abilities}: capabilities not explicitly present in smaller models, such as in-context learning and multi-step logical reasoning \cite{wei2022emergent}. For modern Decision Support Systems, this represents a transition from "engines that process text" to systems that can generate knowledge-informed recommendations, while human oversight remains necessary.
+
+\subsection{Alignment and Instruction Tuning}
+The transition from raw scale to functional utility in Decision Support Systems was enabled by the development of \textit{Alignment} techniques. While base LLMs possess extensive statistical information derived from their training corpora, they often fail to follow specific user intents or produce helpful, safe, and concise reasoning. To bridge this gap, \textbf{Instruction Tuning} was introduced, most notably through the work on \textbf{InstructGPT} by Ouyang et al. \cite{ouyang2022training}. This process involves fine-tuning the model on a dataset of human-written prompt-response pairs, shifting the objective from simple next-token prediction to "intent fulfillment."
+
+A critical component of this alignment is \textbf{Reinforcement Learning from Human Feedback (RLHF)}. This methodology, popularized by Christiano et al. \cite{christiano2017deep} and later refined for LLMs \cite{stiennon2020learning}, allows models to optimize their outputs based on human preferences. This technique helps to guide the model towards outputs that better reflect the human preferences and alignment objectives, though hallucinations and biases can still occur.
+
+
+
+
+\subsection{The Reliability Gap: Hallucinations and Uncertainty}
+The primary obstacle to the integration of LLMs in critical Decision Support Systems (DSS) is the phenomenon of \textbf{hallucinations}, defined as the generation of factually incorrect or ungrounded statements despite high linguistic fluency \cite{ji2023survey}. 
+This stems from the underlying training objective of next-token log-likelihood, which prioritizes plausible linguistic continuation over factual verification. In a DSS context, \textbf{extrinsic hallucinations}—where the output cannot be verified from provided sources or real-world knowledge—are particularly hazardous, as the model may provide a confident but false justification for a recommendation \cite{Survey2025}.
+
+Beyond explicit errors, a critical risk is the \textbf{lack of self-awareness regarding uncertainty}. State-of-the-art models are often poorly calibrated, meaning their internal probability estimates do not align with their actual correctness \cite{jiang2021can}.
+
+Recent surveys \cite{alansari2025large} identify a broad taxonomy of \textbf{hallucination detection methods}, designed to assess the factuality and faithfulness of LLM outputs before they are used in high-stakes Decision Support Systems.
+
+\begin{itemize}
+
+
+    \item \textbf{Retrieval-based methods} detect hallucinations by comparing generated statements against external knowledge sources or retrieved evidence. These techniques, often implemented through RAG pipelines \cite{lewis2020retrieval}, are particularly effective for identifying \textit{extrinsic hallucinations} by checking whether claims are supported by authoritative documents.
+
+    \item \textbf{Uncertainty-based approaches} estimate unreliability through internal model signals such as token-level probabilities, entropy, attention stability, or structured uncertainty propagation. This line of work directly addresses the calibration issues highlighted in \cite{jiang2021can}, offering a principled way to detect when a model is uncertain despite fluent output.
+
+    \item \textbf{Embedding-based methods} measure semantic alignment between inputs, outputs, and reference sources within a shared embedding space. Low semantic similarity indicates drift from the provided context or task grounding.
+
+    \item \textbf{Learning-based detectors}, including supervised, weakly supervised, and agent-based systems, train dedicated models to classify hallucinated versus factual outputs. These techniques capture complex error patterns that cannot be identified through simple probability thresholds or similarity metrics.
+
+    \item \textbf{Self-consistency-based techniques} generate multiple answers or paraphrased queries to assess stability across model outputs. Inconsistencies in meaning or reasoning serve as indicators of potential hallucinations, making these methods valuable when external verification is unavailable.
+
+\end{itemize}
+
+Overall, this taxonomy underscores that mitigating hallucinations involves not only filtering incorrect content but also understanding where and why LLM reasoning becomes unreliable, which is essential for safe integration into critical DSS.
+
+Recent work suggests that some failure modes traditionally framed as hallucinations may stem not only from generative uncertainty but also from structural challenges in long-context evidence aggregation \cite{bianchi2025hidden}. Studies on retrieval in extended contexts show that the size and distribution of relevant information influence an LLM’s ability to locate and integrate the correct evidence. When small but crucial “gold” contexts are embedded within much longer distractor passages, models exhibit reduced aggregation accuracy and increased positional sensitivity. These effects are particularly relevant for retrieval-augmented and agentic systems, where evidence sources often vary considerably in length. In such settings, short but important documents may be underutilized, potentially leading the model to produce unsupported outputs even when the necessary information is included in the input. These findings suggest that hallucination-related risks arise not only from calibration issues or insufficient grounding but also from context-size asymmetry and the design of evidence-aggregation pipelines.
+
+
+\subsection{Computational Burden and Compression Strategies for LLMs}
+Even though LLMs are extremely useful they also are computationally expensive, the development of new models has been charcterized by an increase of the parameters size that grown to hundreds of billions of parameters in the last years, with hardware that are getting more and more powerful and optimized to keep up with the evolution of this technology \cite{li2024large}. 
+The main methods to reduce the cost are applicable during the fine-tuning stage or the inference task:
+\begin{itemize}
+    \item Parameter-efficient fine-tuning (PEFT): refers to the process of adjusting the parameters of a pre-trained large model to adapt it to a specific task or domain while minimizing the number of additional parameters introduced or computational resources required \cite{han2024parameter}. One of their main methods is LoRA \cite{hu2022lora} which freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture, reducing the number of trainable parameters.
+    \item Parameters quantization: focuses on reducing the size of the parameters to usually 4 or 8 bits like Smoothquant \cite{xiao2023smoothquant}, interesting methods are also GPTQ \cite{frantar2022gptq}, which quantizes weights block-wise and iteratively corrects quantization errors using Hessian information, and AWQ, which focuses on reducing the error by preserving the most important weights \cite{awq}.
+    \item Quantization Aware Fine Tuning: QA-Lora represents a hybrid approach between PEFT and quantization, where the model is fine-tuned while accounting for quantization constraints \cite{xu2023qa}.
+    \item Pruning: focus on lightening the model size by removing the connections or neurons that are less important \cite{gordon2020compressing, sreenivas2024llm}
+\end{itemize}
+
+Compression techniques inevitably involve trade-offs between efficiency and performance, as aggressive quantization, pruning, or parameter-efficient fine-tuning may degrade model accuracy or require additional implementation effort, and task-specific performance variability must be considered \cite{frantar2022gptq, awq, hu2022lora, gordon2020compressing}.
+
+\subsection{Reasoning Frameworks for Decision Support}
+Beyond architectural and alignment improvements, the operational use of LLMs in decision-making has been revolutionized by specialized prompting and reasoning frameworks. The introduction of \textbf{Chain-of-Thought (CoT)} prompting \cite{wei2022chain} demonstrated that forcing a model to generate intermediate reasoning steps significantly enhances performance on complex logical tasks. While CoT provides a "slow thinking" approach essential for auditing a DSS, relying on a single greedy-decoded trajectory can lead to error propagation. To mitigate this, \textbf{Self-Consistency} \cite{wang2022self} introduces a decoding strategy that samples multiple reasoning paths and selects the most frequent marginal result, leveraging the intuition that complex problems often admit multiple paths to a unique correct answer.
+
+Further advancing non-linear reasoning, the \textbf{Tree of Thoughts (ToT)} \cite{yao2023tree} and \textbf{Graph of Thoughts (GoT)} \cite{besta2024graph} frameworks enable models to explore multiple solution branches or model dependencies as directed graphs. These structures allow for human-like problem solving, such as combining intermediate solutions or revising reasoning paths based on "thought volume" metrics. When coupled with \textbf{Retrieval-Augmented Generation (RAG)} \cite{lewis2020retrieval} and acting frameworks like \textbf{ReAct} \cite{yao2022react}, LLMs shift from static predictors to interactive reasoning systems capable of querying external databases and updating internal states based on real-time observations.
+
+The state-of-the-art in this domain has recently moved toward \textit{adaptive, multi-agent architectures} that operationalize these reasoning frameworks within high-stakes environments. A primary example is the work of Öğdü et al. \cite{ougdu2025adaptive}, who developed a multi-layered, adaptive Clinical Decision Support System (CDSS). Unlike traditional static models, this architecture integrates biomedical RAG with real-time web intelligence through a collaborative framework of autonomous agents. The system introduces several key innovations:
+
+\begin{itemize}
+    \item \textbf{Timeliness and Evidence Freshness:} By incorporating a dedicated web-intelligence agent, the system mitigates the "knowledge cutoff" problem of static LLMs, ensuring recommendations are grounded in the latest clinical guidelines.
+    \item \textbf{Confidence-Aware Optimization:} The system utilizes an adaptive feedback loop that triggers re-querying and hypothesis refinement whenever internal confidence scores fall below a defined threshold ($\tau = 0.65$), effectively automating the iterative reasoning seen in ToT/GoT frameworks.
+    \item \textbf{Domain-Specific Grounding:} To ensure precision in medical contexts, the system employs a specialized BioBERT-based vector database for processing complex clinical jargon.
+\end{itemize}
+
+Validated on the MedQA and PubMedQA datasets—achieving accuracies of 94\% and 88\% respectively—this approach demonstrates how the integration of multi-source data fusion and adaptive optimization loops can overcome the reliability barriers of standard LLM-based reasoning.
