@@ -1,7 +1,15 @@
 %   SETUP%
 \documentclass[a4paper,11pt,oneside,titlepage]{book}
 \input{Include/Settings/Settings}
- 
+
+% !TeX program = pdflatex
+
+\newwrite\emptyaux
+\IfFileExists{\jobname.aux}{}{
+  \immediate\openout\emptyaux=\jobname.aux
+  \immediate\closeout\emptyaux
+}
+
 \begin{document}
 %   FRONT MATTER                                            %
 \frontmatter 	   % Begin Roman style (i, ii, iii, iv...) page numbering
@@ -51,10 +59,7 @@
 
 %   CHAPTERS
 %\input{Include/Chapters/Introduction}
-
-%\input{Include/Chapters/1_state_of_the_art}
-\input{Include/Chapters/The Ground Segment and Mission Operations.tex}
-%   BACK MATTER
+\input{Include/Chapters/1_state_of_the_art}%   BACK MATTER
 %   BIBLIOGRAPHY
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Bibliography}

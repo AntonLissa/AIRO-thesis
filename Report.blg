@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Report.aux
+The style file: abbrv.bst
+Database file #1: Include/Backmatter/Bibliography.bib
+Repeated entry---line 397 of file Include/Backmatter/Bibliography.bib
+ : @article{hochreiter1997long
+ :                            ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "manning2008ir"
+Warning--I didn't find a database entry for "harris1954"
+Warning--can't use both volume and number fields in besta2024graph
+You've used 40 entries,
+            2118 wiz_defined-function locations,
+            719 strings with 13808 characters,
+and the built_in function-call counts, 18955 in all, are:
+= -- 1702
+> -- 1520
+< -- 9
++ -- 600
+- -- 558
+* -- 1615
+:= -- 3309
+add.period$ -- 122
+call.type$ -- 40
+change.case$ -- 384
+chr.to.int$ -- 0
+cite$ -- 41
+duplicate$ -- 522
+empty$ -- 1027
+format.name$ -- 558
+if$ -- 3710
+int.to.chr$ -- 0
+int.to.str$ -- 40
+missing$ -- 40
+newline$ -- 203
+num.names$ -- 84
+pop$ -- 367
+preamble$ -- 1
+purify$ -- 344
+quote$ -- 0
+skip$ -- 404
+stack$ -- 0
+substring$ -- 855
+swap$ -- 125
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 160
+warning$ -- 1
+while$ -- 130
+width$ -- 42
+write$ -- 433
+(There was 1 error message)

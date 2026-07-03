@@ -1,22 +1,79 @@
-\section{The Evolution of Large Language Models}
+% !TeX root = ../Report.tex
+\section{The Evolution of Natural Language Processing and Decision Support Systems}
 \label{sec:evolution_llm}
 
 The landscape of Natural Language Processing (NLP) and its application within Decision Support Systems (DSS) has undergone a profound transformation, moving from static statistical mappings to dynamic reasoning agents. This evolution can be traced through three major milestones: the vectorization of semantics, the mastery of sequential dependencies, and the advent of the Transformer architecture.
 
+\subsection{Early Symbolic and Sequential Neural Approaches}
+
+Early Natural Language Processing (NLP) systems were primarily based on symbolic representations and sparse statistical features. Among the most widely used approaches was the Bag-of-Words (BoW) model, which represents a text as an unordered collection of word counts. In this formulation, syntactic structure and word order are completely discarded, reducing language to a multiset of independent features \cite{manning2008ir}. While computationally efficient, this assumption severely limits the ability to capture meaning beyond surface-level lexical co-occurrence.
+
+The theoretical motivation for these early methods originates from the distributional hypothesis, which states that words appearing in similar contexts tend to share similar meanings \cite{harris1954}. This idea led to the development of n-gram language models, which introduce a limited notion of sequence by approximating the probability of a word based on a fixed window of previous tokens. Formally, this can be expressed as:
+
+\begin{equation}
+P(w_t \mid w_1, ..., w_{t-1}) \approx P(w_t \mid w_{t-(n-1)}, ..., w_{t-1})
+\end{equation}
+
+Although n-gram models incorporate local word order, they suffer from fundamental limitations. The fixed-size context window prevents them from capturing long-range dependencies, while increasing the value of $n$ leads to exponential growth in the parameter space and severe data sparsity issues. As a result, these models struggle to generalize beyond frequently observed patterns.
+
+To overcome these limitations, early neural approaches introduced the idea of learning distributed representations over sequences. A key milestone in this transition was the development of Recurrent Neural Networks (RNNs), which explicitly model sequential dependencies by maintaining a hidden state that evolves over time \cite{elman1990finding}. Unlike previous models, RNNs process input tokens one at a time while updating a latent representation that summarizes all previous information:
+
+\begin{equation}
+h_t = f(W_h h_{t-1} + W_x x_t)
+\end{equation}
+
+This formulation allows RNNs to, in principle, capture arbitrarily long dependencies. However, in practice, they suffer from the well-known vanishing and exploding gradient problems during training, which severely limits their ability to retain information over long sequences \cite{hochreiter1998vanishing}.
+
+To address these issues, more advanced architectures were proposed, most notably Long Short-Term Memory (LSTM) networks \cite{hochreiter1997long}. LSTMs introduce a memory cell and gating mechanisms that regulate the flow of information through the network, enabling the model to selectively retain or forget past states. This gating structure allows LSTMs to mitigate gradient vanishing and significantly improves performance in tasks requiring long-range dependency modeling, such as machine translation and sequence labeling.
+
+A further simplification of this architecture led to Gated Recurrent Units (GRUs), which combine the forget and input gates into a single update mechanism. GRUs maintain similar performance to LSTMs in many tasks while reducing computational complexity and the number of parameters. Both architectures represent a critical improvement over vanilla RNNs by explicitly addressing the instability of long-term temporal dependencies.
+
+Despite their success, RNN-based architectures still process sequences sequentially, limiting parallelization during training and inference. This inherent inefficiency, combined with residual difficulties in modeling extremely long dependencies, eventually motivated the development of attention-based models and Transformers, which replaced recurrence with global context modeling.
+
+This progression from BoW and n-gram models to RNNs and gated variants marks a fundamental shift in NLP: from static, order-agnostic representations toward dynamic, stateful systems capable of modeling language as a temporal process. This evolution forms the conceptual bridge toward modern contextual embedding methods and Transformer-based architectures.
+
+
 \subsection{From Static Embeddings to Sequential Modeling}
 The first fundamental advancement in how machines represent language was the introduction of \textit{Word Embeddings}. The most influential work in this area is \textbf{Word2Vec}, proposed by Mikolov et al. \cite{mikolov2013efficient}. This model demonstrated that words could be mapped into a high-dimensional vector space where semantic relationships are preserved as geometric distances. While Word2Vec enabled early NLP tasks to capture basic conceptual analogies, these embeddings remained \textbf{static}: a single vector was assigned to a word regardless of its context (e.g., "bank" in a financial vs. geographical sense). Moreover, Word2Vec does not model word order or syntactic structure, since embeddings are learned independently of the surrounding sentence. As a consequence, it cannot capture long-range dependencies or contextual nuances that are essential in many decision-support scenarios. The representation is therefore powerful at the lexical level but fundamentally limited for tasks requiring a deeper understanding of sequence dynamics.
+
+
+Shortly after, Pennington et al. introduced \textbf{GloVe} (Global Vectors for Word Representation) \cite{pennington2014glove}. GloVe refined the embedding approach by combining the advantages of global matrix factorization—leveraging statistics from the entire corpus—with local context window methods. While both Word2Vec and GloVe were revolutionary, they shared a fundamental limitation: they produced \textbf{static} embeddings. A single vector was assigned to a word regardless of its context (e.g., the word "bank" would have the same representation in a financial vs. a geographical sense). Furthermore, these models do not account for word order or complex syntactic variations.
+
+To address the issue of polysemy and contextual nuance, the field moved toward \textbf{Deep Contextualized Word Representations}. A landmark in this transition was \textbf{ELMo} (Embeddings from Language Models), proposed by Peters et al. \cite{peters-etal-2018-deep}. Unlike static embeddings, ELMo's vectors are learned functions of the internal states of a deep bidirectional language model (biLM). By exposing the deep internal layers of a pre-trained network, ELMo allowed downstream models to capture how word meanings vary across different linguistic contexts. This represented a shift from fixed lookup tables to dynamic, context-aware representations, significantly improving performance on tasks such as sentiment analysis and textual entailment.
+
+
 
 Parallel to the development of embeddings, the state-of-the-art for processing sequences was represented by Recurrent Neural Networks (RNNs) \cite{rumelhart1986learning}. However, standard RNNs were notoriously difficult to train on long sequences due to the vanishing gradient problem, as formally analyzed by Bengio et al. \cite{bengio1994learning}. To overcome these limitations, the Long Short-Term Memory (LSTM) architecture was introduced \cite{hochreiter1997long}. By employing a gating mechanism to regulate information flow, LSTMs became a dominant architecture for sequence modeling across many NLP tasks, enabling models to maintain a form of memory over long input sequences.
 
 \subsection{The Transformer Revolution}
-The definitive breakthrough occurred with the publication of \textit{"Attention Is All You Need"} \cite{vaswani2017attention}. Vaswani et al. proposed a novel architecture entirely based on the \textbf{Self-Attention mechanism}, dispensing with recurrence and convolutions. The core innovation lies in the model's ability to weigh the significance of different parts of the input data independently of their distance in the sequence. Mathematically, the Scaled Dot-Product Attention is defined as:
+The definitive breakthrough occurred with the publication of \textit{"Attention Is All You   Need"} \cite{vaswani2017attention}. Vaswani et al. proposed a novel architecture entirely based on the \textbf{Self-Attention mechanism}, dispensing with recurrence and convolutions. The core innovation lies in the model's ability to weigh the significance of different parts of the input data independently of their distance in the sequence. Mathematically, the Scaled Dot-Product Attention is defined as:
 
 \begin{equation}
     \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 \end{equation}
 
-where $Q$, $K$, and $V$ represent the Query, Key, and Value matrices, and $d_k$ is the dimension of the keys. This mechanism allows the model to build a global understanding of the input, enabling the emergence of "contextual intelligence" where word representations change dynamically based on the surrounding text. In the context of NLP, this marked the move from simple pattern recognition to sophisticated reasoning, as models could now integrate informations coming from diverse and distant data points.
-A key extension introduced in the original Transformer architecture is the multi‑head self‑attention mechanism. Instead of computing a single attention map, the model projects the input into multiple sets of query, key, and value spaces and applies the attention function in parallel across these sets. The outputs from these attention heads are then concatenated and linearly transformed, allowing the model to jointly attend to diverse types of relationships in the input sequence, such as syntactic and semantic patterns simultaneously. By combining multiple attention heads, the network can capture richer representations than a single attention head would allow, without increasing the overall model depth.
+where $Q$, $K$, and $V$ represent the Query, Key, and Value matrices, and $d_k$ is the dimension of the keys. The scaling factor $\sqrt{d_k}$ plays a crucial role in stabilizing the optimization process. Without this normalization term, the dot products between high-dimensional query and key vectors could grow excessively large, causing the softmax function to produce extremely peaked probability distributions and resulting in vanishing gradients during training. The scaling operation therefore contributes to more stable learning dynamics and improved convergence properties.
+
+Conceptually, the attention mechanism can be interpreted as a weighted aggregation process. Each query vector determines how much importance should be assigned to all available key-value pairs, enabling the model to selectively focus on the most relevant contextual information for a given token. This selective processing capability constitutes one of the fundamental reasons behind the remarkable effectiveness of Transformer-based architectures.This mechanism allows the model to build a global understanding of the input, enabling the emergence of "contextual intelligence" where word representations change dynamically based on the surrounding text. In the context of NLP, this marked the move from simple pattern recognition to sophisticated reasoning, as models could now integrate informations coming from diverse and distant data points.
+A key extension introduced in the original Transformer architecture is the multi‑head self‑attention mechanism. Instead of computing a single attention map, the model projects the input into multiple sets of query, key, and value spaces and applies the attention function in parallel across these sets. 
+
+
+Formally, multi-head attention is defined as:
+
+\begin{equation}
+    \text{MultiHead}(Q,K,V)=\text{Concat}(head_1,\dots,head_h)W^O
+\end{equation}
+
+where
+
+\begin{equation}
+    head_i=\text{Attention}(QW_i^Q,KW_i^K,VW_i^V)
+\end{equation}
+
+and $W_i^Q$, $W_i^K$, $W_i^V$, and $W^O$ are learnable projection matrices. This formulation enables each attention head to specialize in capturing different forms of dependencies within the data, thereby enriching the overall representation learned by the model.
+
+
+The outputs from these attention heads are then concatenated and linearly transformed, allowing the model to jointly attend to diverse types of relationships in the input sequence, such as syntactic and semantic patterns simultaneously. By combining multiple attention heads, the network can capture richer representations than a single attention head would allow, without increasing the overall model depth.
 
 Another important practical advantage of Transformer architectures is their massive parallelization potential. Unlike recurrent networks, which process tokens sequentially, each attention layer in a Transformer can compute interactions between all positions in the input sequence simultaneously. This property stems directly from the self‑attention formulation and makes the architecture highly amenable to batched matrix operations on modern hardware accelerators such as GPUs and TPUs. As a result, Transformers can be trained more efficiently on large corpora, enabling the scale‑up that underpins modern large language models.
 
@@ -24,6 +81,18 @@ Another important practical advantage of Transformer architectures is their mass
 The evolution culminated in the transition from task-specific models to \textit{Large Language Models} (LLMs). This shift was driven by the discovery of scaling laws \cite{kaplan2020scaling}, which suggested that model performance, and consequently capabilities on NLP tasks, improve  with increases in parameter count, dataset size, and compute, which can indirectly improve the performance of systems that leverage NLP components, including DSS applications. 
 
 Furthermore, the introduction of the Pre-training and Fine-tuning paradigm, popularized by BERT \cite{devlin2019bert} and the GPT series \cite{radford2019language}, enabled these systems to internalize vast amounts of world knowledge. This trajectory led to the discovery of \textit{emergent abilities}: capabilities not explicitly present in smaller models, such as in-context learning and multi-step logical reasoning \cite{wei2022emergent}. For modern Decision Support Systems, this represents a transition from "engines that process text" to systems that can generate knowledge-informed recommendations, while human oversight remains necessary.
+
+
+\subsection{Foundation Models and General-Purpose AI}
+\label{sec:foundation_models}
+
+The scalability of the Transformer architecture, coupled with the empirical discovery of scaling laws, has catalyzed a paradigm shift in artificial intelligence: the emergence of \textbf{Foundation Models}. As defined by Bommasani et al. \cite{bommasani2021opportunities}, a foundation model is any model trained on a vast amount of data, typically using self-supervision at scale, that can be adapted (e.g., fine-tuned) to a wide range of downstream tasks. This represents a fundamental departure from the traditional AI development lifecycle, where models were painstakingly engineered for single, narrow objectives. Instead, foundation models serve as a versatile base, encoding broad representations of language, logic, and world knowledge that can be repurposed across diverse domains, including the sophisticated requirements of Decision Support Systems.
+
+A pivotal demonstration of this potential was provided by Brown et al. \cite{brown2020language} with the introduction of GPT-3. This work highlighted that when language models are scaled to billions of parameters, they begin to exhibit \textit{in-context learning} capabilities. Unlike previous approaches that required gradient-based fine-tuning to perform a new task, GPT-3 demonstrated the ability to adapt to specific instructions simply by observing a few examples provided within the input prompt (few-shot learning). This shift fundamentally changed the interaction between users and systems, moving from "training" to "prompting" as the primary mechanism for directing model behavior.
+
+However, the rapid expansion of model size brought to light significant challenges regarding computational efficiency. The industry trend initially focused on increasing parameter counts indiscriminately; this was challenged by Hoffmann et al. \cite{hoffmann2022training} in their study on \textit{Chinchilla}. The authors demonstrated that the performance of a language model is not solely dependent on its parameter count, but rather on an optimal balance between model size and the volume of training data. Their findings established new scaling laws, suggesting that most contemporary models were significantly under-trained. This insight provided a roadmap for developing "compute-optimal" models, enabling superior performance with more efficient resource allocation.
+
+
 
 \subsection{Alignment and Instruction Tuning}
 The transition from raw scale to functional utility in Decision Support Systems was enabled by the development of \textit{Alignment} techniques. While base LLMs possess extensive statistical information derived from their training corpora, they often fail to follow specific user intents or produce helpful, safe, and concise reasoning. To bridge this gap, \textbf{Instruction Tuning} was introduced, most notably through the work on \textbf{InstructGPT} by Ouyang et al. \cite{ouyang2022training}. This process involves fine-tuning the model on a dataset of human-written prompt-response pairs, shifting the objective from simple next-token prediction to "intent fulfillment."
@@ -35,14 +104,13 @@ A critical component of this alignment is \textbf{Reinforcement Learning from Hu
 
 \subsection{The Reliability Gap: Hallucinations and Uncertainty}
 The primary obstacle to the integration of LLMs in critical Decision Support Systems (DSS) is the phenomenon of \textbf{hallucinations}, defined as the generation of factually incorrect or ungrounded statements despite high linguistic fluency \cite{ji2023survey}. 
-This stems from the underlying training objective of next-token log-likelihood, which prioritizes plausible linguistic continuation over factual verification. In a DSS context, \textbf{extrinsic hallucinations}—where the output cannot be verified from provided sources or real-world knowledge—are particularly hazardous, as the model may provide a confident but false justification for a recommendation \cite{Survey2025}.
+This stems from the underlying training objective of next-token log-likelihood, which prioritizes plausible linguistic continuation over factual verification. In a DSS context, \textbf{extrinsic hallucinations}, where the output cannot be verified from provided sources or real-world knowledge, are particularly hazardous, as the model may provide a confident but false justification for a recommendation \cite{Survey2025}.
 
 Beyond explicit errors, a critical risk is the \textbf{lack of self-awareness regarding uncertainty}. State-of-the-art models are often poorly calibrated, meaning their internal probability estimates do not align with their actual correctness \cite{jiang2021can}.
 
 Recent surveys \cite{alansari2025large} identify a broad taxonomy of \textbf{hallucination detection methods}, designed to assess the factuality and faithfulness of LLM outputs before they are used in high-stakes Decision Support Systems.
 
 \begin{itemize}
-
 
     \item \textbf{Retrieval-based methods} detect hallucinations by comparing generated statements against external knowledge sources or retrieved evidence. These techniques, often implemented through RAG pipelines \cite{lewis2020retrieval}, are particularly effective for identifying \textit{extrinsic hallucinations} by checking whether claims are supported by authoritative documents.
 
@@ -86,4 +154,13 @@ The state-of-the-art in this domain has recently moved toward \textit{adaptive, 
     \item \textbf{Domain-Specific Grounding:} To ensure precision in medical contexts, the system employs a specialized BioBERT-based vector database for processing complex clinical jargon.
 \end{itemize}
 
-Validated on the MedQA and PubMedQA datasets—achieving accuracies of 94\% and 88\% respectively—this approach demonstrates how the integration of multi-source data fusion and adaptive optimization loops can overcome the reliability barriers of standard LLM-based reasoning.
+Validated on the MedQA and PubMedQA datasets—achieving accuracies of 94\% and 88\% respectively, this approach demonstrates how the integration of multi-source data fusion and adaptive optimization loops can overcome the reliability barriers of standard LLM-based reasoning.
+
+
+\subsection{Long-Context Modeling and Context Management}
+
+
+
+\section{Agentic Large Language Models}
+
+\section{Evolution of Decision Support Systems}
