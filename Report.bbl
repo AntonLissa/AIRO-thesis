@@ -115,6 +115,11 @@ J.~Lin, J.~Tang, H.~Tang, S.~Yang, W.-M. Chen, W.-C. Wang, G.~Xiao, X.~Dang, C.~
 \newblock Awq: Activation-aware weight quantization for on-device llm compression and acceleration.
 \newblock In P.~Gibbons, G.~Pekhimenko, and C.~D. Sa, editors, {\em Proceedings of Machine Learning and Systems}, volume~6, pages 87--100, 2024.
 
+\bibitem{manning2008introduction}
+C.~D. Manning.
+\newblock {\em Introduction to information retrieval}.
+\newblock Syngress Publishing,, 2008.
+
 \bibitem{mikolov2013efficient}
 T.~Mikolov, K.~Chen, G.~Corrado, and J.~Dean.
 \newblock Efficient estimation of word representations in vector space.

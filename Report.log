@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  3 JUL 2026 16:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  3 JUL 2026 16:39
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/anton/Documents/AIRO/TESI/Report.tex
+**c:/Users/anton/Documents/AIRO/TESI/Report
 (c:/Users/anton/Documents/AIRO/TESI/Report.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -810,10 +810,11 @@ LaTeX Font Info:    ... okay on input line 13.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 13.
+(./Report.out) (./Report.out)
 \@outlinefile=\write10
 \openout10 = `Report.out'.
 
-(c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count397
 \scratchdimen=\dimen292
@@ -841,8 +842,8 @@ Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count403
 Package tocbasic Info: setting babel extension for `lol' on input line 13.
- (./Report.glsdefs) (./Include/Frontmatter/Titlepage.tex
-<Report-frn.pdf, id=4, 597.50829pt x 845.0471pt>
+ (./Include/Frontmatter/Titlepage.tex
+<Report-frn.pdf, id=67, 597.50829pt x 845.0471pt>
 File: Report-frn.pdf Graphic file (type pdf)
 <use Report-frn.pdf>
 Package pdftex.def Info: Report-frn.pdf  used on input line 1.
@@ -864,24 +865,30 @@ l.23 \newpage
 
 ] (./Include/Frontmatter/Abstract.tex) [2] [3
 
-]
-No file Report.toc.
+] (./Report.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+ (c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+ (c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
 \tf@toc=\write11
 \openout11 = `Report.toc'.
 
-[4
+ [4
 
-]
-No file Report.lof.
+] (./Report.lof)
 \tf@lof=\write12
 \openout12 = `Report.lof'.
 
-[5
+ [5
 
-]
-No file Report.lot.
+] (./Report.lot)
 \tf@lot=\write13
 \openout13 = `Report.lot'.
+
 
 No file Report.nls.
 No file Report.acr.
@@ -889,27 +896,7 @@ No file Report.acr.
 
 ] (./Include/Chapters/1_state_of_the_art.tex
 
-Package natbib Warning: Citation `manning2008ir' on page 1 undefined on input line 9.
-
-
 Package natbib Warning: Citation `harris1954' on page 1 undefined on input line 11.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
-(c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
- (c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-Package natbib Warning: Citation `elman1990finding' on page 1 undefined on input line 19.
-
-
-Package natbib Warning: Citation `hochreiter1998vanishing' on page 1 undefined on input line 25.
-
-
-Package natbib Warning: Citation `hochreiter1997long' on page 1 undefined on input line 27.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -923,24 +910,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 
-Package natbib Warning: Citation `mikolov2013efficient' on page 2 undefined on input line 37.
-
-
-Package natbib Warning: Citation `pennington2014glove' on page 2 undefined on input line 40.
-
-
-Package natbib Warning: Citation `peters-etal-2018-deep' on page 2 undefined on input line 42.
-
-
-Package natbib Warning: Citation `rumelhart1986learning' on page 2 undefined on input line 46.
-
-
-Package natbib Warning: Citation `bengio1994learning' on page 2 undefined on input line 46.
-
-
-Package natbib Warning: Citation `hochreiter1997long' on page 2 undefined on input line 46.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
 (fancyhdr)                \setlength{\headheight}{13.59999pt}.
@@ -948,9 +917,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [2]
-
-Package natbib Warning: Citation `vaswani2017attention' on page 3 undefined on input line 49.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -960,24 +926,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [3]
 
-Package natbib Warning: Citation `kaplan2020scaling' on page 4 undefined on input line 81.
-
-
-Package natbib Warning: Citation `devlin2019bert' on page 4 undefined on input line 83.
-
-
-Package natbib Warning: Citation `radford2019language' on page 4 undefined on input line 83.
-
-
-Package natbib Warning: Citation `wei2022emergent' on page 4 undefined on input line 83.
-
-
-Package natbib Warning: Citation `bommasani2021opportunities' on page 4 undefined on input line 89.
-
-
-Package natbib Warning: Citation `brown2020language' on page 4 undefined on input line 91.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
 (fancyhdr)                \setlength{\headheight}{13.59999pt}.
@@ -985,34 +933,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [4]
-
-Package natbib Warning: Citation `hoffmann2022training' on page 5 undefined on input line 93.
-
-
-Package natbib Warning: Citation `ouyang2022training' on page 5 undefined on input line 98.
-
-
-Package natbib Warning: Citation `christiano2017deep' on page 5 undefined on input line 100.
-
-
-Package natbib Warning: Citation `stiennon2020learning' on page 5 undefined on input line 100.
-
-
-Package natbib Warning: Citation `ji2023survey' on page 5 undefined on input line 106.
-
-
-Package natbib Warning: Citation `Survey2025' on page 5 undefined on input line 107.
-
-
-Package natbib Warning: Citation `jiang2021can' on page 5 undefined on input line 109.
-
-
-Package natbib Warning: Citation `alansari2025large' on page 5 undefined on input line 111.
-
-
-Package natbib Warning: Citation `lewis2020retrieval' on page 5 undefined on input line 115.
-
-
 Overfull \hbox (3.22054pt too wide) in paragraph at lines 115--116
 \T1/cmr/m/n/10.95 ex-ter-nal knowl-edge sources or re-trieved ev-i-dence. These tech-niques, of-ten im-ple-mented through
  []
@@ -1026,21 +946,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 
-Package natbib Warning: Citation `jiang2021can' on page 6 undefined on input line 117.
-
-
-Package natbib Warning: Citation `bianchi2025hidden' on page 6 undefined on input line 129.
-
-
-Package natbib Warning: Citation `li2024large' on page 6 undefined on input line 133.
-
-
-Package natbib Warning: Citation `han2024parameter' on page 6 undefined on input line 136.
-
-
-Package natbib Warning: Citation `hu2022lora' on page 6 undefined on input line 136.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
 (fancyhdr)                \setlength{\headheight}{13.59999pt}.
@@ -1048,57 +953,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [6]
-
-Package natbib Warning: Citation `xiao2023smoothquant' on page 7 undefined on input line 137.
-
-
-Package natbib Warning: Citation `frantar2022gptq' on page 7 undefined on input line 137.
-
-
-Package natbib Warning: Citation `awq' on page 7 undefined on input line 137.
-
-
-Package natbib Warning: Citation `xu2023qa' on page 7 undefined on input line 138.
-
-
-Package natbib Warning: Citation `gordon2020compressing' on page 7 undefined on input line 139.
-
-
-Package natbib Warning: Citation `sreenivas2024llm' on page 7 undefined on input line 139.
-
-
-Package natbib Warning: Citation `frantar2022gptq' on page 7 undefined on input line 142.
-
-
-Package natbib Warning: Citation `awq' on page 7 undefined on input line 142.
-
-
-Package natbib Warning: Citation `hu2022lora' on page 7 undefined on input line 142.
-
-
-Package natbib Warning: Citation `gordon2020compressing' on page 7 undefined on input line 142.
-
-
-Package natbib Warning: Citation `wei2022chain' on page 7 undefined on input line 145.
-
-
-Package natbib Warning: Citation `wang2022self' on page 7 undefined on input line 145.
-
-
-Package natbib Warning: Citation `yao2023tree' on page 7 undefined on input line 147.
-
-
-Package natbib Warning: Citation `besta2024graph' on page 7 undefined on input line 147.
-
-
-Package natbib Warning: Citation `lewis2020retrieval' on page 7 undefined on input line 147.
-
-
-Package natbib Warning: Citation `yao2022react' on page 7 undefined on input line 147.
-
-
-Package natbib Warning: Citation `ougdu2025adaptive' on page 7 undefined on input line 149.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1147,42 +1001,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[12] (./Report.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+[12] (./Report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Report.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  EF73061C6A568E0255AB13FB60C820EF;4087.
+Package rerunfilecheck Info: File `Report.out' has not changed.
+(rerunfilecheck)             Checksum: EF73061C6A568E0255AB13FB60C820EF;4087.
  ) 
 Here is how much of TeX's memory you used:
  26206 strings out of 469472
- 491058 string characters out of 5466873
+ 491134 string characters out of 5466873
  1061459 words of memory out of 5000000
- 54346 multiletter control sequences out of 15000+600000
+ 54338 multiletter control sequences out of 15000+600000
  641936 words of font info for 71 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 115i,12n,136p,2601b,653s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Report.pdf (19 pages, 848172 bytes).
+ 115i,12n,136p,2597b,733s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Report.pdf (19 pages, 854254 bytes).
 PDF statistics:
- 620 PDF objects out of 1000 (max. 8388607)
- 219 compressed objects within 3 object streams
- 82 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 738 PDF objects out of 1000 (max. 8388607)
+ 333 compressed objects within 4 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 134 words of extra memory for PDF output out of 10000 (max. 10000000)
 

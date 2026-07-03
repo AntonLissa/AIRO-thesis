@@ -3,52 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Report.aux
 The style file: abbrv.bst
 Database file #1: Include/Backmatter/Bibliography.bib
-Repeated entry---line 397 of file Include/Backmatter/Bibliography.bib
- : @article{hochreiter1997long
- :                            ,
-I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "manning2008ir"
 Warning--I didn't find a database entry for "harris1954"
 Warning--can't use both volume and number fields in besta2024graph
-You've used 40 entries,
+You've used 41 entries,
             2118 wiz_defined-function locations,
-            719 strings with 13808 characters,
-and the built_in function-call counts, 18955 in all, are:
-= -- 1702
-> -- 1520
+            723 strings with 13901 characters,
+and the built_in function-call counts, 19170 in all, are:
+= -- 1721
+> -- 1527
 < -- 9
-+ -- 600
-- -- 558
-* -- 1615
-:= -- 3309
-add.period$ -- 122
-call.type$ -- 40
-change.case$ -- 384
++ -- 603
+- -- 560
+* -- 1623
+:= -- 3347
+add.period$ -- 125
+call.type$ -- 41
+change.case$ -- 387
 chr.to.int$ -- 0
-cite$ -- 41
-duplicate$ -- 522
-empty$ -- 1027
-format.name$ -- 558
-if$ -- 3710
+cite$ -- 42
+duplicate$ -- 534
+empty$ -- 1049
+format.name$ -- 560
+if$ -- 3756
 int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 40
-newline$ -- 203
-num.names$ -- 84
-pop$ -- 367
+int.to.str$ -- 41
+missing$ -- 42
+newline$ -- 208
+num.names$ -- 86
+pop$ -- 375
 preamble$ -- 1
-purify$ -- 344
+purify$ -- 347
 quote$ -- 0
-skip$ -- 404
+skip$ -- 410
 stack$ -- 0
-substring$ -- 855
-swap$ -- 125
+substring$ -- 860
+swap$ -- 126
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 160
+type$ -- 162
 warning$ -- 1
-while$ -- 130
-width$ -- 42
-write$ -- 433
-(There was 1 error message)
+while$ -- 132
+width$ -- 43
+write$ -- 443
+(There were 2 warnings)
