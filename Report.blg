@@ -3,47 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Report.aux
 The style file: abbrv.bst
 Database file #1: Include/Backmatter/Bibliography.bib
-Warning--I didn't find a database entry for "harris1954"
 Warning--can't use both volume and number fields in besta2024graph
-You've used 41 entries,
+You've used 44 entries,
             2118 wiz_defined-function locations,
-            723 strings with 13901 characters,
-and the built_in function-call counts, 19170 in all, are:
-= -- 1721
-> -- 1527
-< -- 9
-+ -- 603
-- -- 560
-* -- 1623
-:= -- 3347
-add.period$ -- 125
-call.type$ -- 41
-change.case$ -- 387
+            737 strings with 14196 characters,
+and the built_in function-call counts, 20300 in all, are:
+= -- 1844
+> -- 1559
+< -- 11
++ -- 616
+- -- 570
+* -- 1682
+:= -- 3515
+add.period$ -- 136
+call.type$ -- 44
+change.case$ -- 401
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 534
-empty$ -- 1049
-format.name$ -- 560
-if$ -- 3756
+cite$ -- 45
+duplicate$ -- 591
+empty$ -- 1148
+format.name$ -- 570
+if$ -- 4017
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 42
-newline$ -- 208
-num.names$ -- 86
-pop$ -- 375
+int.to.str$ -- 44
+missing$ -- 45
+newline$ -- 223
+num.names$ -- 92
+pop$ -- 395
 preamble$ -- 1
-purify$ -- 347
+purify$ -- 358
 quote$ -- 0
-skip$ -- 410
+skip$ -- 453
 stack$ -- 0
-substring$ -- 860
-swap$ -- 126
-text.length$ -- 9
+substring$ -- 939
+swap$ -- 148
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 162
+type$ -- 174
 warning$ -- 1
-while$ -- 132
-width$ -- 43
-write$ -- 443
-(There were 2 warnings)
+while$ -- 144
+width$ -- 46
+write$ -- 477
+(There was 1 warning)

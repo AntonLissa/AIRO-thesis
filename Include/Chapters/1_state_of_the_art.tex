@@ -2,31 +2,167 @@
 \section{The Evolution of Natural Language Processing and Decision Support Systems}
 \label{sec:evolution_llm}
 
-The landscape of Natural Language Processing (NLP) and its application within Decision Support Systems (DSS) has undergone a profound transformation, moving from static statistical mappings to dynamic reasoning agents. This evolution can be traced through three major milestones: the vectorization of semantics, the mastery of sequential dependencies, and the advent of the Transformer architecture.
+The field of Natural Language Processing (NLP) has experienced a remarkable evolution over the past decades. Early approaches relied on manually engineered representations and statistical models, where language was treated as a collection of symbolic features rather than as a structured and contextual system. Advances in machine learning progressively shifted the focus toward distributed representations and neural architectures capable of learning linguistic patterns directly from data. This progression ultimately culminated in the Transformer architecture, which forms the foundation of modern Large Language Models (LLMs). Understanding this historical evolution is essential for appreciating the capabilities and limitations of current AI-based Decision Support Systems (DSS).
 
-\subsection{Early Symbolic and Sequential Neural Approaches}
+The development of NLP can be broadly divided into three major phases. The first phase is characterized by sparse statistical representations such as Bag-of-Words and n-gram language models. The second phase introduced recurrent neural architectures capable of modeling sequential dependencies. Finally, the third phase replaced recurrence with attention mechanisms, enabling scalable contextual reasoning over long sequences.
 
-Early Natural Language Processing (NLP) systems were primarily based on symbolic representations and sparse statistical features. Among the most widely used approaches was the Bag-of-Words (BoW) model, which represents a text as an unordered collection of word counts. In this formulation, syntactic structure and word order are completely discarded, reducing language to a multiset of independent features \cite{manning2008introduction}. While computationally efficient, this assumption severely limits the ability to capture meaning beyond surface-level lexical co-occurrence.
 
-The theoretical motivation for these early methods originates from the distributional hypothesis, which states that words appearing in similar contexts tend to share similar meanings \cite{harris1954}. This idea led to the development of n-gram language models, which introduce a limited notion of sequence by approximating the probability of a word based on a fixed window of previous tokens. Formally, this can be expressed as:
+\subsection{Early Symbolic Approaches}
+
+Early NLP systems were primarily based on symbolic representations and sparse statistical features. Rather than learning semantic representations from data, documents were encoded through manually designed features derived from word occurrences. One of the most influential representations was the \textit{Bag-of-Words} (BoW) model \cite{manning2008introduction, qader2019overview}. In this representation, each document is transformed into a vector containing the frequency of every word in a predefined vocabulary, while completely disregarding grammar, syntax, and word order.
+
+For example, consider the following two sentences:
+
+\begin{quote}
+"The doctor treats the patient."
+
+"The patient treats the doctor."
+\end{quote}
+
+Although the semantic meaning of the two sentences is clearly different, the Bag-of-Words representation assigns them nearly identical vectors because they contain exactly the same set of words. The only retained information is the frequency of each term, whereas all structural information is discarded. Consequently, language is reduced to an unordered multiset of independent lexical features.
+
+This can be explicitly observed in their Bag-of-Words representations, as shown in Table \ref{tab:bow_example}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+\textbf{Term} & \textbf{Sentence 1} & \textbf{Sentence 2} \\
+\hline
+the        & 2 & 2 \\
+doctor     & 1 & 1 \\
+patient    & 1 & 1 \\
+treats     & 1 & 1 \\
+\hline
+\end{tabular}
+\caption{Bag-of-Words representation of two syntactically different but lexically identical sentences.}
+\label{tab:bow_example}
+\end{table}
+
+Although the semantic meaning of the two sentences is clearly different, the Bag-of-Words representation assigns them nearly identical vectors because they contain exactly the same set of words. The only retained information is the frequency of each term, whereas all structural information is discarded. Consequently, language is reduced to an unordered multiset of independent lexical features.
+
+Despite this limitation, Bag-of-Words proved remarkably effective for several tasks, including document classification, spam detection, topic categorization, and information retrieval. Its simplicity, low computational cost, and compatibility with classical machine learning algorithms such as Naïve Bayes and Support Vector Machines \cite{manning2008introduction} contributed to its widespread adoption.
+
+However, the independence assumption underlying BoW prevents the model from capturing compositional meaning or contextual relationships between words. Expressions such as "artificial intelligence", "credit card", or "New York" are decomposed into independent terms, ignoring the fact that their meaning emerges from the combination of multiple words rather than from each individual token.
+
+The statistical foundations of these early methods were strongly influenced by the \textit{distributional hypothesis}, originally proposed by Harris \cite{harris1954distributional}, which states that words occurring in similar linguistic contexts tend to exhibit similar semantic properties. This principle later became one of the cornerstones of statistical NLP and distributional semantics.
+
+Motivated by the need to incorporate sequential information, researchers introduced \textit{n-gram language models} \cite{fink2014n}. Instead of treating words as independent observations, n-gram models estimate the probability of a word by conditioning only on the previous $n-1$ tokens according to the Markov assumption:
 
 \begin{equation}
-P(w_t \mid w_1, ..., w_{t-1}) \approx P(w_t \mid w_{t-(n-1)}, ..., w_{t-1})
+P(w_t \mid w_1,\ldots,w_{t-1})
+\approx
+P(w_t \mid w_{t-(n-1)},\ldots,w_{t-1})
 \end{equation}
 
-Although n-gram models incorporate local word order, they suffer from fundamental limitations. The fixed-size context window prevents them from capturing long-range dependencies, while increasing the value of $n$ leads to exponential growth in the parameter space and severe data sparsity issues. As a result, these models struggle to generalize beyond frequently observed patterns.
+Depending on the value of $n$, different language models can be obtained. A unigram model ($n=1$) assumes complete independence between words and is therefore equivalent to the Bag-of-Words assumption. A bigram model predicts each word using only the immediately preceding token, whereas a trigram model considers the previous two words.
 
-To overcome these limitations, early neural approaches introduced the idea of learning distributed representations over sequences. A key milestone in this transition was the development of Recurrent Neural Networks (RNNs), which explicitly model sequential dependencies by maintaining a hidden state that evolves over time \cite{elman1990finding}. Unlike previous models, RNNs process input tokens one at a time while updating a latent representation that summarizes all previous information:
+For instance, given the sentence
 
-\begin{equation}
-h_t = f(W_h h_{t-1} + W_x x_t)
-\end{equation}
+\begin{quote}
+"The patient needs medical assistance."
+\end{quote}
 
-This formulation allows RNNs to, in principle, capture arbitrarily long dependencies. However, in practice, they suffer from the well-known vanishing and exploding gradient problems during training, which severely limits their ability to retain information over long sequences \cite{hochreiter1998vanishing}.
+the extracted n-grams are:
 
-To address these issues, more advanced architectures were proposed, most notably Long Short-Term Memory (LSTM) networks \cite{hochreiter1997long}. LSTMs introduce a memory cell and gating mechanisms that regulate the flow of information through the network, enabling the model to selectively retain or forget past states. This gating structure allows LSTMs to mitigate gradient vanishing and significantly improves performance in tasks requiring long-range dependency modeling, such as machine translation and sequence labeling.
+\begin{itemize}
+\item Unigrams: \{The, patient, needs, medical, assistance\}
+\item Bigrams: \{The patient, patient needs, needs medical, medical assistance\}
+\item Trigrams: \{The patient needs, patient needs medical, needs medical assistance\}
+\end{itemize}
 
-A further simplification of this architecture led to Gated Recurrent Units (GRUs), which combine the forget and input gates into a single update mechanism. GRUs maintain similar performance to LSTMs in many tasks while reducing computational complexity and the number of parameters. Both architectures represent a critical improvement over vanilla RNNs by explicitly addressing the instability of long-term temporal dependencies.
+Unlike Bag-of-Words, these representations preserve a limited notion of local word order, allowing statistical models to learn common expressions, collocations, and short syntactic structures.
+
+Nevertheless, n-gram models remain fundamentally constrained by their fixed context window. Long-range dependencies cannot be modeled because only the previous $n-1$ tokens are considered. For example, in the sentence
+
+\begin{quote}
+"The physician who examined the patient yesterday \textbf{prescribes} the medication."
+\end{quote}
+
+the relationship between the subject ``physician'' and the verb ``prescribes'' spans several intermediate words. A small bigram or trigram model cannot capture such dependencies effectively.
+
+A second limitation concerns scalability. As the value of $n$ increases, the number of possible word combinations grows exponentially. Consequently, even very large corpora contain only a small fraction of all possible n-grams, leading to severe data sparsity problems.
+
+These shortcomings motivated the transition toward neural language models capable of learning continuous distributed representations instead of relying exclusively on explicit frequency counts.
+
+
+\subsection{Early Neural Approaches}
+
+To overcome the limitations of n-gram models, early neural approaches introduced the idea of learning distributed representations over sequences. Simple Recurrent Networks (SRNs) by Elman \cite{elman1990finding} established a foundational architecture for processing sequential data and are considered a precursor to modern Recurrent Neural Networks (RNNs).
+
+The training of neural networks, including recurrent architectures, is based on backpropagation \cite{rumelhart1986learning}. In the recurrent setting, this is extended to Backpropagation Through Time (BPTT) \cite{grosse2017lecture}, which enables gradient-based optimization over temporal dependencies by unrolling the network across time.
+
+Unlike feedforward models, RNNs process input tokens sequentially while maintaining a hidden state that acts as a memory of past information. A standard formulation of an RNN is given by:
+
+\begin{align}
+h_t &= f(W_h h_{t-1} + W_x x_t + b_h) \\
+y_t &= W_y h_t + b_y
+\end{align}
+
+This formulation allows, in principle, the modeling of arbitrarily long dependencies through the recurrent hidden state. However, training RNNs in practice is challenging due to the vanishing and exploding gradient problems, which limit their ability to preserve information over long sequences.
+
+To understand this issue, consider a simplified recurrent formulation:
+
+\begin{equation*}
+h_t = \phi(W h_{t-1})
+\end{equation*}
+
+Under BPTT, the gradient of the loss with respect to a hidden state can be expressed as a product of Jacobians across time:
+
+\begin{equation*}
+\frac{\partial L}{\partial h_t}
+=
+\frac{\partial L}{\partial h_T}
+\prod_{k=t}^{T-1}
+\frac{\partial h_{k+1}}{\partial h_k}
+\end{equation*}
+
+Taking the norm yields:
+
+\begin{equation*}
+\left\|\frac{\partial L}{\partial h_t}\right\|
+\approx
+\prod_{k=t}^{T-1}
+\left\|\frac{\partial h_{k+1}}{\partial h_k}\right\|
+\end{equation*}
+
+This shows that the gradient magnitude is determined by repeated multiplication of Jacobian matrices across time steps. Depending on their spectral properties, this product can either grow or decay exponentially, leading respectively to exploding or vanishing gradients.
+
+This fundamental limitation significantly hinders the ability of vanilla RNNs to learn long-term dependencies, and motivates the development of more advanced recurrent architectures designed to improve gradient flow over long sequences.
+
+
+
+
+To address these issues, more advanced architectures were proposed, most notably Long Short-Term Memory (LSTM) networks \cite{hochreiter1997long}. LSTMs introduce an explicit memory cell $c_t$ designed to preserve long-term information, together with a set of gating mechanisms that regulate information flow. The core idea is to decouple long-term memory from short-term hidden representations.
+
+The LSTM update equations are defined as:
+
+
+\begin{align*}
+I_t &= \sigma(X_t W_{xi} + H_{t-1} W_{hi} + b_i) \\
+F_t &= \sigma(X_t W_{xf} + H_{t-1} W_{hf} + b_f) \\
+O_t &= \sigma(X_t W_{xo} + H_{t-1} W_{ho} + b_o) \\
+\tilde{C}_t &= \tanh(X_t W_{xc} + H_{t-1} W_{hc} + b_c) \\
+C_t &= F_t \odot C_{t-1} + I_t \odot \tilde{C}_t \\
+H_t &= O_t \odot \tanh(C_t)
+\end{align*}
+
+The key property of this formulation is the additive update of the cell state $c_t$, which contrasts with the purely multiplicative transformations of standard RNNs. This structure allows gradients to flow more effectively through time, since the derivative of $c_t$ with respect to $c_{t-1}$ is modulated by the forget gate $f_t$, which can learn to preserve information when needed.
+
+As a result, LSTMs significantly mitigate the vanishing gradient problem and enable learning of long-range dependencies that are difficult to capture with vanilla RNNs. This makes them particularly effective in sequence modeling tasks such as machine translation, speech recognition, and sequence labeling.
+
+A further simplification of this architecture led to Gated Recurrent Units (GRUs), which combine the forget and input gates into a single update mechanism. GRUs maintain similar performance to LSTMs in many tasks while reducing computational complexity and the number of parameters.
+
+The GRU formulation is defined as:
+
+\begin{align*}
+Z_t &= \sigma(X_t W_{xz} + H_{t-1} W_{hz} + b_z) \\
+R_t &= \sigma(X_t W_{xr} + H_{t-1} W_{hr} + b_r) \\
+\tilde{H}_t &= \tanh(X_t W_{xh} + (R_t \odot H_{t-1}) W_{hh} + b_h) \\
+H_t &= (1 - Z_t) \odot H_{t-1} + Z_t \odot \tilde{H}_t
+\end{align*}
+
+Both architectures represent a critical improvement over vanilla RNNs by explicitly addressing the instability of long-term temporal dependencies.
 
 Despite their success, RNN-based architectures still process sequences sequentially, limiting parallelization during training and inference. This inherent inefficiency, combined with residual difficulties in modeling extremely long dependencies, eventually motivated the development of attention-based models and Transformers, which replaced recurrence with global context modeling.
 
