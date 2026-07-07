@@ -4,45 +4,45 @@ The top-level auxiliary file: Report.aux
 The style file: abbrv.bst
 Database file #1: Include/Backmatter/Bibliography.bib
 Warning--can't use both volume and number fields in besta2024graph
-You've used 51 entries,
+You've used 56 entries,
             2118 wiz_defined-function locations,
-            773 strings with 15685 characters,
-and the built_in function-call counts, 23123 in all, are:
-= -- 2103
-> -- 1765
+            798 strings with 16709 characters,
+and the built_in function-call counts, 25215 in all, are:
+= -- 2282
+> -- 1940
 < -- 13
-+ -- 696
-- -- 642
-* -- 1901
-:= -- 4009
-add.period$ -- 158
-call.type$ -- 51
-change.case$ -- 455
++ -- 766
+- -- 706
+* -- 2081
+:= -- 4378
+add.period$ -- 171
+call.type$ -- 56
+change.case$ -- 501
 chr.to.int$ -- 0
-cite$ -- 52
-duplicate$ -- 679
-empty$ -- 1313
-format.name$ -- 642
-if$ -- 4580
+cite$ -- 57
+duplicate$ -- 726
+empty$ -- 1434
+format.name$ -- 706
+if$ -- 4984
 int.to.chr$ -- 0
-int.to.str$ -- 51
-missing$ -- 52
-newline$ -- 258
-num.names$ -- 108
-pop$ -- 446
+int.to.str$ -- 56
+missing$ -- 55
+newline$ -- 281
+num.names$ -- 118
+pop$ -- 496
 preamble$ -- 1
-purify$ -- 405
+purify$ -- 446
 quote$ -- 0
-skip$ -- 522
+skip$ -- 560
 stack$ -- 0
-substring$ -- 1066
-swap$ -- 170
+substring$ -- 1153
+swap$ -- 175
 text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 202
+type$ -- 222
 warning$ -- 1
-while$ -- 164
-width$ -- 53
-write$ -- 552
+while$ -- 178
+width$ -- 58
+write$ -- 601
 (There was 1 warning)

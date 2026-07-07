@@ -13,6 +13,6 @@
 \contentsline {subsection}{\numberline {0.1.9}Computational Burden and Compression Strategies for LLMs}{13}{subsection.0.1.9}%
 \contentsline {subsection}{\numberline {0.1.10}Reasoning Frameworks for Decision Support}{14}{subsection.0.1.10}%
 \contentsline {subsection}{\numberline {0.1.11}Long-Context Modeling and Context Management}{15}{subsection.0.1.11}%
-\contentsline {section}{\numberline {0.2}Agentic Large Language Models}{16}{section.0.2}%
-\contentsline {section}{\numberline {0.3}Evolution of Decision Support Systems}{16}{section.0.3}%
-\contentsline {chapter}{Bibliography}{17}{section.0.3}%
+\contentsline {subsection}{\numberline {0.1.12}Agentic Large Language Models}{16}{subsection.0.1.12}%
+\contentsline {subsection}{\numberline {0.1.13}Evolution of Decision Support Systems}{17}{subsection.0.1.13}%
+\contentsline {chapter}{Bibliography}{19}{subsection.0.1.13}%

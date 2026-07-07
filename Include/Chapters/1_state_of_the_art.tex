@@ -402,14 +402,51 @@ When integrated with Retrieval-Augmented Generation (RAG) \cite{lewis2020retriev
 \subsection{Long-Context Modeling and Context Management}
 While early Transformer-based models were limited to relatively short context windows, modern LLMs have progressively expanded their capacity to process longer sequences. This evolution enables applications requiring the analysis of extensive documents, multi-turn conversations, and complex workflows involving heterogeneous information sources.
 However, the standard Transformer architecture suffers from a quadratic computational and memory complexity, $O(n^2)$, relative to sequence length $n$. This constraint turns the context window into a significant bottleneck: as sequence length increases, the memory footprint of the Key-Value (KV) cache grows linearly, often exhausting GPU VRAM during inference, while the self-attention mechanism becomes the primary computational latency driver.
-To overcome these limitations, recent research has focused on architecture and positional encoding advancements. Initial approaches relied on linear attention approximations, but modern state-of-the-art models primarily utilize Rotary Positional Embeddings (RoPE) combined with scaling techniques. Works such as Position Interpolation \cite{chen2023extendingcontextwindowlarge} and YaRN \cite{peng2023yarn} have demonstrated that context windows can be extended far beyond pre-training limits by mathematically re-scaling the rotational frequency of embeddings, allowing models to 'perceive' longer sequences without extensive retraining.
+To overcome these limitations, recent research has focused on architecture and positional encoding advancements. 
 
-Another problem is the increased risk of hallucinations and reasoning errors when the model is forced to process long contexts, as the relevant information may be diluted among irrelevant content. This is particularly problematic in Decision Support Systems, where critical evidence may be embedded within lengthy documents or multi-source data streams.
+Initial approaches relied on linear attention approximations, but many state-of-the-art models primarily adopt \textbf{Rotary Positional Embeddings (RoPE)} \cite{su2024roformer}combined with scaling techniques. Works such as Position Interpolation \cite{chen2023extendingcontextwindowlarge} and \textbf{YaRN} \cite{peng2023yarn} have demonstrated that context windows can be extended far beyond pre-training limits by mathematically re-scaling the rotational frequency of embeddings, allowing models to 'perceive' longer sequences without extensive retraining.
 
-\section{Agentic Large Language Models}
+Another problem is the increased risk of hallucinations and reasoning errors when the model is forced to process long contexts, as the relevant information may be diluted among irrelevant content. This is particularly problematic in Decision Support Systems, where critical evidence may be embedded within lengthy documents or multi-source data streams. The work of Liu et al. \cite{liu-etal-2024-lost} demonstrates that current language models, including those explicitly designed to handle long contexts, struggle to robustly retrieve and use information located in the middle of their input window. Instead of treating all parts of the context equally, these models exhibit a U-shaped performance curve where performance is highest when relevant information is placed at the very beginning (primacy bias) or at the very end (recency bias) of the input. Performance drops significantly when the model is forced to access information located in the middle of the context. In some cases, performance is even worse than if the model had been given no context at all.
 
 
-\section{Evolution of Decision Support Systems}
+
+
+
+\subsection{Agentic Large Language Models}
+The evolution from Large Language Models to Agentic Large Language Models represents a shift from passive text generation toward autonomous task execution. While traditional LLMs operate primarily as reactive systems that map user prompts to generated responses, agentic architectures embed language models within broader computational systems that provide planning, memory, action executions, and profiling modules \cite{wang2024survey}.
+
+The \textbf{profiling module} defines the role, objectives, capabilities, and behavioral constraints of the agent. By specifying characteristics such as domain expertise, task objectives, or interaction style, the profile conditions the reasoning process and influences planning, memory retrieval, and action selection.
+
+
+The \textbf{memory module} can store data in several formats, each offering unique trade-offs between semantic richness, retrieval efficiency, and ease of manipulation: Natural Language, Embeddings, Databases, Structured Lists, or hybrid.
+The selection of data is typically governed by three criteria: recency, relevance, and importance.
+
+
+The \textbf{planning module} is responsible for managing long-horizon tasks, orchestrating complex workflows, and ensuring coherent action sequences across multiple steps. The planning can be performed without feedback, where the agent does not get a feedback that influences its behaviour or with feedback for tasks where initial plans frequently fail due to unforeseen environmental dynamics or overly complex preconditions. The feedback can be provided by the environment, by other agents, or by a human-in-the-loop.
+
+
+The action module serves as the final downstream component of an autonomous agent architecture, translating high-level decisions into tangible outcomes through direct environmental interaction.
+
+An agent's ability to execute these actions relies on a synergy between the LLM's inherent reasoning and a suite of external resources:
+
+\begin{itemize}
+    \item Tool Integration: External tools bridge critical gaps in an LLM's capabilities, such as mitigating hallucinations or providing domain-specific expertise.
+    \item APIs: Agents utilize APIs to interface with web services, calculators, compilers, and specialized software libraries, enabling them to perform precise, executable tasks.
+    \item Databases and Knowledge Bases: allow agents to query structured data, ensuring that actions are grounded in verifiable, external information.
+    \item External Models: Agents can offload complex or multimodal processing to specialized supplementary models.
+\end{itemize}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/llm-autonomous-agents.png}
+    \caption{Unified framework proposed by \cite{wang2024survey} for LLM-based autonomous agents. Source:  Wang et al.\cite{wang2024survey}.}
+    \label{fig:llm-autonomous-agents}
+\end{figure}
+
+
+
+\subsection{Evolution of Decision Support Systems}
 The state-of-the-art in this domain has recently moved toward \textit{adaptive, multi-agent architectures} that operationalize these reasoning frameworks within high-stakes environments. A primary example is the work of Öğdü et al. \cite{ougdu2025adaptive}, who developed a multi-layered, adaptive Clinical Decision Support System (CDSS). Unlike traditional static models, this architecture integrates biomedical RAG with real-time web intelligence through a collaborative framework of autonomous agents. The system introduces several key innovations:
 
 \begin{itemize}
