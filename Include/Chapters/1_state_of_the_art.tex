@@ -49,11 +49,11 @@ The statistical foundations of these early methods were strongly influenced by t
 
 Motivated by the need to incorporate sequential information, researchers introduced \textit{n-gram language models} \cite{fink2014n}. Instead of treating words as independent observations, n-gram models estimate the probability of a word by conditioning only on the previous $n-1$ tokens according to the Markov assumption:
 
-\begin{equation}
+\begin{equation*}
 P(w_t \mid w_1,\ldots,w_{t-1})
 \approx
 P(w_t \mid w_{t-(n-1)},\ldots,w_{t-1})
-\end{equation}
+\end{equation*}
 
 Depending on the value of $n$, different language models can be obtained. A unigram model ($n=1$) assumes complete independence between words and is therefore equivalent to the Bag-of-Words assumption. A bigram model predicts each word using only the immediately preceding token, whereas a trigram model considers the previous two words.
 
@@ -94,10 +94,10 @@ The training of neural networks, including recurrent architectures, is based on 
 
 Unlike feedforward models, RNNs process input tokens sequentially while maintaining a hidden state that acts as a memory of past information. A standard formulation of an RNN is given by:
 
-\begin{align}
+\begin{align*}
 h_t &= f(W_h h_{t-1} + W_x x_t + b_h) \\
 y_t &= W_y h_t + b_y
-\end{align}
+\end{align*}
 
 This formulation allows, in principle, the modeling of arbitrarily long dependencies through the recurrent hidden state. However, training RNNs in practice is challenging due to the vanishing and exploding gradient problems, which limit their ability to preserve information over long sequences.
 
@@ -170,19 +170,74 @@ This progression from BoW and n-gram models to RNNs and gated variants marks a f
 
 
 \subsection{From Static Embeddings to Sequential Modeling}
-The first fundamental advancement in how machines represent language was the introduction of \textit{Word Embeddings}. The most influential work in this area is \textbf{Word2Vec}, proposed by Mikolov et al. \cite{mikolov2013efficient}. This model demonstrated that words could be mapped into a high-dimensional vector space where semantic relationships are preserved as geometric distances. While Word2Vec enabled early NLP tasks to capture basic conceptual analogies, these embeddings remained \textbf{static}: a single vector was assigned to a word regardless of its context (e.g., "bank" in a financial vs. geographical sense). Moreover, Word2Vec does not model word order or syntactic structure, since embeddings are learned independently of the surrounding sentence. As a consequence, it cannot capture long-range dependencies or contextual nuances that are essential in many decision-support scenarios. The representation is therefore powerful at the lexical level but fundamentally limited for tasks requiring a deeper understanding of sequence dynamics.
 
 
-Shortly after, Pennington et al. introduced \textbf{GloVe} (Global Vectors for Word Representation) \cite{pennington2014glove}. GloVe refined the embedding approach by combining the advantages of global matrix factorization—leveraging statistics from the entire corpus—with local context window methods. While both Word2Vec and GloVe were revolutionary, they shared a fundamental limitation: they produced \textbf{static} embeddings. A single vector was assigned to a word regardless of its context (e.g., the word "bank" would have the same representation in a financial vs. a geographical sense). Furthermore, these models do not account for word order or complex syntactic variations.
+While recurrent architectures addressed the problem of modeling sequential dependencies, they still relied on input representations that did not explicitly capture semantic similarity between words. This motivated the development of distributed word representations, commonly referred to as word embeddings.
+Building upon the distributional hypothesis, neural language models sought to learn continuous vector representations in which semantically related words occupy nearby regions of the embedding space.
+This led to the first fundamental advancement in how machines represent language: the introduction of \textit{Word Embeddings}. 
 
-To address the issue of polysemy and contextual nuance, the field moved toward \textbf{Deep Contextualized Word Representations}. A landmark in this transition was \textbf{ELMo} (Embeddings from Language Models), proposed by Peters et al. \cite{peters-etal-2018-deep}. Unlike static embeddings, ELMo's vectors are learned functions of the internal states of a deep bidirectional language model (biLM). By exposing the deep internal layers of a pre-trained network, ELMo allowed downstream models to capture how word meanings vary across different linguistic contexts. This represented a shift from fixed lookup tables to dynamic, context-aware representations, significantly improving performance on tasks such as sentiment analysis and textual entailment.
+Instead of treating words as isolated discrete entities (as in BoW or classical n-grams), Bengio et al. \cite{bengio2003neural} proposed mapping each word $i$ in a vocabulary $V$ to a continuous, real-valued vector $C(i) \in \mathbb{R}^m$ (where $m \ll |V|$), stored in a shared embedding matrix $C$. A feedforward neural network then processes the concatenation of these vectors within a fixed context window to predict the probability of the next token $w_t$ via a \textit{softmax} layer.
+The architecture allows semantically similar words are forced to settle in nearby regions of this continuous vector space, allowing the model to automatically generalize from a training sentence (e.g., \textit{"the cat is walking"}) to unseen variations (e.g., \textit{"a dog was running"}). 
+
+Although theoretically revolutionary, this early model suffered from a massive computational bottleneck caused by computing the softmax normalization over the entire vocabulary $|V|$ at each step. Nevertheless, it laid the conceptual foundations for modern representation learning.
 
 
 
-Parallel to the development of embeddings, the state-of-the-art for processing sequences was represented by Recurrent Neural Networks (RNNs) \cite{rumelhart1986learning}. However, standard RNNs were notoriously difficult to train on long sequences due to the vanishing gradient problem, as formally analyzed by Bengio et al. \cite{bengio1994learning}. To overcome these limitations, the Long Short-Term Memory (LSTM) architecture was introduced \cite{hochreiter1997long}. By employing a gating mechanism to regulate information flow, LSTMs became a dominant architecture for sequence modeling across many NLP tasks, enabling models to maintain a form of memory over long input sequences.
+The most influential work in this area is \textbf{Word2Vec}, proposed by Mikolov et al. \cite{mikolov2013efficient}. This model demonstrated that words could be mapped into a high-dimensional vector space where semantic relationships are preserved as geometric distances.
+
+The framework produces these embeddings through two distinct model architectures that leverage local context windows. The Continuous Bag-of-Words (CBOW) model learns representations by predicting a central target word $w_t$ given its surrounding context words within a sliding window of maximum distance $C$. The vectors of the context words are projected and averaged into a single position, discarding structural word order. The training objective of CBOW is to maximize the average log probability:
+\begin{equation}
+    \mathcal{L}_{\text{CBOW}} = \frac{1}{T} \sum_{t=1}^{T} \log P(w_t \mid w_{t-C}, \dots, w_{t-1}, w_{t+1}, \dots, w_{t+C})
+\end{equation}
+Conversely, the Continuous Skip-gram model reverses this logic by using the current central word $w_t$ as input to predict the continuous vector representations of its surrounding context words.  The Skip-gram objective function maximizes the following conditional log probability:
+\begin{equation}
+    \mathcal{L}_{\text{Skip-gram}} = \frac{1}{T} \sum_{t=1}^{T} \sum_{-C \le j \le C, j \neq 0} \log P(w_{t+j} \mid w_t)
+\end{equation}
+
+
+The empirical results presented in the study demonstrated significant breakthroughs in both scalability and semantic compositionality. Crucially, the resulting vector space demonstrated linear regularities, meaning that relationships between words were preserved as stable geometric translations. This allowed the models to solve complex semantic and syntactic analogies using simple algebraic operations, such as computing the vector $X = v_{\text{King}} - v_{\text{Man}} + v_{\text{Woman}}$ and finding that its closest cosine distance neighbor was exactly $v_{\text{Queen}}$. Evaluated across extensive benchmark datasets, CBOW achieved state-of-the-art performance on syntactic tasks such as tense and plural inflections, while Skip-gram significantly outperformed all previous architectures on complex semantic questions.
+
+While Word2Vec enabled early NLP tasks to capture basic conceptual analogies, these embeddings remained \textbf{static}: a single vector was assigned to a word regardless of its context (e.g., "bank" in a financial vs. geographical sense). Moreover, Word2Vec does not model word order or syntactic structure, since embeddings are learned independently of the surrounding sentence. As a consequence, it cannot capture long-range dependencies or contextual nuances that are essential in many decision-support scenarios. The representation is therefore powerful at the lexical level but fundamentally limited for tasks requiring a deeper understanding of sequence dynamics.
+
+
+
+
+Shortly after, Pennington et al. \cite{pennington2014glove} introduced \textbf{GloVe} (Global Vectors for Word Representation), which addresses the structural limitations of local window-based methods by leveraging the global statistical information of the corpus. While Word2Vec relies on local context windows, GloVe explicitly constructs a word-word co-occurrence matrix $X$, where entries $X_{ij}$ record how frequently word $j$ appears in the context of word $i$.The core insight of GloVe is that the ratio of co-occurrence probabilities $P_{ik}/P_{jk}$—rather than the probabilities themselves—carries more meaningful semantic information. To capture this in a linear vector space, the authors propose a weighted least-squares model that seeks to satisfy the following objective:\begin{equation}J = \sum_{i,j=1}^{V} f(X_{ij}) \left( w_i^T \tilde{w}j + b_i + \tilde{b}j - \log X{ij} \right)^2
+\end{equation}
+In this formulation, $w_i$ and $\tilde{w}_j$ represent the target and context word vectors, while $b_i$ and $\tilde{b}_j$ are bias terms that account for individual word frequencies. The function $f(X{ij})$ acts as a weighting mechanism, ensuring that rare co-occurrences are not overweighted, while preventing common word pairs (e.g., "the", "and") from dominating the training objective.By training directly on the non-zero elements of the co-occurrence matrix, GloVe synthesizes the efficiency of global matrix factorization with the superior semantic capture of local window models. Empirical evidence confirmed this hybridization: GloVe demonstrated significant improvements in word analogy tasks and named entity recognition, consistently outperforming its predecessors by producing a vector space with a more robust and meaningful substructure. However, like its predecessors, GloVe remains a \textbf{static} embedding model, providing a single vector representation for each word regardless of the polysemy inherent in natural language.
+
+
+
+
+
+
+While traditional word embedding models, such as Word2Vec, have proven successful in mapping semantic relationships into continuous vector spaces, they rely on treating words as atomic and isolated entities. This approach ignores the internal morphological structure of language, which represents a significant limitation for morphologically rich languages and results in the challenge of out-of-vocabulary terms, where rare words fail to acquire reliable representations. To overcome these constraints, the FastText framework \cite{DBLP:journals/corr/BojanowskiGJM16} was introduced as a powerful extension of the skip-gram architecture that explicitly incorporates subword information. The core innovation of this approach lies in the decomposition of each word into a set of character n-grams. By adding special boundary symbols to distinguish prefixes and suffixes, the model represents every word as the sum of the vector representations of its constituent character n-grams. This design provides several critical advantages that distinguish FastText from previous static embedding methods. First, it ensures high robustness to rare words and previously unseen tokens, as the model can generate meaningful vector representations for any word by composing the vectors of its known n-grams. Furthermore, the model demonstrates a sophisticated morphological awareness, effectively capturing semantic commonalities between inflected forms or complex compound words, an ability that proves particularly advantageous for morphologically rich languages where it consistently outperforms standard word-level approaches.
+
+
+
+
+To address the issue of polysemy and contextual nuance, the field moved toward \textbf{Deep Contextualized Word Representations}. A landmark in this transition was \textbf{ELMo} (Embeddings from Language Models), proposed by Peters et al. \cite{peters-etal-2018-deep}. Unlike static embedding models, ELMo represents each word as a function of its surrounding context by exploiting a deep bidirectional Language Model (biLM). Rather than relying solely on word-level lookup tables, ELMo constructs input representations from character-level convolutions (CNNs), allowing the model to capture rich morphological information and generate meaningful embeddings even for out-of-vocabulary words.
+
+The biLM consists of multiple stacked bidirectional LSTM layers trained with a self-supervised language modeling objective. The forward language model predicts the next token given the preceding context, while the backward language model predicts the previous token given the following context. By processing the sequence in both directions, the model captures both short- and long-range dependencies. Lower layers tend to encode syntactic and morphological information, whereas deeper layers capture increasingly abstract semantic features.
+
+Instead of using only the final hidden layer, ELMo computes the representation of the $k$-th token as a task-specific weighted combination of all internal biLM representations:
+
+\begin{equation*}
+\mathrm{ELMo}^{\text{task}}_k
+=
+\gamma^{\text{task}}
+\sum_{j=0}^{L}
+s^{\text{task}}_j\, h^{LM}_{k,j}
+\end{equation*}
+
+where $h^{LM}_{k,j}$ denotes the representation of the $k$-th token produced by the $j$-th layer of the bidirectional language model, $s^{\text{task}}_j$ are task-specific normalized weights learned during downstream training, and $\gamma^{\text{task}}$ is a trainable scaling parameter.
+
+This weighted combination allows downstream models to dynamically exploit both lower-level syntactic information and higher-level semantic knowledge depending on the target task. Consequently, ELMo replaces the idea of a single fixed embedding per word with contextual representations that vary according to the surrounding sentence, substantially improving performance on tasks such as question answering, sentiment analysis, and textual entailment.
+
+Although ELMo represented a major breakthrough by introducing contextual embeddings, it still relied on recurrent architectures to model sequences. Consequently, contextual representations had to be computed sequentially, limiting parallelization and making long-range dependency modeling computationally expensive. These limitations ultimately motivated the development of the Transformer architecture, which replaced recurrence with self-attention.
 
 \subsection{The Transformer Revolution}
-The definitive breakthrough occurred with the publication of \textit{"Attention Is All You   Need"} \cite{vaswani2017attention}. Vaswani et al. proposed a novel architecture entirely based on the \textbf{Self-Attention mechanism}, dispensing with recurrence and convolutions. The core innovation lies in the model's ability to weigh the significance of different parts of the input data independently of their distance in the sequence. Mathematically, the Scaled Dot-Product Attention is defined as:
+The definitive breakthrough occurred with the publication of \textit{"Attention Is All You Need"} \cite{vaswani2017attention}. Vaswani et al. proposed a novel architecture entirely based on the \textbf{Self-Attention mechanism}, dispensing with recurrence and convolutions. The core innovation lies in the model's ability to weigh the significance of different parts of the input data independently of their distance in the sequence. Mathematically, the Scaled Dot-Product Attention is defined as:
 
 \begin{equation}
     \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
@@ -190,7 +245,9 @@ The definitive breakthrough occurred with the publication of \textit{"Attention 
 
 where $Q$, $K$, and $V$ represent the Query, Key, and Value matrices, and $d_k$ is the dimension of the keys. The scaling factor $\sqrt{d_k}$ plays a crucial role in stabilizing the optimization process. Without this normalization term, the dot products between high-dimensional query and key vectors could grow excessively large, causing the softmax function to produce extremely peaked probability distributions and resulting in vanishing gradients during training. The scaling operation therefore contributes to more stable learning dynamics and improved convergence properties.
 
-Conceptually, the attention mechanism can be interpreted as a weighted aggregation process. Each query vector determines how much importance should be assigned to all available key-value pairs, enabling the model to selectively focus on the most relevant contextual information for a given token. This selective processing capability constitutes one of the fundamental reasons behind the remarkable effectiveness of Transformer-based architectures.This mechanism allows the model to build a global understanding of the input, enabling the emergence of "contextual intelligence" where word representations change dynamically based on the surrounding text. In the context of NLP, this marked the move from simple pattern recognition to sophisticated reasoning, as models could now integrate informations coming from diverse and distant data points.
+Conceptually, the attention mechanism can be interpreted as a weighted aggregation process. Each query vector determines how much importance should be assigned to all available key-value pairs, enabling the model to selectively focus on the most relevant contextual information for a given token. This selective processing capability constitutes one of the fundamental reasons behind the remarkable effectiveness of Transformer-based architectures.
+
+This mechanism allows the model to build a global understanding of the input, enabling the emergence of "contextual intelligence" where word representations change dynamically based on the surrounding text. In the context of NLP, this marked the transition from local pattern matching toward richer contextual representations capable of modeling long-range semantic and syntactic dependencies. These representations later proved essential for the emergence of increasingly sophisticated reasoning-like behaviors in large-scale language models.
 A key extension introduced in the original Transformer architecture is the multi‑head self‑attention mechanism. Instead of computing a single attention map, the model projects the input into multiple sets of query, key, and value spaces and applies the attention function in parallel across these sets. 
 
 
@@ -211,12 +268,53 @@ and $W_i^Q$, $W_i^K$, $W_i^V$, and $W^O$ are learnable projection matrices. This
 
 The outputs from these attention heads are then concatenated and linearly transformed, allowing the model to jointly attend to diverse types of relationships in the input sequence, such as syntactic and semantic patterns simultaneously. By combining multiple attention heads, the network can capture richer representations than a single attention head would allow, without increasing the overall model depth.
 
-Another important practical advantage of Transformer architectures is their massive parallelization potential. Unlike recurrent networks, which process tokens sequentially, each attention layer in a Transformer can compute interactions between all positions in the input sequence simultaneously. This property stems directly from the self‑attention formulation and makes the architecture highly amenable to batched matrix operations on modern hardware accelerators such as GPUs and TPUs. As a result, Transformers can be trained more efficiently on large corpora, enabling the scale‑up that underpins modern large language models.
+
+Each Transformer block combines multi-head self-attention with a position-wise feed-forward network (FFN). Residual connections and layer normalization are applied around each sub-layer, facilitating stable optimization and enabling the successful training of very deep architectures.
+
+% spiegazione position embedding
+
+Although self-attention enables every token to attend to all other tokens in the sequence, the mechanism itself is inherently permutation invariant and therefore provides no information about token order. To preserve the sequential nature of language, the original Transformer introduces \textbf{Positional Encodings}, which are added to the input embeddings before they are processed by the encoder or decoder.
+
+Rather than learning positional representations, Vaswani et al. proposed deterministic sinusoidal functions capable of encoding both absolute and relative positions within a sequence:
+
+\begin{equation}
+PE(pos,2i)=\sin\left(\frac{pos}{10000^{2i/d_{model}}}\right)
+\end{equation}
+
+\begin{equation}
+PE(pos,2i+1)=\cos\left(\frac{pos}{10000^{2i/d_{model}}}\right)
+\end{equation}
+
+where $pos$ denotes the token position and $d_{model}$ is the embedding dimension. This formulation allows the model to infer relative distances between tokens while also enabling generalization to sequence lengths not encountered during training. Although modern large language models often replace sinusoidal encodings with learned positional embeddings or rotary positional embeddings (RoPE), the original formulation remains a foundational contribution that demonstrated how sequential information could be incorporated without relying on recurrent architectures.
+
+
+% spiegazione encoder-decoder con immagine descrittiva presa dal paper originale
+Beyond the attention mechanism itself, the original Transformer introduced a modular encoder-decoder architecture, illustrated in Figure \ref{fig:transformer_architecture}. The encoder consists of a stack of identical layers, each composed of a multi-head self-attention module followed by a position-wise feed-forward network. Residual connections and layer normalization surround each sub-layer, improving optimization stability and enabling deeper architectures.
+
+The decoder follows a similar structure but incorporates two important differences. First, it employs masked self-attention to prevent each output token from attending to future positions during training. Second, an additional cross-attention layer allows the decoder to attend to the contextual representations generated by the encoder, enabling effective sequence-to-sequence learning for tasks such as machine translation.
+
+This modular design later gave rise to the dominant language model families. Encoder-only architectures, such as BERT, specialize in language understanding tasks, while decoder-only architectures, such as the GPT series, are optimized for autoregressive text generation. Encoder-decoder models, including T5, remain particularly effective for sequence transformation tasks such as translation and summarization.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Figures/transformer_arch.png}
+    \caption{The original Transformer encoder-decoder architecture proposed by Vaswani et al. \cite{vaswani2017attention}. The figure illustrates the composition of encoder and decoder stacks, the multi-head attention modules, feed-forward layers, residual connections, and positional encodings. Source: reproduced from \cite{vaswani2017attention}.}
+    \label{fig:transformer_architecture}
+\end{figure}
+
+
+Another important practical advantage of Transformer architectures is their massive parallelization potential. Unlike recurrent networks, which process tokens sequentially, each attention layer in a Transformer can compute interactions between all positions in the input sequence simultaneously. As a result, Transformers can be trained more efficiently on large corpora, enabling the scale‑up that underpins modern large language models.
+
+Despite its advantages, the standard self-attention mechanism exhibits quadratic time and memory complexity with respect to the input sequence length, as every token attends to every other token. This limitation has motivated extensive research into efficient attention mechanisms like flash attention \cite{NEURIPS2022_67d57c32}, which uses tiling to reduce the number of memory reads/writes, or linformer \cite{wang2020linformer}, that approximate the standard attention mechanism with low rank matrices.
+
+Collectively, these innovations established the Transformer as the dominant neural architecture for NLP and, subsequently, for a wide range of machine learning applications. More importantly, its scalability and training efficiency made it possible to train models on unprecedented amounts of data and parameters, laying the foundation for the emergence of modern Large Language Models.
 
 \subsection{Scaling Laws and Emergent Abilities}
 The evolution culminated in the transition from task-specific models to \textit{Large Language Models} (LLMs). This shift was driven by the discovery of scaling laws \cite{kaplan2020scaling}, which suggested that model performance, and consequently capabilities on NLP tasks, improve  with increases in parameter count, dataset size, and compute, which can indirectly improve the performance of systems that leverage NLP components, including DSS applications. 
 
-Furthermore, the introduction of the Pre-training and Fine-tuning paradigm, popularized by BERT \cite{devlin2019bert} and the GPT series \cite{radford2019language}, enabled these systems to internalize vast amounts of world knowledge. This trajectory led to the discovery of \textit{emergent abilities}: capabilities not explicitly present in smaller models, such as in-context learning and multi-step logical reasoning \cite{wei2022emergent}. For modern Decision Support Systems, this represents a transition from "engines that process text" to systems that can generate knowledge-informed recommendations, while human oversight remains necessary.
+Furthermore, the introduction of the Pre-training and Fine-tuning paradigm, popularized by BERT \cite{devlin2019bert} and the GPT series \cite{radford2019language}, enabled these systems to internalize vast amounts of world knowledge. This trajectory led to the discovery of \textit{emergent abilities}: capabilities not explicitly present in smaller models, such as in-context learning and multi-step logical reasoning \cite{wei2022emergent}.
+These behaviors are referred to as emergent because they are not explicitly programmed nor consistently observed in smaller models, but rather appear once the model exceeds certain scales of parameters and training data. Although the precise mechanisms underlying emergence remain an active area of research, empirical evidence suggests that increasing scale enables qualitatively new capabilities beyond simple improvements in benchmark accuracy.
+For modern Decision Support Systems, this represents a transition from "engines that process text" to systems that can generate knowledge-informed recommendations, while human oversight remains necessary.
 
 
 \subsection{Foundation Models and General-Purpose AI}
@@ -226,20 +324,19 @@ The scalability of the Transformer architecture, coupled with the empirical disc
 
 A pivotal demonstration of this potential was provided by Brown et al. \cite{brown2020language} with the introduction of GPT-3. This work highlighted that when language models are scaled to billions of parameters, they begin to exhibit \textit{in-context learning} capabilities. Unlike previous approaches that required gradient-based fine-tuning to perform a new task, GPT-3 demonstrated the ability to adapt to specific instructions simply by observing a few examples provided within the input prompt (few-shot learning). This shift fundamentally changed the interaction between users and systems, moving from "training" to "prompting" as the primary mechanism for directing model behavior.
 
-However, the rapid expansion of model size brought to light significant challenges regarding computational efficiency. The industry trend initially focused on increasing parameter counts indiscriminately; this was challenged by Hoffmann et al. \cite{hoffmann2022training} in their study on \textit{Chinchilla}. The authors demonstrated that the performance of a language model is not solely dependent on its parameter count, but rather on an optimal balance between model size and the volume of training data. Their findings established new scaling laws, suggesting that most contemporary models were significantly under-trained. This insight provided a roadmap for developing "compute-optimal" models, enabling superior performance with more efficient resource allocation.
+However, the rapid expansion of model size brought to light significant challenges regarding computational efficiency. The industry trend initially focused on increasing parameter counts indiscriminately; this was challenged by Hoffmann et al. \cite{hoffmann2022training} in their study on \textit{Chinchilla}. The authors demonstrated that the performance of a language model is not solely dependent on its parameter count, but rather on an optimal balance between model size and the volume of training data. Their analysis showed that, for a fixed computational budget, allocating additional resources to training data rather than solely increasing parameter count yielded substantially better performance. This finding established new scaling laws, suggesting that most contemporary models were significantly under-trained. This insight provided a roadmap for developing "compute-optimal" models, enabling superior performance with more efficient resource allocation.
 
 
 
 \subsection{Alignment and Instruction Tuning}
-The transition from raw scale to functional utility in Decision Support Systems was enabled by the development of \textit{Alignment} techniques. While base LLMs possess extensive statistical information derived from their training corpora, they often fail to follow specific user intents or produce helpful, safe, and concise reasoning. To bridge this gap, \textbf{Instruction Tuning} was introduced, most notably through the work on \textbf{InstructGPT} by Ouyang et al. \cite{ouyang2022training}. This process involves fine-tuning the model on a dataset of human-written prompt-response pairs, shifting the objective from simple next-token prediction to "intent fulfillment."
+Although large language models acquired broad linguistic knowledge through large-scale pre-training, they were not inherently optimized to follow user instructions or assist with practical tasks like Decision Support Systems, this powerful capability was enabled by the development of \textit{Alignment} techniques. While base LLMs possess extensive statistical information derived from their training corpora, they often fail to follow specific user intents or produce helpful, safe, and concise reasoning. To bridge this gap, \textbf{Instruction Tuning} was introduced, most notably through the work on \textbf{InstructGPT} by Ouyang et al. \cite{ouyang2022training}. This process involves \textbf{fine-tuning} the model on a dataset of human-written prompt-response pairs, instruction tuning changes the training distribution by exposing the model to datasets composed of instructions paired with high-quality responses, thereby teaching it to better interpret and follow user requests.
 
-A critical component of this alignment is \textbf{Reinforcement Learning from Human Feedback (RLHF)}. This methodology, popularized by Christiano et al. \cite{christiano2017deep} and later refined for LLMs \cite{stiennon2020learning}, allows models to optimize their outputs based on human preferences. This technique helps to guide the model towards outputs that better reflect the human preferences and alignment objectives, though hallucinations and biases can still occur.
-
-
-
+A critical component of this alignment is \textbf{Reinforcement Learning from Human Feedback (RLHF)}. This methodology, popularized by Christiano et al. \cite{christiano2017deep} and later refined for LLMs \cite{stiennon2020learning}, allows models to optimize their outputs based on human preferences. 
+The RLHF pipeline typically consists of three stages. First, a supervised fine-tuning phase is performed, where the initial language model is trained on high-quality demonstrations generated by human annotators. Second, a reward model is trained from human preference comparisons, where evaluators rank alternative model outputs according to criteria such as helpfulness, relevance, and overall quality. Finally, the language model is optimized against the learned reward model using reinforcement learning, typically through Proximal Policy Optimization (PPO) \cite{schulman2017proximal}. By incorporating human preferences into the optimization process, RLHF guides the model toward outputs that better satisfy alignment objectives, although limitations such as hallucinations, biases, and sensitivity to reward model imperfections remain. 
+While RLHF has been the industry standard for alignment, its reliance on a separately trained reward model and the computational complexity of the Proximal Policy Optimization (PPO) algorithm have led to the development of more stable alternatives. A prominent breakthrough is \textbf{Direct Preference Optimization} (DPO), introduced by Rafailov et al. \cite{rafailov2023direct}. DPO simplifies the alignment process by mathematically deriving a direct mapping between the reward function and the optimal policy, effectively bypassing the need for a separate reward model and reinforcement learning training loops. By optimizing the language model directly on preference data via a simple classification loss, DPO offers a computationally efficient and more stable approach to alignment, which has rapidly become a preferred method for fine-tuning modern Large Language Models.
 
 \subsection{The Reliability Gap: Hallucinations and Uncertainty}
-The primary obstacle to the integration of LLMs in critical Decision Support Systems (DSS) is the phenomenon of \textbf{hallucinations}, defined as the generation of factually incorrect or ungrounded statements despite high linguistic fluency \cite{ji2023survey}. 
+One of the primary obstacle to the integration of LLMs in critical Decision Support Systems (DSS) is the phenomenon of \textbf{hallucinations}, defined as the generation of factually incorrect or ungrounded statements despite high linguistic fluency \cite{ji2023survey}. 
 This stems from the underlying training objective of next-token log-likelihood, which prioritizes plausible linguistic continuation over factual verification. In a DSS context, \textbf{extrinsic hallucinations}, where the output cannot be verified from provided sources or real-world knowledge, are particularly hazardous, as the model may provide a confident but false justification for a recommendation \cite{Survey2025}.
 
 Beyond explicit errors, a critical risk is the \textbf{lack of self-awareness regarding uncertainty}. State-of-the-art models are often poorly calibrated, meaning their internal probability estimates do not align with their actual correctness \cite{jiang2021can}.
@@ -262,7 +359,7 @@ Recent surveys \cite{alansari2025large} identify a broad taxonomy of \textbf{hal
 
 Overall, this taxonomy underscores that mitigating hallucinations involves not only filtering incorrect content but also understanding where and why LLM reasoning becomes unreliable, which is essential for safe integration into critical DSS.
 
-Recent work suggests that some failure modes traditionally framed as hallucinations may stem not only from generative uncertainty but also from structural challenges in long-context evidence aggregation \cite{bianchi2025hidden}. Studies on retrieval in extended contexts show that the size and distribution of relevant information influence an LLM’s ability to locate and integrate the correct evidence. When small but crucial “gold” contexts are embedded within much longer distractor passages, models exhibit reduced aggregation accuracy and increased positional sensitivity. These effects are particularly relevant for retrieval-augmented and agentic systems, where evidence sources often vary considerably in length. In such settings, short but important documents may be underutilized, potentially leading the model to produce unsupported outputs even when the necessary information is included in the input. These findings suggest that hallucination-related risks arise not only from calibration issues or insufficient grounding but also from context-size asymmetry and the design of evidence-aggregation pipelines.
+Recent work suggests that some failure modes traditionally framed as hallucinations may come not only from generative uncertainty but also from structural challenges in long-context evidence aggregation \cite{bianchi2025hidden}. Studies on retrieval in extended contexts show that the size and distribution of relevant information influence an LLM's ability to locate and integrate the correct evidence. When small but crucial “gold” contexts are embedded within much longer distractor passages, models exhibit reduced aggregation accuracy and increased positional sensitivity. These effects are particularly relevant for retrieval-augmented and agentic systems, where evidence sources often vary considerably in length. In such settings, short but important documents may be underutilized, potentially leading the model to produce unsupported outputs even when the necessary information is included in the input. These findings suggest that hallucination-related risks arise not only from calibration issues or insufficient grounding but also from context-size asymmetry and the design of evidence-aggregation pipelines.
 
 
 \subsection{Computational Burden and Compression Strategies for LLMs}
@@ -270,18 +367,49 @@ Even though LLMs are extremely useful they also are computationally expensive, t
 The main methods to reduce the cost are applicable during the fine-tuning stage or the inference task:
 \begin{itemize}
     \item Parameter-efficient fine-tuning (PEFT): refers to the process of adjusting the parameters of a pre-trained large model to adapt it to a specific task or domain while minimizing the number of additional parameters introduced or computational resources required \cite{han2024parameter}. One of their main methods is LoRA \cite{hu2022lora} which freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture, reducing the number of trainable parameters.
-    \item Parameters quantization: focuses on reducing the size of the parameters to usually 4 or 8 bits like Smoothquant \cite{xiao2023smoothquant}, interesting methods are also GPTQ \cite{frantar2022gptq}, which quantizes weights block-wise and iteratively corrects quantization errors using Hessian information, and AWQ, which focuses on reducing the error by preserving the most important weights \cite{awq}.
+    \item Parameters quantization: focuses on reducing the size of the parameters to usually 4 or 8 bits like Smoothquant \cite{xiao2023smoothquant}, representative post-training quantization methods include  \cite{frantar2022gptq}, which quantizes weights block-wise and iteratively corrects quantization errors using Hessian information, and Activation-aware Weight Quantization (AWQ), which focuses on reducing the error by preserving the most important weights \cite{awq}.
     \item Quantization Aware Fine Tuning: QA-Lora represents a hybrid approach between PEFT and quantization, where the model is fine-tuned while accounting for quantization constraints \cite{xu2023qa}.
     \item Pruning: focus on lightening the model size by removing the connections or neurons that are less important \cite{gordon2020compressing, sreenivas2024llm}
+    \item Knowledge Distillation: is a technique where a smaller model (the student) is trained to replicate the behavior of a larger model (the teacher), effectively transferring knowledge from the teacher to the student \cite{hinton2015distilling, sanh2019distilbert}.
 \end{itemize}
 
 Compression techniques inevitably involve trade-offs between efficiency and performance, as aggressive quantization, pruning, or parameter-efficient fine-tuning may degrade model accuracy or require additional implementation effort, and task-specific performance variability must be considered \cite{frantar2022gptq, awq, hu2022lora, gordon2020compressing}.
 
+
+
+
+
+
 \subsection{Reasoning Frameworks for Decision Support}
-Beyond architectural and alignment improvements, the operational use of LLMs in decision-making has been revolutionized by specialized prompting and reasoning frameworks. The introduction of \textbf{Chain-of-Thought (CoT)} prompting \cite{wei2022chain} demonstrated that forcing a model to generate intermediate reasoning steps significantly enhances performance on complex logical tasks. While CoT provides a "slow thinking" approach essential for auditing a DSS, relying on a single greedy-decoded trajectory can lead to error propagation. To mitigate this, \textbf{Self-Consistency} \cite{wang2022self} introduces a decoding strategy that samples multiple reasoning paths and selects the most frequent marginal result, leveraging the intuition that complex problems often admit multiple paths to a unique correct answer.
+Beyond architectural and alignment improvements, the operational use of LLMs in decision-making has been revolutionized by specialized prompting and reasoning frameworks. The introduction of \textbf{Chain-of-Thought (CoT)} prompting \cite{wei2022chain} demonstrated that forcing a model to generate intermediate reasoning steps significantly enhances performance on complex logical tasks. 
 
-Further advancing non-linear reasoning, the \textbf{Tree of Thoughts (ToT)} \cite{yao2023tree} and \textbf{Graph of Thoughts (GoT)} \cite{besta2024graph} frameworks enable models to explore multiple solution branches or model dependencies as directed graphs. These structures allow for human-like problem solving, such as combining intermediate solutions or revising reasoning paths based on "thought volume" metrics. When coupled with \textbf{Retrieval-Augmented Generation (RAG)} \cite{lewis2020retrieval} and acting frameworks like \textbf{ReAct} \cite{yao2022react}, LLMs shift from static predictors to interactive reasoning systems capable of querying external databases and updating internal states based on real-time observations.
+While CoT provides a "slow thinking" approach essential for auditing a DSS, relying on a single greedy-decoded trajectory can lead to error propagation. To mitigate this, \textbf{Self-Consistency} \cite{wang2022self} introduces a decoding strategy that samples multiple reasoning paths and selects the most frequent marginal result, leveraging the intuition that complex problems often admit multiple paths to a unique correct answer.
 
+
+Further advancing non-linear reasoning, the \textbf{Tree of Thoughts (ToT)} framework \cite{yao2023tree} generalizes the CoT paradigm by representing intermediate reasoning steps as discrete "thoughts" organized in a tree structure. Unlike CoT, where the model commits to a single sequential chain of deductions, ToT enables the exploration of multiple candidate reasoning trajectories through a search process. At each step, the LLM can generate alternative intermediate states, evaluate their quality through self-assessment or external feedback mechanisms, and prune unpromising branches. This approach introduces a form of deliberative reasoning closer to classical search algorithms, allowing the model to backtrack, compare alternative hypotheses, and allocate additional computational effort to particularly challenging decisions. In the context of Decision Support Systems (DSS), ToT is especially valuable for scenarios characterized by uncertainty, long planning horizons, or conflicting objectives, where premature commitment to a single reasoning path may lead to suboptimal recommendations.
+
+Building upon this idea, the \textbf{Graph of Thoughts (GoT)} framework \cite{besta2024graph} relaxes the hierarchical constraints of tree-based exploration by modeling reasoning processes as directed graphs rather than strictly branching structures. While ToT assumes that each new thought derives from a single previous state, GoT allows arbitrary dependencies between intermediate reasoning units, enabling operations such as aggregation, merging, refinement, and transformation of partial solutions. This graph-based representation better captures complex problem-solving processes in which multiple reasoning paths can interact and contribute jointly to a final decision. For DSS applications, GoT provides a more flexible framework for representing interconnected evidence, alternative hypotheses, and multi-stage decision processes, where information may need to be combined, revisited, or propagated across different reasoning components.
+
+
+The \textbf{ReAct} framework \cite{yao2022react} represents a fundamental transition from isolated reasoning toward agentic decision-making by interleaving reasoning and action. Instead of generating a final answer based solely on the information encoded in the model parameters, ReAct structures the interaction as an iterative loop composed of three main phases: reasoning, action, and observation. The model first generates a reasoning trace to determine the next objective or strategy, then executes an external action, such as querying a database, retrieving documents, invoking an API, or interacting with a software environment, and finally incorporates the resulting observations into subsequent reasoning steps.
+
+This mechanism allows LLMs to dynamically acquire information, verify intermediate assumptions, and adapt their behavior according to external feedback. Compared with purely reasoning-oriented approaches such as CoT or ToT, ReAct introduces an explicit connection between cognitive processes and environmental interaction, reducing the limitations caused by static knowledge and closed-world assumptions. For Decision Support Systems, this capability is particularly relevant because decisions often depend on continuously changing data sources, domain-specific tools, and feedback from operational environments.
+
+When integrated with Retrieval-Augmented Generation (RAG) \cite{lewis2020retrieval}, ReAct-based systems can combine structured reasoning with external knowledge retrieval, enabling LLMs to identify information gaps, retrieve relevant evidence, evaluate available alternatives, and progressively refine recommendations. This combination shifts LLMs from static predictive models toward interactive reasoning agents capable of supporting complex decision processes in dynamic and uncertain environments.
+
+
+
+\subsection{Long-Context Modeling and Context Management}
+While early Transformer-based models were limited to relatively short context windows, modern LLMs have progressively expanded their capacity to process longer sequences. This evolution enables applications requiring the analysis of extensive documents, multi-turn conversations, and complex workflows involving heterogeneous information sources.
+However, the standard Transformer architecture suffers from a quadratic computational and memory complexity, $O(n^2)$, relative to sequence length $n$. This constraint turns the context window into a significant bottleneck: as sequence length increases, the memory footprint of the Key-Value (KV) cache grows linearly, often exhausting GPU VRAM during inference, while the self-attention mechanism becomes the primary computational latency driver.
+To overcome these limitations, recent research has focused on architecture and positional encoding advancements. Initial approaches relied on linear attention approximations, but modern state-of-the-art models primarily utilize Rotary Positional Embeddings (RoPE) combined with scaling techniques. Works such as Position Interpolation \cite{chen2023extendingcontextwindowlarge} and YaRN \cite{peng2023yarn} have demonstrated that context windows can be extended far beyond pre-training limits by mathematically re-scaling the rotational frequency of embeddings, allowing models to 'perceive' longer sequences without extensive retraining.
+
+Another problem is the increased risk of hallucinations and reasoning errors when the model is forced to process long contexts, as the relevant information may be diluted among irrelevant content. This is particularly problematic in Decision Support Systems, where critical evidence may be embedded within lengthy documents or multi-source data streams.
+
+\section{Agentic Large Language Models}
+
+
+\section{Evolution of Decision Support Systems}
 The state-of-the-art in this domain has recently moved toward \textit{adaptive, multi-agent architectures} that operationalize these reasoning frameworks within high-stakes environments. A primary example is the work of Öğdü et al. \cite{ougdu2025adaptive}, who developed a multi-layered, adaptive Clinical Decision Support System (CDSS). Unlike traditional static models, this architecture integrates biomedical RAG with real-time web intelligence through a collaborative framework of autonomous agents. The system introduces several key innovations:
 
 \begin{itemize}
@@ -292,11 +420,3 @@ The state-of-the-art in this domain has recently moved toward \textit{adaptive, 
 
 Validated on the MedQA and PubMedQA datasets—achieving accuracies of 94\% and 88\% respectively, this approach demonstrates how the integration of multi-source data fusion and adaptive optimization loops can overcome the reliability barriers of standard LLM-based reasoning.
 
-
-\subsection{Long-Context Modeling and Context Management}
-
-
-
-\section{Agentic Large Language Models}
-
-\section{Evolution of Decision Support Systems}

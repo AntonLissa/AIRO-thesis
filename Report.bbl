@@ -10,10 +10,10 @@ D.~Anh-Hoang, V.~Tran, and L.-M. Nguyen.
 \newblock Survey and analysis of hallucinations in large language models: attribution to prompting strategies or model behavior.
 \newblock {\em Frontiers in Artificial Intelligence}, Volume 8 - 2025, 2025.
 
-\bibitem{bengio1994learning}
-Y.~Bengio, P.~Simard, and P.~Frasconi.
-\newblock Learning long-term dependencies with gradient descent is difficult.
-\newblock {\em IEEE transactions on neural networks}, 5(2):157--166, 1994.
+\bibitem{bengio2003neural}
+Y.~Bengio, R.~Ducharme, P.~Vincent, and C.~Jauvin.
+\newblock A neural probabilistic language model.
+\newblock {\em Journal of machine learning research}, 3(Feb):1137--1155, 2003.
 
 \bibitem{besta2024graph}
 M.~Besta, N.~Blach, A.~Kubicek, R.~Gerstenberger, M.~Podstawski, L.~Gianinazzi, J.~Gajda, T.~Lehmann, H.~Niewiadomski, P.~Nyczyk, et~al.
@@ -24,6 +24,11 @@ M.~Besta, N.~Blach, A.~Kubicek, R.~Gerstenberger, M.~Podstawski, L.~Gianinazzi, 
 O.~Bianchi, M.~J. Koretsky, M.~Willey, C.~X. Alvarado, T.~Nayak, A.~Asija, N.~Kuznetsov, M.~A. Nalls, F.~Faghri, and D.~Khashabi.
 \newblock Hidden in the haystack: Smaller needles are more difficult for llms to find.
 \newblock {\em arXiv preprint arXiv:2505.18148}, 2025.
+
+\bibitem{DBLP:journals/corr/BojanowskiGJM16}
+P.~Bojanowski, E.~Grave, A.~Joulin, and T.~Mikolov.
+\newblock Enriching word vectors with subword information.
+\newblock {\em CoRR}, abs/1607.04606, 2016.
 
 \bibitem{bommasani2021opportunities}
 R.~Bommasani, D.~A. Hudson, E.~Adeli, R.~Altman, S.~Arora, S.~von Arx, M.~S. Bernstein, J.~Bohg, A.~Bosselut, E.~Brunskill, et~al.
@@ -39,6 +44,11 @@ T.~Brown, B.~Mann, N.~Ryder, M.~Subbiah, J.~D. Kaplan, P.~Dhariwal, A.~Neelakant
 P.~F. Christiano, J.~Leike, T.~Brown, M.~Martic, S.~Legg, and D.~Amodei.
 \newblock Deep reinforcement learning from human preferences.
 \newblock {\em Advances in neural information processing systems}, 30, 2017.
+
+\bibitem{NEURIPS2022_67d57c32}
+T.~Dao, D.~Fu, S.~Ermon, A.~Rudra, and C.~R\'{e}.
+\newblock Flashattention: Fast and memory-efficient exact attention with io-awareness.
+\newblock In S.~Koyejo, S.~Mohamed, A.~Agarwal, D.~Belgrave, K.~Cho, and A.~Oh, editors, {\em Advances in Neural Information Processing Systems}, volume~35, pages 16344--16359. Curran Associates, Inc., 2022.
 
 \bibitem{devlin2019bert}
 J.~Devlin, M.-W. Chang, K.~Lee, and K.~Toutanova.
@@ -79,6 +89,11 @@ Z.~Han, C.~Gao, J.~Liu, J.~Zhang, and S.~Q. Zhang.
 Z.~S. Harris.
 \newblock Distributional structure.
 \newblock {\em Word}, 10(2-3):146--162, 1954.
+
+\bibitem{hinton2015distilling}
+G.~Hinton, O.~Vinyals, and J.~Dean.
+\newblock Distilling the knowledge in a neural network.
+\newblock {\em arXiv preprint arXiv:1503.02531}, 2015.
 
 \bibitem{hochreiter1997long}
 S.~Hochreiter and J.~Schmidhuber.
@@ -165,10 +180,25 @@ A.~Radford, J.~Wu, R.~Child, D.~Luan, D.~Amodei, I.~Sutskever, et~al.
 \newblock Language models are unsupervised multitask learners.
 \newblock {\em OpenAI blog}, 1(8):9, 2019.
 
+\bibitem{rafailov2023direct}
+R.~Rafailov, A.~Sharma, E.~Mitchell, C.~D. Manning, S.~Ermon, and C.~Finn.
+\newblock Direct preference optimization: Your language model is secretly a reward model.
+\newblock {\em Advances in neural information processing systems}, 36:53728--53741, 2023.
+
 \bibitem{rumelhart1986learning}
 D.~E. Rumelhart, G.~E. Hinton, and R.~J. Williams.
 \newblock Learning representations by back-propagating errors.
 \newblock {\em nature}, 323(6088):533--536, 1986.
+
+\bibitem{sanh2019distilbert}
+V.~Sanh, L.~Debut, J.~Chaumond, and T.~Wolf.
+\newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and lighter.
+\newblock {\em arXiv preprint arXiv:1910.01108}, 2019.
+
+\bibitem{schulman2017proximal}
+J.~Schulman, F.~Wolski, P.~Dhariwal, A.~Radford, and O.~Klimov.
+\newblock Proximal policy optimization algorithms.
+\newblock {\em arXiv preprint arXiv:1707.06347}, 2017.
 
 \bibitem{sreenivas2024llm}
 S.~T. Sreenivas, S.~Muralidharan, R.~Joshi, M.~Chochowski, A.~S. Mahabaleshwarkar, G.~Shen, J.~Zeng, Z.~Chen, Y.~Suhara, S.~Diao, et~al.
@@ -184,6 +214,11 @@ N.~Stiennon, L.~Ouyang, J.~Wu, D.~Ziegler, R.~Lowe, C.~Voss, A.~Radford, D.~Amod
 A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez, {\L}.~Kaiser, and I.~Polosukhin.
 \newblock Attention is all you need.
 \newblock {\em Advances in neural information processing systems}, 30, 2017.
+
+\bibitem{wang2020linformer}
+S.~Wang, B.~Z. Li, M.~Khabsa, H.~Fang, and H.~Ma.
+\newblock Linformer: Self-attention with linear complexity.
+\newblock {\em arXiv preprint arXiv:2006.04768}, 2020.
 
 \bibitem{wang2022self}
 X.~Wang, J.~Wei, D.~Schuurmans, Q.~Le, E.~Chi, S.~Narang, A.~Chowdhery, and D.~Zhou.
