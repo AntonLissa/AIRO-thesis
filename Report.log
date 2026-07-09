@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  7 JUL 2026 15:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  9 JUL 2026 15:20
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1040,12 +1040,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [16]
-<Figures/llm-autonomous-agents.png, id=382, 776.9025pt x 341.47575pt>
+<Figures/llm-autonomous-agents.png, id=386, 776.9025pt x 341.47575pt>
 File: Figures/llm-autonomous-agents.png Graphic file (type png)
 <use Figures/llm-autonomous-agents.png>
 Package pdftex.def Info: Figures/llm-autonomous-agents.png  used on input line 442.
 (pdftex.def)             Requested size: 469.4705pt x 206.35118pt.
 
+Overfull \hbox (4.9696pt too wide) in paragraph at lines 454--455
+[]\T1/cmr/m/n/10.95 Beyond plan-ning and act-ing, re-cent agen-tic sys-tems in-creas-ingly in-cor-po-rate ex-plicit self-reflection
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1053,7 +1057,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[17 <./Figures/llm-autonomous-agents.png>])
+[17]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1061,7 +1065,43 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[18] (./Report.bbl [19
+[18 <./Figures/llm-autonomous-agents.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[19]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[20]
+Overfull \hbox (7.38535pt too wide) in paragraph at lines 523--524
+[]\T1/cmr/bx/n/10.95 Off-Nominal Con-tin-gency Man-age-ment: \T1/cmr/m/n/10.95 Pro-vides im-me-di-ate, context-aware trou-bleshoot-
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[21])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[22] (./Report.bbl [23
 
 
 ]
@@ -1072,7 +1112,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[20]
+[24]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1080,7 +1120,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[21]
+[25]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1088,7 +1128,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[22])
+[26]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[27])
 runsystem(cd ""& del "Report.oldaux" )...executed.
 
 
@@ -1099,27 +1147,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[23] (./Report.aux)
+[28] (./Report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 9FFE336DB9E3B83E3A597AD84619C610;4172.
+(rerunfilecheck)             Checksum: 897F4FB80996A1BF2C7C133CB15B10F9;4192.
  ) 
 Here is how much of TeX's memory you used:
- 26324 strings out of 469472
- 494002 string characters out of 5466873
+ 26365 strings out of 469472
+ 495030 string characters out of 5466873
  1062459 words of memory out of 5000000
- 54421 multiletter control sequences out of 15000+600000
+ 54448 multiletter control sequences out of 15000+600000
  643475 words of font info for 73 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 115i,12n,136p,2597b,793s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,12n,136p,2597b,837s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report.pdf (30 pages, 1332123 bytes).
+Output written on Report.pdf (35 pages, 1352604 bytes).
 PDF statistics:
- 957 PDF objects out of 1000 (max. 8388607)
- 452 compressed objects within 5 object streams
- 116 named destinations out of 1000 (max. 500000)
+ 1009 PDF objects out of 1200 (max. 8388607)
+ 490 compressed objects within 5 object streams
+ 130 named destinations out of 1000 (max. 500000)
  152 words of extra memory for PDF output out of 10000 (max. 10000000)
 

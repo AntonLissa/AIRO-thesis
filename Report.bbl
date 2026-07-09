@@ -5,6 +5,11 @@ A.~Alansari and H.~Luqman.
 \newblock Large language models hallucination: A comprehensive survey.
 \newblock {\em arXiv preprint arXiv:2510.06265}, 2025.
 
+\bibitem{alkayyal2025llm}
+M.~Alkayyal, S.~Malberg, and G.~Groh.
+\newblock An llm-based decision support system for strategic decision-making.
+\newblock In {\em Joint European Conference on Machine Learning and Knowledge Discovery in Databases}, pages 460--464. Springer, 2025.
+
 \bibitem{Survey2025}
 D.~Anh-Hoang, V.~Tran, and L.-M. Nguyen.
 \newblock Survey and analysis of hallucinations in large language models: attribution to prompting strategies or model behavior.
@@ -24,6 +29,11 @@ M.~Besta, N.~Blach, A.~Kubicek, R.~Gerstenberger, M.~Podstawski, L.~Gianinazzi, 
 O.~Bianchi, M.~J. Koretsky, M.~Willey, C.~X. Alvarado, T.~Nayak, A.~Asija, N.~Kuznetsov, M.~A. Nalls, F.~Faghri, and D.~Khashabi.
 \newblock Hidden in the haystack: Smaller needles are more difficult for llms to find.
 \newblock {\em arXiv preprint arXiv:2505.18148}, 2025.
+
+\bibitem{boiko2023autonomous}
+D.~A. Boiko, R.~MacKnight, B.~Kline, and G.~Gomes.
+\newblock Autonomous chemical research with large language models.
+\newblock {\em Nature}, 624(7992):570--578, 2023.
 
 \bibitem{DBLP:journals/corr/BojanowskiGJM16}
 P.~Bojanowski, E.~Grave, A.~Joulin, and T.~Mikolov.
@@ -58,6 +68,11 @@ T.~Dao, D.~Fu, S.~Ermon, A.~Rudra, and C.~R\'{e}.
 J.~Devlin, M.-W. Chang, K.~Lee, and K.~Toutanova.
 \newblock Bert: Pre-training of deep bidirectional transformers for language understanding.
 \newblock In {\em Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics: human language technologies, volume 1 (long and short papers)}, pages 4171--4186, 2019.
+
+\bibitem{eigner2024determinants}
+E.~Eigner and T.~H{\"a}ndler.
+\newblock Determinants of llm-assisted decision-making.
+\newblock {\em arXiv preprint arXiv:2402.17385}, 2024.
 
 \bibitem{elman1990finding}
 J.~L. Elman.
@@ -124,6 +139,11 @@ Z.~Jiang, J.~Araki, H.~Ding, and G.~Neubig.
 \newblock How can we know when language models know? on the calibration of language models for question answering.
 \newblock {\em Transactions of the Association for Computational Linguistics}, 9:962--977, 09 2021.
 
+\bibitem{smartcities8010019}
+A.~Kalyuzhnaya, S.~Mityagin, E.~Lutsenko, A.~Getmanov, Y.~Aksenkin, K.~Fatkhiev, K.~Fedorin, N.~O. Nikitin, N.~Chichkova, V.~Vorona, and A.~Boukhanovsky.
+\newblock Llm agents for smart city management: Enhancing decision support through multi-agent ai systems.
+\newblock {\em Smart Cities}, 8(1), 2025.
+
 \bibitem{kaplan2020scaling}
 J.~Kaplan, S.~McCandlish, T.~Henighan, T.~B. Brown, B.~Chess, R.~Child, S.~Gray, A.~Radford, J.~Wu, and D.~Amodei.
 \newblock Scaling laws for neural language models.
@@ -138,6 +158,11 @@ P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal, H.~K{\"u}ttle
 J.~Li, J.~Xu, S.~Huang, Y.~Chen, W.~Li, J.~Liu, Y.~Lian, J.~Pan, L.~Ding, H.~Zhou, et~al.
 \newblock Large language model inference acceleration: A comprehensive hardware perspective.
 \newblock {\em arXiv preprint arXiv:2410.04466}, 2024.
+
+\bibitem{li_et_al:OASIcs.SpaceCHI.2025.6}
+K.~Li and R.~S. Whittle.
+\newblock {Toward an Earth-Independent System for EVA Mission Planning: Integrating Physical Models, Domain Knowledge, and Agentic RAG to Provide Explainable LLM-Based Decision Support}.
+\newblock In L.~Bensch, T.~Nilsson, M.~Nisser, P.~Pataranutaporn, A.~Schmidt, and V.~Sumini, editors, {\em Advancing Human-Computer Interaction for Space Exploration (SpaceCHI 2025)}, volume 130 of {\em Open Access Series in Informatics (OASIcs)}, pages 6:1--6:17, Dagstuhl, Germany, 2025. Schloss Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik.
 
 \bibitem{awq}
 J.~Lin, J.~Tang, H.~Tang, S.~Yang, W.-M. Chen, W.-C. Wang, G.~Xiao, X.~Dang, C.~Gan, and S.~Han.
@@ -154,6 +179,11 @@ C.~D. Manning.
 \newblock {\em Introduction to information retrieval}.
 \newblock Syngress Publishing,, 2008.
 
+\bibitem{maranto2024llmsat}
+D.~Maranto.
+\newblock Llmsat: A large language model-based goal-oriented agent for autonomous space exploration.
+\newblock {\em arXiv preprint arXiv:2405.01392}, 2024.
+
 \bibitem{mikolov2013efficient}
 T.~Mikolov, K.~Chen, G.~Corrado, and J.~Dean.
 \newblock Efficient estimation of word representations in vector space.
@@ -168,6 +198,11 @@ T.~Mikolov, K.~Chen, G.~Corrado, and J.~Dean.
 L.~Ouyang, J.~Wu, X.~Jiang, D.~Almeida, C.~Wainwright, P.~Mishkin, C.~Zhang, S.~Agarwal, K.~Slama, A.~Ray, et~al.
 \newblock Training language models to follow instructions with human feedback.
 \newblock {\em Advances in neural information processing systems}, 35:27730--27744, 2022.
+
+\bibitem{10.1145/3586183.3606763}
+J.~S. Park, J.~O'Brien, C.~J. Cai, M.~R. Morris, P.~Liang, and M.~S. Bernstein.
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock In {\em Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology}, UIST '23, New York, NY, USA, 2023. Association for Computing Machinery.
 
 \bibitem{peng2023yarn}
 B.~Peng, J.~Quesnelle, H.~Fan, and E.~Shippole.
@@ -208,10 +243,20 @@ V.~Sanh, L.~Debut, J.~Chaumond, and T.~Wolf.
 \newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and lighter.
 \newblock {\em arXiv preprint arXiv:1910.01108}, 2019.
 
+\bibitem{schick2023toolformer}
+T.~Schick, J.~Dwivedi-Yu, R.~Dess{\`\i}, R.~Raileanu, M.~Lomeli, E.~Hambro, L.~Zettlemoyer, N.~Cancedda, and T.~Scialom.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock {\em Advances in neural information processing systems}, 36:68539--68551, 2023.
+
 \bibitem{schulman2017proximal}
 J.~Schulman, F.~Wolski, P.~Dhariwal, A.~Radford, and O.~Klimov.
 \newblock Proximal policy optimization algorithms.
 \newblock {\em arXiv preprint arXiv:1707.06347}, 2017.
+
+\bibitem{shinn2023reflexion}
+N.~Shinn, F.~Cassano, A.~Gopinath, K.~Narasimhan, and S.~Yao.
+\newblock Reflexion: Language agents with verbal reinforcement learning.
+\newblock {\em Advances in neural information processing systems}, 36:8634--8652, 2023.
 
 \bibitem{sreenivas2024llm}
 S.~T. Sreenivas, S.~Muralidharan, R.~Joshi, M.~Chochowski, A.~S. Mahabaleshwarkar, G.~Shen, J.~Zeng, Z.~Chen, Y.~Suhara, S.~Diao, et~al.

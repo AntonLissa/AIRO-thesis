@@ -411,21 +411,19 @@ Another problem is the increased risk of hallucinations and reasoning errors whe
 
 
 
-
 \subsection{Agentic Large Language Models}
-The evolution from Large Language Models to Agentic Large Language Models represents a shift from passive text generation toward autonomous task execution. While traditional LLMs operate primarily as reactive systems that map user prompts to generated responses, agentic architectures embed language models within broader computational systems that provide planning, memory, action executions, and profiling modules \cite{wang2024survey}.
+The evolution from Large Language Models to Agentic Large Language Models represents a shift from passive text generation toward autonomous task execution. While traditional LLMs operate primarily as reactive systems that map user prompts to generated responses, agentic architectures embed language models within broader computational systems that provide planning, memory, action executions, and, in some cases, profiling modules \cite{wang2024survey}.
 
 The \textbf{profiling module} defines the role, objectives, capabilities, and behavioral constraints of the agent. By specifying characteristics such as domain expertise, task objectives, or interaction style, the profile conditions the reasoning process and influences planning, memory retrieval, and action selection.
 
 
-The \textbf{memory module} can store data in several formats, each offering unique trade-offs between semantic richness, retrieval efficiency, and ease of manipulation: Natural Language, Embeddings, Databases, Structured Lists, or hybrid.
-The selection of data is typically governed by three criteria: recency, relevance, and importance.
+The \textbf{memory module} can store data in several formats, each offering unique trade-offs between semantic richness, retrieval efficiency, and ease of manipulation: Natural Language, Embeddings, Databases, Structured Lists, or hybrid. The selection of data is typically governed by three criteria: recency, relevance, and importance. Memory is commonly divided into short-term memory, which maintains the context of the current interaction, and long-term memory, which stores persistent knowledge, previous experiences, or retrieved information across multiple tasks \cite{wang2024survey}. Effective memory management is essential for long-horizon reasoning and continual adaptation. A notable implementation of this concept is provided by Generative Agents \cite{10.1145/3586183.3606763}, where memories are organized as a continuously growing memory stream. Rather than retrieving past experiences indiscriminately, the agent ranks memories according to their recency, semantic relevance, and estimated importance. Furthermore, higher-level reflections are periodically synthesized from accumulated experiences, enabling the agent to form persistent knowledge that can guide future planning and decision-making.
 
 
-The \textbf{planning module} is responsible for managing long-horizon tasks, orchestrating complex workflows, and ensuring coherent action sequences across multiple steps. The planning can be performed without feedback, where the agent does not get a feedback that influences its behaviour or with feedback for tasks where initial plans frequently fail due to unforeseen environmental dynamics or overly complex preconditions. The feedback can be provided by the environment, by other agents, or by a human-in-the-loop.
+The \textbf{planning module} is responsible for managing long-horizon tasks, orchestrating complex workflows, and ensuring coherent action sequences across multiple steps. The planning can be performed without feedback, where the agent does not get a feedback that influences its behaviour or with feedback for tasks where initial plans frequently fail due to unforeseen environmental dynamics or overly complex preconditions. The feedback can be provided by the environment, by other agents, or by a human-in-the-loop. Planning is commonly supported by reasoning strategies such as Chain-of-Thought (CoT), Tree of Thoughts (ToT), or Graph of Thoughts (GoT), which enable the agent to decompose complex objectives into intermediate reasoning steps before selecting executable actions.
 
 
-The action module serves as the final downstream component of an autonomous agent architecture, translating high-level decisions into tangible outcomes through direct environmental interaction.
+The \textbf{action module} serves as the final downstream component of an autonomous agent architecture, translating high-level decisions into tangible outcomes through direct environmental interaction.
 
 An agent's ability to execute these actions relies on a synergy between the LLM's inherent reasoning and a suite of external resources:
 
@@ -436,6 +434,8 @@ An agent's ability to execute these actions relies on a synergy between the LLM'
     \item External Models: Agents can offload complex or multimodal processing to specialized supplementary models.
 \end{itemize}
 
+Tool integration was further formalized by Toolformer \cite{schick2023toolformer}, which demonstrated that language models can learn when and how to invoke external tools during generation through self-supervised training. This capability extends the model beyond its parametric knowledge by enabling access to calculators, search engines, translation systems, or APIs whenever additional information or computation is required. Despite using a relatively small base model (GPT-J with 6.7B parameters), Toolformer significantly outperformed larger models like GPT-3 (175B) on tasks requiring math or factual lookup because it knows when to "outsource" the work to a tool. Moreover, the model effectively chooses if and when to use a tool without being told to do so by the user.
+
 
 \begin{figure}[t]
     \centering
@@ -445,15 +445,125 @@ An agent's ability to execute these actions relies on a synergy between the LLM'
 \end{figure}
 
 
+One of the most influential frameworks for planning and interaction is ReAct (Reason + Act) \cite{yao2022react}, which interleaves reasoning steps with actions performed in the external environment. Rather than generating an entire solution in a single pass, the agent alternates between internal reasoning ("Thought"), executing an action (e.g., querying a search engine or database), and incorporating the resulting observations into subsequent reasoning. This iterative loop: 
+\[
+\text{Thought} \rightarrow \text{Action} \rightarrow \text{Observation}
+\]
+enables adaptive decision-making and significantly improves performance on knowledge-intensive and interactive tasks.
 
-\subsection{Evolution of Decision Support Systems}
+Beyond planning and acting, recent agentic systems increasingly incorporate explicit self-reflection mechanisms. Reflexion \cite{shinn2023reflexion} works on the principle that LLMs can improve by analyzing their own past performance through natural language. First, the Actor generates a trajectory, which is essentially a sequence of thoughts and actions intended to solve a given task. Once the action is taken, the Evaluator assesses the resulting output by using mechanisms such as heuristics, unit tests, or another LLM, ultimately providing a score or specific feedback based on performance. In instances where the task fails, the system triggers the Self-Reflection module, where an LLM analyzes the trajectory and the feedback to write a verbal "lesson learned." This reflection is then stored in the agent's Memory, where it is retrieved and utilized by the Actor in the next trial, effectively guiding the agent toward the correct behavior through its accumulated experience.
+
+
+Together, these components transform LLMs from passive generators into autonomous systems capable of reasoning, interacting with external environments, retaining experience, and improving their behavior over time. This transition provides the foundation for more advanced architectures, including multi-agent systems and agent-based Decision Support Systems, where multiple specialized components collaborate to solve complex tasks.
+
+\subsection{Modern LLM-based Decision Support Systems}
+The potential for LLMs to transform decision-making is underscored by Eigner and Händler \cite{eigner2024determinants}, who provide a comprehensive analysis of the determinants that govern successful human-AI collaboration. While traditional decision-making follows the classic intelligence-design-choice phases, the integration of LLMs introduces a far more complex set of variables. Their research highlights that effective support is not merely a technical challenge but a socio-technical one, involving a delicate interplay between technological aspects (such as prompt engineering and transparency), psychological factors (such as user mental models, trust, and decision-making styles), and decision-specific determinants (such as task difficulty and accountability). By mapping these interdependencies into a consolidated dependency framework, Eigner and Händler emphasize that improving decision quality requires moving beyond simple model performance to focus on the alignment between AI capabilities and human cognitive needs.
 The state-of-the-art in this domain has recently moved toward \textit{adaptive, multi-agent architectures} that operationalize these reasoning frameworks within high-stakes environments. A primary example is the work of Öğdü et al. \cite{ougdu2025adaptive}, who developed a multi-layered, adaptive Clinical Decision Support System (CDSS). Unlike traditional static models, this architecture integrates biomedical RAG with real-time web intelligence through a collaborative framework of autonomous agents. The system introduces several key innovations:
 
 \begin{itemize}
     \item \textbf{Timeliness and Evidence Freshness:} By incorporating a dedicated web-intelligence agent, the system mitigates the "knowledge cutoff" problem of static LLMs, ensuring recommendations are grounded in the latest clinical guidelines.
-    \item \textbf{Confidence-Aware Optimization:} The system utilizes an adaptive feedback loop that triggers re-querying and hypothesis refinement whenever internal confidence scores fall below a defined threshold ($\tau = 0.65$), effectively automating the iterative reasoning seen in ToT/GoT frameworks.
+    \item \textbf{Confidence-Aware Optimization:} The system utilizes an adaptive feedback loop that triggers re-querying and hypothesis refinement whenever internal confidence scores fall below a defined threshold ($\tau = 0.65$).
     \item \textbf{Domain-Specific Grounding:} To ensure precision in medical contexts, the system employs a specialized BioBERT-based vector database for processing complex clinical jargon.
 \end{itemize}
 
 Validated on the MedQA and PubMedQA datasets—achieving accuracies of 94\% and 88\% respectively, this approach demonstrates how the integration of multi-source data fusion and adaptive optimization loops can overcome the reliability barriers of standard LLM-based reasoning.
+
+
+
+
+Building upon this transition toward adaptive architectures, Alkayyal and Malberg introduce StrategicAI \cite{alkayyal2025llm}, a Decision Support System (DSS) tailored for strategic business contexts. StrategicAI operationalizes the logic tree methodology to manage the high uncertainty and cognitive load inherent in strategic planning. The system functions through a three-phase multi-agent process:
+
+\begin{itemize}
+\item \textbf{Recursive Problem Decomposition:} Rather than providing a single output, the system uses a recursive, multi-agent architecture to decompose complex strategic problems into granular issue trees, mapping potential causes and solutions hierarchically.
+\item \textbf{Evidence-Based Retrieval Augmentation:} The system integrates a retrieval-augmented LLM (RAG) that draws from both internal organizational documentation and external market data. This ensures that the generated tree nodes are not merely speculative, but grounded in evidence-based business intelligence.
+\item \textbf{Human-in-the-loop Orchestration:} Addressing the socio-technical challenges identified by Eigner and Händler, StrategicAI maintains a collaborative workflow where the AI structures and validates the logic, while the human expert retains control over the strategic direction.
+\end{itemize}
+
+By automating the structural decomposition of business problems and mitigating cognitive biases through evidence-backed reasoning, StrategicAI demonstrates the utility of applying adaptive, agentic workflows to high-stakes management decisions where traditional static models often fail to account for complex, non-linear variables.
+
+
+
+In the domain of urban governance, Kalyuzhnaya et al. \cite{smartcities8010019} propose a multi-agent LLM framework designed to bridge the gap between strategic urban planning and operational execution. Moving beyond standalone model limitations, the authors introduce a modular architecture that integrates LLMs with existing municipal information systems to address the inherent fragmentation of urban data. The system operates through a hierarchical orchestration framework:
+
+\begin{itemize}
+\item \textbf{Hierarchical Orchestration Layer:} The architecture is centered on an "agent-conductor," which serves as the system's intelligent core. This agent is responsible for query intent classification and routing, ensuring that incoming requests are directed to the appropriate specialized processing pipelines.
+\item \textbf{Specialized Processing Agents:} The system utilizes three primary functional agents to handle complex urban queries:
+    \begin{itemize}
+        \item \textit{Tool Calling Agent:} Manages real-time data retrieval via APIs, providing access to transportation metrics, urban service availability, and geospatial layers.
+        \item \textit{RAG Operations Agent:} Executes retrieval-augmented generation against a dedicated vector database, grounding the LLM's reasoning in validated regulatory documents and municipal development frameworks.
+        \item \textit{Answer Summarization \& Validation Agents:} Synthesizes retrieved data and validates the generated responses for consistency, reducing the risk of hallucinations often associated with non-grounded LLM implementations.
+    \end{itemize}
+\item \textbf{Integration with Digital Urban Platforms:} Unlike isolated decision models, the system maintains a bidirectional link with city information systems, such as the Digital Urban Platform of St. Petersburg. This allows the agents to process heterogeneous data—ranging from socio-economic indicators to infrastructure capacity—enabling the system to provide context-aware strategic recommendations.
+\end{itemize}
+
+Unlike conventional business intelligence systems, StrategicAI does not only retrieve and summarize information but assists decision-makers in structuring ambiguous problems before evaluating possible alternatives.
+
+
+
+While the urban governance framework focuses on synthesizing administrative data for high-level decision support, the technical principles of modular agentic architectures have also been validated in high-precision scientific domains. In a landmark study on autonomous research, researchers demonstrated an LLM-based system: Coscientist \cite{boiko2023autonomous}, that bridges the gap between high-level reasoning and physical execution in chemical laboratories.
+While the urban governance model prioritizes RAG operations for regulatory compliance, Coscientist emphasizes a closed-loop "tool-use" paradigm:
+
+\begin{itemize}
+\item \textbf{Action-Oriented Modularity:} The system decomposes complex research tasks into discrete commands (e.g., web search, code execution, hardware API interaction). This demonstrates that, when provided with a defined action space and sandboxed execution environments, LLMs can transition from passive information retrieval to active, self-correcting problem solving.
+\item \textbf{Grounding via Dynamic Documentation:} Beyond static RAG, Coscientist employs vector-based retrieval on technical documentation to dynamically learn and interact with APIs it was not explicitly trained to handle. This highlights the potential for decision support systems to maintain relevance in rapidly evolving technical landscapes without requiring constant model retraining.
+\item \textbf{Autonomous Self-Correction:} A significant contribution of this work to the field of decision support is the system's capacity for diagnostic iteration. When an generated protocol fails (e.g., an invalid hardware call), the agent autonomously queries its documentation module to rectify the error. This "closed-loop" reasoning is essential for moving toward autonomous systems capable of operating in high-stakes environments where human oversight may be intermittent.
+\end{itemize}
+
+By comparing these two domains—urban governance and experimental chemistry—it becomes clear that the utility of LLM-based decision support lies not in the model's inherent knowledge, but in its ability to operate as an intelligent orchestrator within a modular, tool-rich ecosystem. Unlike conventional business intelligence systems, both StrategicAI and the Coscientist framework shift the paradigm from retrieval to intervention, assisting decision-makers in structuring ambiguous problems and executing evidence-based alternatives in real-time.
+
+
+
+To address the operational challenges of future deep-space exploration—specifically communication latency and the requirement for crew autonomy, the work of Kaisheng  et al. \cite{li_et_al:OASIcs.SpaceCHI.2025.6} proposes an Earth-independent, agentic AI framework for Extravehicular Activity (EVA) mission planning. The system functions as a localized "virtual flight controller," integrating a fine-tuned Large Language Model (LLM) with a robust Retrieval-Augmented Generation (RAG) architecture and external physics-based simulation models. 
+
+The core innovation of the proposed system lies in its ability to synthesize heterogeneous data sources, ranging from formal flight rules and procedural handbooks to real-time suit telemetry and metabolic predictive models, into actionable, traceable decision support. By utilizing an agentic orchestration layer, the system performs iterative, chain-of-thought reasoning that mimics the analytical rigor of ground-based Mission Control. 
+
+The decision support system provides critical utility in three primary domains:
+\begin{itemize}
+    \item \textbf{Dynamic Replanning:} Enables astronauts to conduct "what-if" simulations, allowing for the rapid recalculation of mission timelines and resource margins in response to unexpected discoveries or environmental changes.
+    \item \textbf{Off-Nominal Contingency Management:} Provides immediate, context-aware troubleshooting guidance during system failures, ensuring safety margins are continuously monitored even when connectivity to Earth is unavailable.
+    \item \textbf{Cognitive Load Reduction:} Acts as an intelligent interface that abstracts complex sensor data and procedural constraints into concise, explainable recommendations, thereby allowing the crew to maintain high levels of operational awareness during high-stakes maneuvers.
+\end{itemize}
+
+By grounding LLM-generated outputs in verifiable physics models and authoritative mission documents, the architecture ensures high transparency and auditability. This framework serves as a foundational step toward increasing crew independence and operational safety for long-duration missions on the lunar surface and beyond.
+
+
+Addressing the integration of Large Language Models into space-faring autonomy, Maranto \cite{maranto2024llmsat} proposes LLMSAT: a hierarchical architecture that positions an LLM as a high-level mission operations planner, decoupled from low-level spacecraft control. To mitigate the inherent risks of non-deterministic LLM behavior, this architecture employs a 'correctness-by-construction' paradigm, where the agent interacts exclusively with validated flight software services. Safety is enforced through a tripartite validation framework: function-level argument checking, plan-level simulation-based validation, and reflexive spacecraft-level safety overrides. The implementation leverages Retrieval-Augmented Generation (RAG) to manage context-window constraints and facilitate experiential learning, demonstrating a shift toward agentic mission management while emphasizing the need for robust, ground-validated command interfaces in space-computing environments.
+
+
+Despite these promising developments, current LLM-based DSS for mission operations remain largely domain-specific and prototype-oriented. Existing systems typically focus on individual operational scenarios, such as EVA planning or spacecraft autonomy, rather than providing a general-purpose, multi-agent decision support architecture capable of integrating heterogeneous operational data, procedural knowledge, human oversight, and coordinated reasoning. This gap motivates the research presented in this thesis, which investigates a multi-agent LLM-based Decision Support System tailored for space mission operations. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

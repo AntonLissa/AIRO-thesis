@@ -14,5 +14,5 @@
 \contentsline {subsection}{\numberline {0.1.10}Reasoning Frameworks for Decision Support}{14}{subsection.0.1.10}%
 \contentsline {subsection}{\numberline {0.1.11}Long-Context Modeling and Context Management}{15}{subsection.0.1.11}%
 \contentsline {subsection}{\numberline {0.1.12}Agentic Large Language Models}{16}{subsection.0.1.12}%
-\contentsline {subsection}{\numberline {0.1.13}Evolution of Decision Support Systems}{17}{subsection.0.1.13}%
-\contentsline {chapter}{Bibliography}{19}{subsection.0.1.13}%
+\contentsline {subsection}{\numberline {0.1.13}Modern LLM-based Decision Support Systems}{18}{subsection.0.1.13}%
+\contentsline {chapter}{Bibliography}{23}{subsection.0.1.13}%
