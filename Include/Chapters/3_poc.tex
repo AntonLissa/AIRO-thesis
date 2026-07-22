@@ -1,34 +1,53 @@
 % !TeX root = ../Report.tex
-\section{Proof of Concept Development}
+\chapter{Proof of Concept Development}
+\section{PoC Overview and Architecture}
 
-The development of the Proof of Concept (PoC) followed the software architecture presented in Section~\ref{sec:software architecture}. Rather than implementing all the components simultaneously, the development process adopted a bottom-up approach, starting from the core infrastructure responsible for managing and retrieving the knowledge exploited by the multi-agent system.
+The development of the Proof of Concept (PoC) followed the software architecture introduced in Section~\ref{sec:software architecture}. The implementation was carried out following a bottom-up approach, progressively developing the core services required by the final decision-support system.
 
-Throughout the implementation, particular attention was paid to designing a modular and extensible software architecture. The system was developed by defining clear interfaces and abstract base classes, allowing each component to be extended or replaced with minimal impact on the rest of the framework. This design choice promotes maintainability, scalability, and the integration of alternative implementations as the system evolves.
-
-The first component developed was the \textit{Storage Manager}. Since the effectiveness of the decision support system strongly depends on the quality and accessibility of contextual information, this module was designed as the foundation of the entire architecture. Its implementation includes a Retrieval-Augmented Generation (RAG) system developed from scratch, responsible for document ingestion, indexing, semantic retrieval, and knowledge management.
-
-\subsection{Storage Manager \& RAG System}
-
-The Storage Manager represents the foundational component of the proposed multi-agent framework, providing a centralized infrastructure for document ingestion, indexing, storage, and semantic retrieval. Since the system relies on external knowledge to support their process, this module was developed before the remaining components of the architecture.
-
-Rather than implementing a task-specific Retrieval-Augmented Generation (RAG) pipeline, the objective was to design a modular and extensible framework capable of accommodating different implementations of each stage of the retrieval process. For this reason, the entire Storage Manager follows an abstraction-oriented design, where the main functionalities are defined through abstract base classes and later specialized by concrete implementations.
-
-The resulting architecture separates the RAG pipeline into four independent layers:
+The proposed PoC is composed of three main software layers:
 
 \begin{itemize}
-    \item document chunking;
-    \item embedding generation;
-    \item memory management and retrieval;
-    \item vector storage.
+    \item the \textit{Storage Manager}, responsible for providing unified access to heterogeneous information sources and managing the knowledge required by the system;
+    \item the \textit{AI Manager}, responsible for integrating Large Language Models, specialized agents, and the reasoning capabilities required to support decision-making activities;
+    \item the \textit{Decision Support Interface}, providing the interaction layer between users and the underlying AI-based services.
 \end{itemize}
 
-Each layer exposes a common interface while hiding its internal implementation details. Consequently, individual components can be replaced without affecting the remaining modules. For example, changing the embedding model or replacing the vector database only requires implementing the corresponding abstract interface, while the higher-level retrieval logic remains unchanged.
+The communication and coordination between these layers are managed through the multi-agent orchestration framework described in the following sections.
 
-This design significantly improves maintainability, facilitates experimentation with different retrieval strategies, and allows the framework to evolve without requiring substantial modifications to the existing codebase.
+Throughout the implementation, particular attention was devoted to the creation of a modular and extensible software architecture. Each component was developed following an abstraction-oriented design, where functionalities are exposed through well-defined interfaces and concrete implementations are decoupled from the higher-level logic.
 
-\subsubsection{Architecture}
+This approach enables individual components to be replaced or extended with minimal modifications to the overall system. For example, different storage technologies, language models, or agent implementations can be integrated by providing alternative implementations of the corresponding interfaces.
 
-Figure~\ref{fig:rag_architecture} illustrates the overall architecture of the implemented Storage Manager.
+The first component developed was the \textit{Storage Manager}, as reliable access to contextual information represents a fundamental requirement for the subsequent reasoning and decision-support layers. Its implementation provides the data foundation of the system, including document retrieval capabilities through a custom Retrieval-Augmented Generation (RAG) pipeline, structured operational data access, and persistent conversation management.
+
+\section{Storage Manager}
+
+\subsection{Architecture and Design Principles}
+
+The Storage Manager represents the data management layer of the proposed multi-agent framework. Its main responsibility is to provide a unified access interface to the heterogeneous information required by the AI components during the decision-support process.
+
+Instead of allowing the reasoning layer to directly interact with individual data sources, the Storage Manager abstracts the underlying storage mechanisms and data formats. This design choice separates data management concerns from reasoning capabilities, reducing the dependency between the AI components and the specific implementation of the information sources.
+
+The Storage Manager integrates multiple functionalities:
+
+\begin{itemize}
+    \item a Retrieval-Augmented Generation (RAG) subsystem for managing technical documentation and enabling semantic knowledge retrieval;
+    \item structured data interfaces for accessing operational information, including planning data stored in CSV, XML, and JSON formats;
+    \item a persistent chat storage service for maintaining conversation histories between users and agents;
+    \item additional interfaces for retrieving system status information and maintenance-related data.
+\end{itemize}
+
+Among these functionalities, the RAG subsystem represents the main knowledge management component of the Storage Manager. While structured data interfaces provide deterministic access to operational information, the RAG pipeline enables semantic exploration of unstructured technical documentation, supporting the reasoning capabilities of the multi-agent system.
+
+For this reason, the following sections provide a detailed description of the RAG architecture, including document processing, embedding generation, vector storage, hybrid retrieval, and validation activities.
+
+Following the same architectural principles adopted for the overall PoC, the Storage Manager has been implemented through an abstraction-oriented design. Core functionalities are defined through abstract interfaces and specialized through concrete implementations, allowing individual components to be replaced independently without affecting the remaining layers of the system.
+
+This modular structure improves maintainability, supports experimentation with alternative technologies, and provides a scalable foundation for future extensions of the decision-support framework.
+
+\subsection{Rag System}
+
+Figure \ref{fig:rag_architecture} illustrates the overall architecture of the implemented RAG in the Storage Manager.
 
 The document ingestion process starts from the \texttt{Chunker}, responsible for loading heterogeneous documents and dividing them into semantically coherent chunks. The generated chunks are then converted into dense vector representations through the selected embedding model.
 
@@ -36,19 +55,44 @@ The resulting embeddings, together with their metadata, are stored inside the \t
 
 Finally, the \texttt{Memory} component orchestrates the interaction among all the previous modules by managing document ingestion, preventing duplicate insertions, performing hybrid retrieval, and applying an additional reranking stage before returning the final context to the upper layers of the multi-agent framework.
 
-\subsubsection{Document Chunking}
+\paragraph{Document Chunking}~\\
 
 The first stage of the Storage Manager is responsible for transforming raw documents into semantically meaningful text fragments that can later be embedded and indexed. Since the quality of the retrieved information strongly depends on how documents are partitioned, particular attention was devoted to the design of the chunking process.
 
 To ensure modularity, the chunking functionality is defined through the abstract class \texttt{BaseChunker}, which specifies the two fundamental operations required by the framework: loading a document and generating its corresponding chunks. This abstraction decouples the retrieval pipeline from any specific chunking strategy, allowing alternative implementations to be introduced without modifying the remaining components of the Storage Manager.
 
-The concrete implementation developed for the Proof of Concept, named \texttt{LocalSemanticChunker}, performs semantic chunking locally by exploiting the \textit{all-MiniLM-L6-v2} Sentence Transformer model. Instead of dividing documents into fixed-size windows, the adopted strategy identifies semantically coherent boundaries between consecutive text segments. This approach produces chunks that better preserve the original context, improving the quality of the subsequent embedding generation and retrieval phases. The selected Sentence Transformer model produces dense embeddings of 384 dimensions, providing a favorable trade-off between computational efficiency and semantic representation quality.
+The concrete implementation developed for the Proof of Concept, named \texttt{LocalSemanticChunker}, performs semantic chunking locally by exploiting the \textit{all-MiniLM-L6-v2} Sentence Transformer model. Instead of dividing documents into fixed-size windows, the adopted strategy identifies semantically coherent boundaries between consecutive text segments. This approach produces chunks that better preserve the original context, improving the quality of the subsequent embedding generation and retrieval phases.
+The selected Sentence Transformer model produces dense embeddings of 384 dimensions, providing a favorable trade-off between computational efficiency and semantic representation quality. 
+The model was selected because it provides a favorable trade-off between embedding quality and computational cost, allowing all embeddings to be generated locally without requiring external APIs.
 
 The semantic chunking process is implemented using the LangChain SemanticChunker with the \texttt{standard\_deviation} breakpoint strategy. A breakpoint threshold of 1.5 is adopted, producing larger semantic segments by splitting only where the semantic distance between consecutive sentences significantly exceeds the average. Additionally, a buffer size of five sentences is used to avoid generating excessively small chunks. Moreover, chunks containing fewer than 50 characters or less than eight words are discarded, as they may provide insufficient contextual information and may negatively affect retrieval quality.
 
 The implemented pipeline consists of several preprocessing steps before the actual semantic segmentation is performed. First, the input document is parsed according to its format (PDF, DOCX, or TXT). For PDF documents, metadata such as title, author, and last modification date are extracted and associated with every generated chunk.
 
-A preliminary sampling phase is then executed on the first pages of the document to identify repetitive patterns, such as headers, footers, or page numbering. These elements are automatically removed from every page before chunk generation in order to reduce noise and prevent irrelevant information from being indexed multiple times.
+
+To minimize noise and prevent non-informative repetitive text (such as running headers, footers, page numbers, and recurrent table structures) from polluting the vector space, a dynamic multi-stage text cleaning algorithm was designed and integrated prior to semantic chunking.
+
+Unlike traditional static rule-based cleaning methods (e.g., rigid regular expressions), the proposed approach dynamically identifies document-specific boilerplate text through fuzzy string matching across page boundaries. The cleaning pipeline consists of three core steps:
+
+\begin{enumerate}
+    \item \textbf{Dynamic Pattern Discovery via Sampling:} To optimize computational efficiency—especially for large technical documents, the algorithm performs an initial sampling over the first $N$ pages ($N = 5$ by default). Each sampled page is decomposed into discrete line blocks.
+    
+    \item \textbf{Cross-Page Fuzzy Similarity Analysis:} For every line block $b_i$ in page $i$, the algorithm compares its content against all line blocks $b_j$ in other sampled pages $j \neq i$. To account for minor textual variations (e.g., page numbers changing within a running header), textual overlap is computed using the matching algorithm via Python's \texttt{SequenceMatcher}. 
+    
+    A line block is identified as a repetitive candidate pattern $P_{rep}$ if its similarity ratio equals or exceeds a tuned threshold $\theta_{sim} = 0.95$:
+    
+    \begin{equation}
+    \text{similar}(a, b) = \frac{2 \cdot |M|}{|a| + |b|} \ge \theta_{sim}
+    \end{equation}
+    
+    where $|M|$ is the number of matching characters in the longest common substrings between $a$ and $b$, and $|a|, |b|$ are the lengths of the respective string blocks. Short lines (fewer than 10 characters) are ignored during pattern discovery to avoid accidentally stripping valid titles or bullet points.
+
+    \item \textbf{Document Filtering and Sanitization:} The discovered set of repetitive patterns $P_{rep}$ is then used to filter the entire document page-by-page. Lines exceeding the similarity threshold when compared against any pattern in $P_{rep}$ are pruned. Finally, string normalizations, including whitespace collapsing and low-character noise removal (discarding chunks under 50 characters or 8 words), are applied to produce clean, semantically dense text blocks.
+\end{enumerate}
+
+This adaptive cleaning process ensures that recurring administrative header/footer metadata is stripped out, preventing artificial semantic similarity spikes during embedding generation and improving the signal-to-noise ratio in the retrieved context.
+
+To preserve document structures during ingestion, PDF documents are parsed into structured Markdown format using \texttt{pymupdf4llm}. Unlike plain-text extractions that flatten layout elements, converting pages into Markdown preserves section headings, bullet lists, and tabular structures. Preserving tables and hierarchical layout in Markdown enables downstream embedding models to capture structural relationships, while remaining natively compatible with Large Language Model context processing.
 
 After the cleaning phase, each page is semantically partitioned into coherent text fragments using the Semantic Chunker algorithm.
 Finally, each generated chunk is enriched with a comprehensive set of metadata, including a unique chunk identifier, a content hash made with SHA-1 computed over its normalized textual content used for duplicate detection, the source document, page number, chunk position within the page, chunk size, and document metadata. This information is preserved throughout the entire retrieval pipeline and enables efficient indexing, traceability, and document management.
@@ -59,12 +103,12 @@ The chunking process is showed in Fig. \ref{fig:chunking_pipeline}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/chunking_funes.png}
-    \caption{Document chunking workflow implemented in the Storage Manager.}
+    \caption{Document chunking workflow implemented in the Storage Manager. The document is preprocessed for metadata extraction like: "chunk\_id", "content\_hash", "source", "title", "author", "last\_modified", "page\_number", "chunk\_index\_in\_page", "chunk\_size" and "format". Then the repetitive parrterns like page headers and footers are removed. The text is then cleaned and transformed into markdown. Finally the chunking process will turn the text into vectors that are going to be associated with the metadata and the original text.}
     \label{fig:chunking_pipeline}
 \end{figure}
 
 
-\subsubsection{Embedding Generation}
+\paragraph{Embedding Generation}~\\
 
 After the document chunking phase, each generated text fragment is transformed into a numerical representation suitable for semantic retrieval. This process is performed by the embedding generation module, whose objective is to map textual information into a continuous vector space where semantically similar contents are represented by nearby vectors.
 
@@ -79,13 +123,13 @@ The generated embeddings are computed during the document ingestion phase and st
 The separation between embedding generation and storage management allows the system to remain independent from a specific embedding technology, facilitating future experimentation with alternative models or domain-specific embedding approaches.
 
 
-\subsubsection{Vector Storage}
+\paragraph{Vector Storage}~\\
 
 The vector storage layer is responsible for persisting document embeddings and supporting efficient similarity search operations. To preserve the modular architecture adopted throughout the Storage Manager, this functionality is defined through the abstract class \texttt{VectorStore}, which specifies the common interface required by the retrieval pipeline.
 
 The interface exposes the basic operations required by any vector database implementation, including document insertion, similarity search, retrieval of the complete collection, and access to the content hashes used for duplicate detection. As a consequence, replacing the underlying vector database only requires implementing the same interface, while the higher-level components remain unchanged.
 
-The Proof of Concept adopts ChromaDB as the concrete implementation through the \texttt{ChromaStore} class. This wrapper encapsulates all interactions with the database, including collection creation, persistent storage, document insertion, similarity search, and collection management.
+The Proof of Concept adopts ChromaDB as the concrete implementation through the \texttt{ChromaStore} class. This wrapper encapsulates all interactions with the database, including collection creation, persistent storage, document insertion, similarity search, and collection management. ChromaDB was selected because it provides persistent storage, native similarity search, efficient metadata management, and seamless integration with Python-based LLM frameworks, making it particularly suitable for rapid prototyping.
 
 During the ingestion phase, each chunk is stored together with its embedding vector and the corresponding metadata. The metadata are preserved inside the vector database and include information such as the document source, page number, chunk identifier, and content hash. This additional information is subsequently exploited during retrieval and traceability operations.
 
@@ -94,7 +138,7 @@ Before new chunks are inserted, the vector store exposes the set of already stor
 During retrieval, the vector store performs similarity search by comparing the embedding of the user query with the embeddings stored in the collection, returning the most semantically relevant document fragments together with their associated metadata.
 
 
-\subsubsection{Knowledge Memory Management}
+\paragraph{Knowledge Memory Management}~\\
 
 The Memory component represents the central layer responsible for managing the lifecycle of the knowledge stored inside the Retrieval-Augmented Generation system. Its main purpose is to provide a unified interface for storing, updating, and retrieving information, while hiding the implementation details of the underlying storage and retrieval mechanisms.
 
@@ -126,7 +170,7 @@ where \(R\) denotes the set of ranked retrieval methods, \(\mathrm{rank}_r(d)\) 
 
 Unlike score-based fusion methods, RRF does not require the normalization of similarity scores, which may originate from heterogeneous retrieval models and therefore be expressed on different scales. Instead, the fusion process relies solely on the relative ranking of retrieved documents, making the resulting ranking more robust and less sensitive to differences between lexical and semantic retrieval functions.
 
-The fused ranking is finally refined through a Cross-Encoder reranker. While the initial retrieval stages evaluate query-document similarity independently, the Cross-Encoder jointly processes the query and each candidate chunk, allowing it to model deeper semantic interactions between the two texts.
+The fused ranking is finally refined through a Cross-Encoder reranker: \texttt{BAAI/bge-reranker-base}. While the initial retrieval stages evaluate query-document similarity independently, the Cross-Encoder jointly processes the query and each candidate chunk, allowing it to model deeper semantic interactions between the two texts.
 
 This additional ranking stage is computationally more expensive than embedding-based retrieval and is therefore applied only to the limited set of candidate documents produced by the hybrid retrieval phase. The final ranked list returned by the reranker constitutes the contextual information provided to the upper layers of the multi-agent framework.
 
@@ -142,10 +186,20 @@ The resulting memory architecture therefore implements a complete retrieval pipe
 This multi-stage approach improves the robustness of the knowledge retrieval process, reducing the limitations of relying on a single retrieval strategy and providing higher-quality contextual information to the decision-support agents.
 
 
+The RAG system is summarized in figure Fig. \ref{fig:rag_architecture}
 
-\subsubsection{RAG Validation}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/doc_ingestion_funes.png} 
+    \caption{\textbf{Architecture of the Hybrid RAG System.} The system integrates a \textit{Storage Pipeline} (top) that cleans, dynamically chunks, and deduplicates raw documents using SHA-1 hashing, indexing unique content simultaneously into a dense vector database (\texttt{ChromaDB}) and a sparse lexical in-memory index (\texttt{BM25Okapi}, serialized via \texttt{pickle}); and a \textit{Retrieval Pipeline} (bottom) that executes parallel dense-semantic and sparse-keyword searches for a given query, merges the candidate results using Reciprocal Rank Fusion (RRF) based on a unified \texttt{chunk\_id}, and re-ranks them using a Cross-Encoder model (\texttt{BAAI/bge-reranker-base}) to output the top-$k$ most contextually relevant passages for the downstream LLM.}
+    \label{fig:rag_architecture}
+\end{figure}
 
-To evaluate the effectiveness of the implemented Retrieval-Augmented Generation pipeline, an experimental validation was conducted on a heterogeneous knowledge base composed of twenty technical documents. The dataset included both publicly available ECSS (European Cooperation for Space Standardization) standards and few internal technical documentation provided by Telespazio. The selected corpus reflects the type of documentation that the proposed decision support system is expected to process in real operational scenarios.
+
+
+\paragraph{RAG Validation}~\\
+
+To evaluate the effectiveness of the implemented Retrieval-Augmented Generation pipeline, an experimental validation was conducted on a heterogeneous knowledge base composed of twenty technical documents for a total of approximately 5000 chunks. The dataset included both publicly available ECSS (European Cooperation for Space Standardization) standards and few internal technical documentation provided by Telespazio. The selected corpus reflects the type of documentation that the proposed decision support system is expected to process in real operational scenarios.
 
 A benchmark composed of one hundred queries was manually created for the evaluation. Each query was manually formulated to capture the main semantic content of a randomly selected page while avoiding verbatim copying of the original text. For every query, the expected relevant page was manually annotated and considered as the ground truth.
 
@@ -204,3 +258,89 @@ Although the increase in Mean Reciprocal Rank is more moderate (from 68.48\% to 
 The largest improvement is observed after introducing the Cross-Encoder reranker. While the Recall@5 remains unchanged, the MRR increases significantly from 71.78\% to 80.50\%. This behaviour is expected since the reranker does not retrieve additional documents but rather reorders the candidates already returned by the hybrid retrieval stage.
 
 The position distribution further confirms this behaviour. The number of queries for which the correct document is ranked first increases from 62 to 76, while no relevant document appears in the fourth or fifth position after reranking. This demonstrates that the Cross-Encoder is particularly effective at improving the ranking quality of already retrieved candidates.
+
+
+
+\paragraph{Limitations}~\\
+Although the proposed pipeline achieves encouraging retrieval performance, the evaluation has been conducted on a relatively limited corpus composed of twenty technical documents (around 5000 chunks). Future work should assess scalability on substantially larger document collections and investigate the impact of alternative embedding models and reranking strategies.
+
+
+
+\subsection{Additional Data Interfaces}
+
+Although the Retrieval-Augmented Generation pipeline represents the main knowledge management component of the Storage Manager, the module is not limited to document-based information retrieval. The decision-support system requires access to heterogeneous data sources, including operational data, planning information, and system status information.
+
+Since for the PoC capabilities is not required to ingest data from the real data sources of Telespazio, we decided to use standard local files for the data sources to be ingested in the system.
+The Storage Manager was designed as a unified data access layer, exposing high-level interfaces for retrieving different types of information while hiding the specific format and parsing logic of each source.
+
+The implemented Proof of Concept supports the ingestion and retrieval of structured and semi-structured data, including:
+
+\begin{itemize}
+    \item planning informations stored in CSV files;
+    \item network data config of the ground segment
+    \item open tickets of the ground segment
+\end{itemize}
+
+Each data source is handled through dedicated processing functions responsible for parsing the original format and transforming the information into a representation suitable for consumption by the upper layers of the architecture.
+
+For example, planning data can be filtered according to operational parameters such as time interval, satellite identifier, or ground station, allowing agents to retrieve only the information relevant to the current decision-support task. 
+
+Unlike the knowledge base, these data sources are not indexed through semantic retrieval mechanisms, since they represent structured operational information where explicit filtering and deterministic retrieval provide a more appropriate access strategy.
+
+The Storage Manager therefore acts as an abstraction layer over both unstructured knowledge sources and structured operational data, providing a single entry point for the AI components. This design prevents agents from directly interacting with heterogeneous data formats, improving maintainability and allowing additional data sources to be integrated without modifying the reasoning layer.
+
+
+\subsection{Chat Storage}
+
+Besides managing external knowledge and operational data, the Storage Manager provides a persistent storage layer for the conversational information generated during the interaction between users and the multi-agent system.
+
+The Chat Storage component has been designed to maintain the history of interactions, enabling users to retrieve previous conversations and allowing the AI components to access contextual information related to ongoing tasks. Unlike the Knowledge Base memory, which contains stable domain information retrieved through the RAG pipeline, chat storage manages dynamic information generated during system execution.
+
+The implemented solution relies on \texttt{MongoDB}, a document-oriented NoSQL database selected due to its flexibility in managing conversational data, where messages may contain heterogeneous metadata depending on the involved agent, language model, or execution context.
+
+The architecture separates conversation-level information from individual message data through two different collections:
+
+\begin{itemize}
+    \item \texttt{chats}, storing high-level information related to each conversation;
+    \item \texttt{messages}, storing the individual messages exchanged during the interaction.
+\end{itemize}
+
+Each conversation is uniquely identified by a \texttt{chat\_id} and contains information such as the associated user, the agent involved in the interaction, creation and update timestamps, and aggregate statistics including the number of exchanged messages and the total number of processed tokens.
+
+Individual messages are stored as independent documents containing the conversation identifier, user identifier, message role, textual content, and additional execution metadata. The stored information includes the language model used to generate the response, the number of input and output tokens, the response latency, and optional metadata generated during the execution.
+
+The inclusion of execution-related information enables the system to monitor the interaction history and provides the basis for future extensions such as performance analysis, cost estimation, and agent behaviour evaluation.
+
+To improve retrieval efficiency, the database defines dedicated indexes on the main query fields. In particular, indexes are created on the conversation identifier and on the combination of conversation identifier and creation timestamp, allowing chronological reconstruction of conversations with limited query overhead. Additionally, user-based indexing enables efficient retrieval of all conversations associated with a specific user.
+
+The main operations exposed by the Chat Storage component are:
+
+\begin{itemize}
+    \item creation of new conversations associated with a user and a selected agent;
+    \item persistent storage of user and assistant messages;
+    \item chronological retrieval of messages belonging to a conversation;
+    \item retrieval of the conversation history associated with a user.
+\end{itemize}
+
+The separation between conversational storage and knowledge retrieval follows the principle of information specialization. While the RAG memory is optimized for semantic search over external documents, the Chat Storage component is optimized for temporal reconstruction of previous interactions.
+
+This distinction is particularly important in a multi-agent decision-support system, where conversational context, user requests, and generated responses represent operational information rather than static domain knowledge. The proposed design allows both components to evolve independently, enabling future extensions such as conversation summarization, user-specific preferences, or persistent agent memory mechanisms.
+
+
+\subsection{Storage Manager Limitations}
+
+Despite the modular architecture adopted for the Storage Manager, the current implementation presents some limitations related to the scope of the Proof of Concept and the characteristics of the available data sources.
+
+First, the current document ingestion pipeline mainly focuses on PDF, DOCX, and TXT formats. Although the chunking architecture allows the integration of additional loaders, more complex formats such as HTML pages, engineering databases, or domain-specific document structures are not yet directly supported.
+
+Second, the implemented Retrieval-Augmented Generation pipeline relies on a general-purpose embedding model, namely \textit{all-MiniLM-L6-v2}. While this model provides a suitable balance between computational efficiency and semantic retrieval capability, it is not specifically optimized for aerospace engineering terminology. Domain-specific embedding models could potentially improve retrieval performance on highly technical documentation.
+
+Furthermore, the current validation campaign was performed on a limited knowledge base composed of twenty technical documents and one hundred manually generated queries. Although the obtained results demonstrate the effectiveness of the proposed retrieval strategy, a larger benchmark containing a higher variety of documents and automatically generated evaluation scenarios would provide a more comprehensive assessment.
+
+Finally, the current Storage Manager implementation focuses primarily on retrieval and data accessibility. Advanced knowledge management capabilities, such as automatic document updating, conflict detection between different sources, and temporal versioning of knowledge, represent possible future extensions required for deployment in a fully operational environment.
+
+These limitations do not affect the objectives of the Proof of Concept, whose main goal is to demonstrate the feasibility of a modular decision-support architecture. However, they highlight the main aspects requiring further development before industrial adoption.
+
+
+\section{AI Manager Module}
+

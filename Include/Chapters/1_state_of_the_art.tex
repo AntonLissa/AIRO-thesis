@@ -1,5 +1,5 @@
 % !TeX root = ../Report.tex
-\section{The Evolution of Natural Language Processing and Decision Support Systems}
+\chapter{The Evolution of Natural Language Processing and Decision Support Systems}
 \label{sec:evolution_llm}
 
 The field of Natural Language Processing (NLP) has experienced a remarkable evolution over the past decades. Early approaches relied on manually engineered representations and statistical models, where language was treated as a collection of symbolic features rather than as a structured and contextual system. Advances in machine learning progressively shifted the focus toward distributed representations and neural architectures capable of learning linguistic patterns directly from data. This progression ultimately culminated in the Transformer architecture, which forms the foundation of modern Large Language Models (LLMs). Understanding this historical evolution is essential for appreciating the capabilities and limitations of current AI-based Decision Support Systems (DSS).
@@ -7,7 +7,7 @@ The field of Natural Language Processing (NLP) has experienced a remarkable evol
 The development of NLP can be broadly divided into three major phases. The first phase is characterized by sparse statistical representations such as Bag-of-Words and n-gram language models. The second phase introduced recurrent neural architectures capable of modeling sequential dependencies. Finally, the third phase replaced recurrence with attention mechanisms, enabling scalable contextual reasoning over long sequences.
 
 
-\subsection{Early Symbolic Approaches}
+\section{Early Symbolic Approaches}
 
 Early NLP systems were primarily based on symbolic representations and sparse statistical features. Rather than learning semantic representations from data, documents were encoded through manually designed features derived from word occurrences. One of the most influential representations was the \textit{Bag-of-Words} (BoW) model \cite{manning2008introduction, qader2019overview}. In this representation, each document is transformed into a vector containing the frequency of every word in a predefined vocabulary, while completely disregarding grammar, syntax, and word order.
 
@@ -86,7 +86,7 @@ A second limitation concerns scalability. As the value of $n$ increases, the num
 These shortcomings motivated the transition toward neural language models capable of learning continuous distributed representations instead of relying exclusively on explicit frequency counts.
 
 
-\subsection{Early Neural Approaches}
+\section{Early Neural Approaches}
 
 To overcome the limitations of n-gram models, early neural approaches introduced the idea of learning distributed representations over sequences. Simple Recurrent Networks (SRNs) by Elman \cite{elman1990finding} established a foundational architecture for processing sequential data and are considered a precursor to modern Recurrent Neural Networks (RNNs).
 
@@ -169,7 +169,7 @@ Despite their success, RNN-based architectures still process sequences sequentia
 This progression from BoW and n-gram models to RNNs and gated variants marks a fundamental shift in NLP: from static, order-agnostic representations toward dynamic, stateful systems capable of modeling language as a temporal process. This evolution forms the conceptual bridge toward modern contextual embedding methods and Transformer-based architectures.
 
 
-\subsection{From Static Embeddings to Sequential Modeling}
+\section{From Static Embeddings to Sequential Modeling}
 
 
 While recurrent architectures addressed the problem of modeling sequential dependencies, they still relied on input representations that did not explicitly capture semantic similarity between words. This motivated the development of distributed word representations, commonly referred to as word embeddings.
@@ -236,7 +236,7 @@ This weighted combination allows downstream models to dynamically exploit both l
 
 Although ELMo represented a major breakthrough by introducing contextual embeddings, it still relied on recurrent architectures to model sequences. Consequently, contextual representations had to be computed sequentially, limiting parallelization and making long-range dependency modeling computationally expensive. These limitations ultimately motivated the development of the Transformer architecture, which replaced recurrence with self-attention.
 
-\subsection{The Transformer Revolution}
+\section{The Transformer Revolution}
 The definitive breakthrough occurred with the publication of \textit{"Attention Is All You Need"} \cite{vaswani2017attention}. Vaswani et al. proposed a novel architecture entirely based on the \textbf{Self-Attention mechanism}, dispensing with recurrence and convolutions. The core innovation lies in the model's ability to weigh the significance of different parts of the input data independently of their distance in the sequence. Mathematically, the Scaled Dot-Product Attention is defined as:
 
 \begin{equation}
@@ -309,7 +309,7 @@ Despite its advantages, the standard self-attention mechanism exhibits quadratic
 
 Collectively, these innovations established the Transformer as the dominant neural architecture for NLP and, subsequently, for a wide range of machine learning applications. More importantly, its scalability and training efficiency made it possible to train models on unprecedented amounts of data and parameters, laying the foundation for the emergence of modern Large Language Models.
 
-\subsection{Scaling Laws and Emergent Abilities}
+\section{Scaling Laws and Emergent Abilities}
 The evolution culminated in the transition from task-specific models to \textit{Large Language Models} (LLMs). This shift was driven by the discovery of scaling laws \cite{kaplan2020scaling}, which suggested that model performance, and consequently capabilities on NLP tasks, improve  with increases in parameter count, dataset size, and compute, which can indirectly improve the performance of systems that leverage NLP components, including DSS applications. 
 
 Furthermore, the introduction of the Pre-training and Fine-tuning paradigm, popularized by BERT \cite{devlin2019bert} and the GPT series \cite{radford2019language}, enabled these systems to internalize vast amounts of world knowledge. This trajectory led to the discovery of \textit{emergent abilities}: capabilities not explicitly present in smaller models, such as in-context learning and multi-step logical reasoning \cite{wei2022emergent}.
@@ -317,7 +317,7 @@ These behaviors are referred to as emergent because they are not explicitly prog
 For modern Decision Support Systems, this represents a transition from "engines that process text" to systems that can generate knowledge-informed recommendations, while human oversight remains necessary.
 
 
-\subsection{Foundation Models and General-Purpose AI}
+\section{Foundation Models and General-Purpose AI}
 \label{sec:foundation_models}
 
 The scalability of the Transformer architecture, coupled with the empirical discovery of scaling laws, has catalyzed a paradigm shift in artificial intelligence: the emergence of \textbf{Foundation Models}. As defined by Bommasani et al. \cite{bommasani2021opportunities}, a foundation model is any model trained on a vast amount of data, typically using self-supervision at scale, that can be adapted (e.g., fine-tuned) to a wide range of downstream tasks. This represents a fundamental departure from the traditional AI development lifecycle, where models were painstakingly engineered for single, narrow objectives. Instead, foundation models serve as a versatile base, encoding broad representations of language, logic, and world knowledge that can be repurposed across diverse domains, including the sophisticated requirements of Decision Support Systems.
@@ -328,14 +328,14 @@ However, the rapid expansion of model size brought to light significant challeng
 
 
 
-\subsection{Alignment and Instruction Tuning}
+\section{Alignment and Instruction Tuning}
 Although large language models acquired broad linguistic knowledge through large-scale pre-training, they were not inherently optimized to follow user instructions or assist with practical tasks like Decision Support Systems, this powerful capability was enabled by the development of \textit{Alignment} techniques. While base LLMs possess extensive statistical information derived from their training corpora, they often fail to follow specific user intents or produce helpful, safe, and concise reasoning. To bridge this gap, \textbf{Instruction Tuning} was introduced, most notably through the work on \textbf{InstructGPT} by Ouyang et al. \cite{ouyang2022training}. This process involves \textbf{fine-tuning} the model on a dataset of human-written prompt-response pairs, instruction tuning changes the training distribution by exposing the model to datasets composed of instructions paired with high-quality responses, thereby teaching it to better interpret and follow user requests.
 
 A critical component of this alignment is \textbf{Reinforcement Learning from Human Feedback (RLHF)}. This methodology, popularized by Christiano et al. \cite{christiano2017deep} and later refined for LLMs \cite{stiennon2020learning}, allows models to optimize their outputs based on human preferences. 
 The RLHF pipeline typically consists of three stages. First, a supervised fine-tuning phase is performed, where the initial language model is trained on high-quality demonstrations generated by human annotators. Second, a reward model is trained from human preference comparisons, where evaluators rank alternative model outputs according to criteria such as helpfulness, relevance, and overall quality. Finally, the language model is optimized against the learned reward model using reinforcement learning, typically through Proximal Policy Optimization (PPO) \cite{schulman2017proximal}. By incorporating human preferences into the optimization process, RLHF guides the model toward outputs that better satisfy alignment objectives, although limitations such as hallucinations, biases, and sensitivity to reward model imperfections remain. 
 While RLHF has been the industry standard for alignment, its reliance on a separately trained reward model and the computational complexity of the Proximal Policy Optimization (PPO) algorithm have led to the development of more stable alternatives. A prominent breakthrough is \textbf{Direct Preference Optimization} (DPO), introduced by Rafailov et al. \cite{rafailov2023direct}. DPO simplifies the alignment process by mathematically deriving a direct mapping between the reward function and the optimal policy, effectively bypassing the need for a separate reward model and reinforcement learning training loops. By optimizing the language model directly on preference data via a simple classification loss, DPO offers a computationally efficient and more stable approach to alignment, which has rapidly become a preferred method for fine-tuning modern Large Language Models.
 
-\subsection{The Reliability Gap: Hallucinations and Uncertainty}
+\section{The Reliability Gap: Hallucinations and Uncertainty}
 One of the primary obstacle to the integration of LLMs in critical Decision Support Systems (DSS) is the phenomenon of \textbf{hallucinations}, defined as the generation of factually incorrect or ungrounded statements despite high linguistic fluency \cite{ji2023survey}. 
 This stems from the underlying training objective of next-token log-likelihood, which prioritizes plausible linguistic continuation over factual verification. In a DSS context, \textbf{extrinsic hallucinations}, where the output cannot be verified from provided sources or real-world knowledge, are particularly hazardous, as the model may provide a confident but false justification for a recommendation \cite{Survey2025}.
 
@@ -362,7 +362,7 @@ Overall, this taxonomy underscores that mitigating hallucinations involves not o
 Recent work suggests that some failure modes traditionally framed as hallucinations may come not only from generative uncertainty but also from structural challenges in long-context evidence aggregation \cite{bianchi2025hidden}. Studies on retrieval in extended contexts show that the size and distribution of relevant information influence an LLM's ability to locate and integrate the correct evidence. When small but crucial “gold” contexts are embedded within much longer distractor passages, models exhibit reduced aggregation accuracy and increased positional sensitivity. These effects are particularly relevant for retrieval-augmented and agentic systems, where evidence sources often vary considerably in length. In such settings, short but important documents may be underutilized, potentially leading the model to produce unsupported outputs even when the necessary information is included in the input. These findings suggest that hallucination-related risks arise not only from calibration issues or insufficient grounding but also from context-size asymmetry and the design of evidence-aggregation pipelines.
 
 
-\subsection{Computational Burden and Compression Strategies for LLMs}
+\section{Computational Burden and Compression Strategies for LLMs}
 Even though LLMs are extremely useful they also are computationally expensive, the development of new models has been charcterized by an increase of the parameters size that grown to hundreds of billions of parameters in the last years, with hardware that are getting more and more powerful and optimized to keep up with the evolution of this technology \cite{li2024large}. 
 The main methods to reduce the cost are applicable during the fine-tuning stage or the inference task:
 \begin{itemize}
@@ -380,7 +380,7 @@ Compression techniques inevitably involve trade-offs between efficiency and perf
 
 
 
-\subsection{Reasoning Frameworks for Decision Support}
+\section{Reasoning Frameworks for Decision Support}
 Beyond architectural and alignment improvements, the operational use of LLMs in decision-making has been revolutionized by specialized prompting and reasoning frameworks. The introduction of \textbf{Chain-of-Thought (CoT)} prompting \cite{wei2022chain} demonstrated that forcing a model to generate intermediate reasoning steps significantly enhances performance on complex logical tasks. 
 
 While CoT provides a "slow thinking" approach essential for auditing a DSS, relying on a single greedy-decoded trajectory can lead to error propagation. To mitigate this, \textbf{Self-Consistency} \cite{wang2022self} introduces a decoding strategy that samples multiple reasoning paths and selects the most frequent marginal result, leveraging the intuition that complex problems often admit multiple paths to a unique correct answer.
@@ -399,7 +399,7 @@ When integrated with Retrieval-Augmented Generation (RAG) \cite{lewis2020retriev
 
 
 
-\subsection{Long-Context Modeling and Context Management}
+\section{Long-Context Modeling and Context Management}
 While early Transformer-based models were limited to relatively short context windows, modern LLMs have progressively expanded their capacity to process longer sequences. This evolution enables applications requiring the analysis of extensive documents, multi-turn conversations, and complex workflows involving heterogeneous information sources.
 However, the standard Transformer architecture suffers from a quadratic computational and memory complexity, $O(n^2)$, relative to sequence length $n$. This constraint turns the context window into a significant bottleneck: as sequence length increases, the memory footprint of the Key-Value (KV) cache grows linearly, often exhausting GPU VRAM during inference, while the self-attention mechanism becomes the primary computational latency driver.
 To overcome these limitations, recent research has focused on architecture and positional encoding advancements. 
@@ -411,7 +411,7 @@ Another problem is the increased risk of hallucinations and reasoning errors whe
 
 
 
-\subsection{Agentic Large Language Models}
+\section{Agentic Large Language Models}
 The evolution from Large Language Models to Agentic Large Language Models represents a shift from passive text generation toward autonomous task execution. While traditional LLMs operate primarily as reactive systems that map user prompts to generated responses, agentic architectures embed language models within broader computational systems that provide planning, memory, action executions, and, in some cases, profiling modules \cite{wang2024survey}.
 
 The \textbf{profiling module} defines the role, objectives, capabilities, and behavioral constraints of the agent. By specifying characteristics such as domain expertise, task objectives, or interaction style, the profile conditions the reasoning process and influences planning, memory retrieval, and action selection.
@@ -456,7 +456,7 @@ Beyond planning and acting, recent agentic systems increasingly incorporate expl
 
 Together, these components transform LLMs from passive generators into autonomous systems capable of reasoning, interacting with external environments, retaining experience, and improving their behavior over time. This transition provides the foundation for more advanced architectures, including multi-agent systems and agent-based Decision Support Systems, where multiple specialized components collaborate to solve complex tasks.
 
-\subsection{Modern LLM-based Decision Support Systems}
+\section{Modern LLM-based Decision Support Systems}
 The potential for LLMs to transform decision-making is underscored by Eigner and Händler \cite{eigner2024determinants}, who provide a comprehensive analysis of the determinants that govern successful human-AI collaboration. While traditional decision-making follows the classic intelligence-design-choice phases, the integration of LLMs introduces a far more complex set of variables. Their research highlights that effective support is not merely a technical challenge but a socio-technical one, involving a delicate interplay between technological aspects (such as prompt engineering and transparency), psychological factors (such as user mental models, trust, and decision-making styles), and decision-specific determinants (such as task difficulty and accountability). By mapping these interdependencies into a consolidated dependency framework, Eigner and Händler emphasize that improving decision quality requires moving beyond simple model performance to focus on the alignment between AI capabilities and human cognitive needs.
 The state-of-the-art in this domain has recently moved toward \textit{adaptive, multi-agent architectures} that operationalize these reasoning frameworks within high-stakes environments. A primary example is the work of Öğdü et al. \cite{ougdu2025adaptive}, who developed a multi-layered, adaptive Clinical Decision Support System (CDSS). Unlike traditional static models, this architecture integrates biomedical RAG with real-time web intelligence through a collaborative framework of autonomous agents. The system introduces several key innovations:
 

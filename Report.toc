@@ -1,12 +1,43 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{List of Figures}{iv}{chapter*.2}%
 \contentsline {chapter}{List of Tables}{v}{chapter*.3}%
-\contentsline {section}{\numberline {0.1}Proof of Concept Development}{1}{section.0.1}%
-\contentsline {subsection}{\numberline {0.1.1}Storage Manager \& RAG System}{1}{subsection.0.1.1}%
-\contentsline {subsubsection}{Architecture}{2}{section*.5}%
-\contentsline {subsubsection}{Document Chunking}{2}{section*.6}%
-\contentsline {subsubsection}{Embedding Generation}{3}{section*.8}%
-\contentsline {subsubsection}{Vector Storage}{4}{section*.9}%
-\contentsline {subsubsection}{Knowledge Memory Management}{4}{section*.10}%
-\contentsline {subsubsection}{RAG Validation}{6}{section*.11}%
-\contentsline {chapter}{Bibliography}{8}{table.caption.13}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}The Evolution of Natural Language Processing and Decision Support Systems}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Early Symbolic Approaches}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Early Neural Approaches}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}From Static Embeddings to Sequential Modeling}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}The Transformer Revolution}{9}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Scaling Laws and Emergent Abilities}{12}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Foundation Models and General-Purpose AI}{12}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Alignment and Instruction Tuning}{13}{section.2.7}%
+\contentsline {section}{\numberline {2.8}The Reliability Gap: Hallucinations and Uncertainty}{14}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Computational Burden and Compression Strategies for LLMs}{15}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Reasoning Frameworks for Decision Support}{16}{section.2.10}%
+\contentsline {section}{\numberline {2.11}Long-Context Modeling and Context Management}{17}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Agentic Large Language Models}{18}{section.2.12}%
+\contentsline {section}{\numberline {2.13}Modern LLM-based Decision Support Systems}{20}{section.2.13}%
+\contentsline {chapter}{\numberline {3}System Engineering \& Requirement Analysis}{24}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Domain and Mission Context}{24}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The Mission Manager's Role and Challenges}{25}{section.3.2}%
+\contentsline {section}{\numberline {3.3}FUNES System Overview}{25}{section.3.3}%
+\contentsline {section}{\numberline {3.4}System and Software Requirement Specification according to ECSS}{26}{section.3.4}%
+\contentsline {section}{\numberline {3.5}System Engineering Approach}{27}{section.3.5}%
+\contentsline {section}{\numberline {3.6}System Requirements Definition}{27}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Software Architecture}{28}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Software Requirement Document}{28}{section.3.8}%
+\contentsline {chapter}{\numberline {4}Proof of Concept Development}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{29}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Storage Manager}{30}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{30}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Rag System}{30}{subsection.4.2.2}%
+\contentsline {paragraph}{Document Chunking}{31}{section*.8}%
+\contentsline {paragraph}{Embedding Generation}{33}{section*.10}%
+\contentsline {paragraph}{Vector Storage}{33}{section*.11}%
+\contentsline {paragraph}{Knowledge Memory Management}{34}{section*.12}%
+\contentsline {paragraph}{RAG Validation}{36}{section*.14}%
+\contentsline {paragraph}{Limitations}{38}{section*.17}%
+\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{38}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{38}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{40}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}AI Manager Module}{40}{section.4.3}%
+\contentsline {chapter}{Bibliography}{41}{section.4.3}%

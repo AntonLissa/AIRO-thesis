@@ -1,8 +1,331 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{alansari2025large}
+A.~Alansari and H.~Luqman.
+\newblock Large language models hallucination: A comprehensive survey.
+\newblock {\em arXiv preprint arXiv:2510.06265}, 2025.
+
+\bibitem{alkayyal2025llm}
+M.~Alkayyal, S.~Malberg, and G.~Groh.
+\newblock An llm-based decision support system for strategic decision-making.
+\newblock In {\em Joint European Conference on Machine Learning and Knowledge Discovery in Databases}, pages 460--464. Springer, 2025.
+
+\bibitem{Survey2025}
+D.~Anh-Hoang, V.~Tran, and L.-M. Nguyen.
+\newblock Survey and analysis of hallucinations in large language models: attribution to prompting strategies or model behavior.
+\newblock {\em Frontiers in Artificial Intelligence}, Volume 8 - 2025, 2025.
+
+\bibitem{bengio2003neural}
+Y.~Bengio, R.~Ducharme, P.~Vincent, and C.~Jauvin.
+\newblock A neural probabilistic language model.
+\newblock {\em Journal of machine learning research}, 3(Feb):1137--1155, 2003.
+
+\bibitem{besta2024graph}
+M.~Besta, N.~Blach, A.~Kubicek, R.~Gerstenberger, M.~Podstawski, L.~Gianinazzi, J.~Gajda, T.~Lehmann, H.~Niewiadomski, P.~Nyczyk, et~al.
+\newblock Graph of thoughts: Solving elaborate problems with large language models.
+\newblock In {\em Proceedings of the AAAI conference on artificial intelligence}, volume~38, pages 17682--17690, 2024.
+
+\bibitem{bianchi2025hidden}
+O.~Bianchi, M.~J. Koretsky, M.~Willey, C.~X. Alvarado, T.~Nayak, A.~Asija, N.~Kuznetsov, M.~A. Nalls, F.~Faghri, and D.~Khashabi.
+\newblock Hidden in the haystack: Smaller needles are more difficult for llms to find.
+\newblock {\em arXiv preprint arXiv:2505.18148}, 2025.
+
+\bibitem{boiko2023autonomous}
+D.~A. Boiko, R.~MacKnight, B.~Kline, and G.~Gomes.
+\newblock Autonomous chemical research with large language models.
+\newblock {\em Nature}, 624(7992):570--578, 2023.
+
+\bibitem{DBLP:journals/corr/BojanowskiGJM16}
+P.~Bojanowski, E.~Grave, A.~Joulin, and T.~Mikolov.
+\newblock Enriching word vectors with subword information.
+\newblock {\em CoRR}, abs/1607.04606, 2016.
+
+\bibitem{bommasani2021opportunities}
+R.~Bommasani, D.~A. Hudson, E.~Adeli, R.~Altman, S.~Arora, S.~von Arx, M.~S. Bernstein, J.~Bohg, A.~Bosselut, E.~Brunskill, et~al.
+\newblock On the opportunities and risks of foundation models.
+\newblock {\em arXiv preprint arXiv:2108.07258}, 2021.
+
+\bibitem{brown2020language}
+T.~Brown, B.~Mann, N.~Ryder, M.~Subbiah, J.~D. Kaplan, P.~Dhariwal, A.~Neelakantan, P.~Shyam, G.~Sastry, A.~Askell, et~al.
+\newblock Language models are few-shot learners.
+\newblock {\em Advances in neural information processing systems}, 33:1877--1901, 2020.
+
+\bibitem{chen2023extendingcontextwindowlarge}
+S.~Chen, S.~Wong, L.~Chen, and Y.~Tian.
+\newblock Extending context window of large language models via positional interpolation, 2023.
+
+\bibitem{christiano2017deep}
+P.~F. Christiano, J.~Leike, T.~Brown, M.~Martic, S.~Legg, and D.~Amodei.
+\newblock Deep reinforcement learning from human preferences.
+\newblock {\em Advances in neural information processing systems}, 30, 2017.
 
 \bibitem{cormack2009reciprocal}
 G.~V. Cormack, C.~L. Clarke, and S.~Buettcher.
 \newblock Reciprocal rank fusion outperforms condorcet and individual rank learning methods.
 \newblock In {\em Proceedings of the 32nd international ACM SIGIR conference on Research and development in information retrieval}, pages 758--759, 2009.
+
+\bibitem{NEURIPS2022_67d57c32}
+T.~Dao, D.~Fu, S.~Ermon, A.~Rudra, and C.~R\'{e}.
+\newblock Flashattention: Fast and memory-efficient exact attention with io-awareness.
+\newblock In S.~Koyejo, S.~Mohamed, A.~Agarwal, D.~Belgrave, K.~Cho, and A.~Oh, editors, {\em Advances in Neural Information Processing Systems}, volume~35, pages 16344--16359. Curran Associates, Inc., 2022.
+
+\bibitem{devlin2019bert}
+J.~Devlin, M.-W. Chang, K.~Lee, and K.~Toutanova.
+\newblock Bert: Pre-training of deep bidirectional transformers for language understanding.
+\newblock In {\em Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics: human language technologies, volume 1 (long and short papers)}, pages 4171--4186, 2019.
+
+\bibitem{eigner2024determinants}
+E.~Eigner and T.~H{\"a}ndler.
+\newblock Determinants of llm-assisted decision-making.
+\newblock {\em arXiv preprint arXiv:2402.17385}, 2024.
+
+\bibitem{elman1990finding}
+J.~L. Elman.
+\newblock Finding structure in time.
+\newblock {\em Cognitive science}, 14(2):179--211, 1990.
+
+\bibitem{fink2014n}
+G.~A. Fink.
+\newblock n-gram models.
+\newblock In {\em Markov Models for Pattern Recognition: From Theory to Applications}, pages 107--127. Springer, 2014.
+
+\bibitem{frantar2022gptq}
+E.~Frantar, S.~Ashkboos, T.~Hoefler, and D.~Alistarh.
+\newblock Gptq: Accurate post-training quantization for generative pre-trained transformers.
+\newblock {\em arXiv preprint arXiv:2210.17323}, 2022.
+
+\bibitem{gordon2020compressing}
+M.~Gordon, K.~Duh, and N.~Andrews.
+\newblock Compressing bert: Studying the effects of weight pruning on transfer learning.
+\newblock In {\em Proceedings of the 5th Workshop on Representation Learning for NLP}, pages 143--155, 2020.
+
+\bibitem{grosse2017lecture}
+R.~Grosse.
+\newblock Lecture 15: Exploding and vanishing gradients.
+\newblock {\em University of Toronto Computer Science}, 2017.
+
+\bibitem{han2024parameter}
+Z.~Han, C.~Gao, J.~Liu, J.~Zhang, and S.~Q. Zhang.
+\newblock Parameter-efficient fine-tuning for large models: A comprehensive survey.
+\newblock {\em arXiv preprint arXiv:2403.14608}, 2024.
+
+\bibitem{harris1954distributional}
+Z.~S. Harris.
+\newblock Distributional structure.
+\newblock {\em Word}, 10(2-3):146--162, 1954.
+
+\bibitem{hinton2015distilling}
+G.~Hinton, O.~Vinyals, and J.~Dean.
+\newblock Distilling the knowledge in a neural network.
+\newblock {\em arXiv preprint arXiv:1503.02531}, 2015.
+
+\bibitem{hochreiter1997long}
+S.~Hochreiter and J.~Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural computation}, 9(8):1735--1780, 1997.
+
+\bibitem{hoffmann2022training}
+J.~Hoffmann, S.~Borgeaud, A.~Mensch, E.~Buchatskaya, T.~Cai, E.~Rutherford, D.~Casas, L.~A. Hendricks, J.~Welbl, A.~Clark, et~al.
+\newblock Training compute-optimal large language models.
+\newblock {\em arXiv preprint arXiv:2203.15556}, 10, 2022.
+
+\bibitem{hu2022lora}
+E.~J. Hu, Y.~Shen, P.~Wallis, Z.~Allen-Zhu, Y.~Li, S.~Wang, L.~Wang, W.~Chen, et~al.
+\newblock Lora: Low-rank adaptation of large language models.
+\newblock {\em Iclr}, 1(2):3, 2022.
+
+\bibitem{ji2023survey}
+Z.~Ji, N.~Lee, R.~Frieske, T.~Yu, D.~Su, Y.~Xu, E.~Ishii, Y.~J. Bang, A.~Madotto, and P.~Fung.
+\newblock Survey of hallucination in natural language generation.
+\newblock {\em ACM computing surveys}, 55(12):1--38, 2023.
+
+\bibitem{jiang2021can}
+Z.~Jiang, J.~Araki, H.~Ding, and G.~Neubig.
+\newblock How can we know when language models know? on the calibration of language models for question answering.
+\newblock {\em Transactions of the Association for Computational Linguistics}, 9:962--977, 09 2021.
+
+\bibitem{smartcities8010019}
+A.~Kalyuzhnaya, S.~Mityagin, E.~Lutsenko, A.~Getmanov, Y.~Aksenkin, K.~Fatkhiev, K.~Fedorin, N.~O. Nikitin, N.~Chichkova, V.~Vorona, and A.~Boukhanovsky.
+\newblock Llm agents for smart city management: Enhancing decision support through multi-agent ai systems.
+\newblock {\em Smart Cities}, 8(1), 2025.
+
+\bibitem{kaplan2020scaling}
+J.~Kaplan, S.~McCandlish, T.~Henighan, T.~B. Brown, B.~Chess, R.~Child, S.~Gray, A.~Radford, J.~Wu, and D.~Amodei.
+\newblock Scaling laws for neural language models.
+\newblock {\em arXiv preprint arXiv:2001.08361}, 2020.
+
+\bibitem{lewis2020retrieval}
+P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal, H.~K{\"u}ttler, M.~Lewis, W.-t. Yih, T.~Rockt{\"a}schel, et~al.
+\newblock Retrieval-augmented generation for knowledge-intensive nlp tasks.
+\newblock {\em Advances in neural information processing systems}, 33:9459--9474, 2020.
+
+\bibitem{li2024large}
+J.~Li, J.~Xu, S.~Huang, Y.~Chen, W.~Li, J.~Liu, Y.~Lian, J.~Pan, L.~Ding, H.~Zhou, et~al.
+\newblock Large language model inference acceleration: A comprehensive hardware perspective.
+\newblock {\em arXiv preprint arXiv:2410.04466}, 2024.
+
+\bibitem{li_et_al:OASIcs.SpaceCHI.2025.6}
+K.~Li and R.~S. Whittle.
+\newblock {Toward an Earth-Independent System for EVA Mission Planning: Integrating Physical Models, Domain Knowledge, and Agentic RAG to Provide Explainable LLM-Based Decision Support}.
+\newblock In L.~Bensch, T.~Nilsson, M.~Nisser, P.~Pataranutaporn, A.~Schmidt, and V.~Sumini, editors, {\em Advancing Human-Computer Interaction for Space Exploration (SpaceCHI 2025)}, volume 130 of {\em Open Access Series in Informatics (OASIcs)}, pages 6:1--6:17, Dagstuhl, Germany, 2025. Schloss Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik.
+
+\bibitem{awq}
+J.~Lin, J.~Tang, H.~Tang, S.~Yang, W.-M. Chen, W.-C. Wang, G.~Xiao, X.~Dang, C.~Gan, and S.~Han.
+\newblock Awq: Activation-aware weight quantization for on-device llm compression and acceleration.
+\newblock In P.~Gibbons, G.~Pekhimenko, and C.~D. Sa, editors, {\em Proceedings of Machine Learning and Systems}, volume~6, pages 87--100, 2024.
+
+\bibitem{liu-etal-2024-lost}
+N.~F. Liu, K.~Lin, J.~Hewitt, A.~Paranjape, M.~Bevilacqua, F.~Petroni, and P.~Liang.
+\newblock Lost in the middle: How language models use long contexts.
+\newblock {\em Transactions of the Association for Computational Linguistics}, 12:157--173, 2024.
+
+\bibitem{manning2008introduction}
+C.~D. Manning.
+\newblock {\em Introduction to information retrieval}.
+\newblock Syngress Publishing,, 2008.
+
+\bibitem{maranto2024llmsat}
+D.~Maranto.
+\newblock Llmsat: A large language model-based goal-oriented agent for autonomous space exploration.
+\newblock {\em arXiv preprint arXiv:2405.01392}, 2024.
+
+\bibitem{mikolov2013efficient}
+T.~Mikolov, K.~Chen, G.~Corrado, and J.~Dean.
+\newblock Efficient estimation of word representations in vector space.
+\newblock {\em arXiv preprint arXiv:1301.3781}, 2013.
+
+\bibitem{ougdu2025adaptive}
+{\c{C}}.~U. {\"O}{\u{g}}d{\"u}, K.~Arslano{\u{g}}lu, and M.~Karak{\"o}se.
+\newblock An adaptive multi-agent llm-based clinical decision support system integrating biomedical rag and web intelligence.
+\newblock {\em IEEE Access}, 2025.
+
+\bibitem{ouyang2022training}
+L.~Ouyang, J.~Wu, X.~Jiang, D.~Almeida, C.~Wainwright, P.~Mishkin, C.~Zhang, S.~Agarwal, K.~Slama, A.~Ray, et~al.
+\newblock Training language models to follow instructions with human feedback.
+\newblock {\em Advances in neural information processing systems}, 35:27730--27744, 2022.
+
+\bibitem{10.1145/3586183.3606763}
+J.~S. Park, J.~O'Brien, C.~J. Cai, M.~R. Morris, P.~Liang, and M.~S. Bernstein.
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock In {\em Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology}, UIST '23, New York, NY, USA, 2023. Association for Computing Machinery.
+
+\bibitem{peng2023yarn}
+B.~Peng, J.~Quesnelle, H.~Fan, and E.~Shippole.
+\newblock Yarn: Efficient context window extension of large language models, 2023.
+
+\bibitem{pennington2014glove}
+J.~Pennington, R.~Socher, and C.~D. Manning.
+\newblock Glove: Global vectors for word representation.
+\newblock In {\em Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)}, pages 1532--1543, 2014.
+
+\bibitem{peters-etal-2018-deep}
+M.~E. Peters, M.~Neumann, M.~Iyyer, M.~Gardner, C.~Clark, K.~Lee, and L.~Zettlemoyer.
+\newblock Deep contextualized word representations.
+\newblock In M.~Walker, H.~Ji, and A.~Stent, editors, {\em Proceedings of the 2018 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long Papers)}, pages 2227--2237, New Orleans, Louisiana, June 2018. Association for Computational Linguistics.
+
+\bibitem{qader2019overview}
+W.~A. Qader, M.~M. Ameen, and B.~I. Ahmed.
+\newblock An overview of bag of words; importance, implementation, applications, and challenges.
+\newblock In {\em 2019 international engineering conference (IEC)}, pages 200--204. IEEE, 2019.
+
+\bibitem{radford2019language}
+A.~Radford, J.~Wu, R.~Child, D.~Luan, D.~Amodei, I.~Sutskever, et~al.
+\newblock Language models are unsupervised multitask learners.
+\newblock {\em OpenAI blog}, 1(8):9, 2019.
+
+\bibitem{rafailov2023direct}
+R.~Rafailov, A.~Sharma, E.~Mitchell, C.~D. Manning, S.~Ermon, and C.~Finn.
+\newblock Direct preference optimization: Your language model is secretly a reward model.
+\newblock {\em Advances in neural information processing systems}, 36:53728--53741, 2023.
+
+\bibitem{rumelhart1986learning}
+D.~E. Rumelhart, G.~E. Hinton, and R.~J. Williams.
+\newblock Learning representations by back-propagating errors.
+\newblock {\em nature}, 323(6088):533--536, 1986.
+
+\bibitem{sanh2019distilbert}
+V.~Sanh, L.~Debut, J.~Chaumond, and T.~Wolf.
+\newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and lighter.
+\newblock {\em arXiv preprint arXiv:1910.01108}, 2019.
+
+\bibitem{schick2023toolformer}
+T.~Schick, J.~Dwivedi-Yu, R.~Dess{\`\i}, R.~Raileanu, M.~Lomeli, E.~Hambro, L.~Zettlemoyer, N.~Cancedda, and T.~Scialom.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock {\em Advances in neural information processing systems}, 36:68539--68551, 2023.
+
+\bibitem{schulman2017proximal}
+J.~Schulman, F.~Wolski, P.~Dhariwal, A.~Radford, and O.~Klimov.
+\newblock Proximal policy optimization algorithms.
+\newblock {\em arXiv preprint arXiv:1707.06347}, 2017.
+
+\bibitem{shinn2023reflexion}
+N.~Shinn, F.~Cassano, A.~Gopinath, K.~Narasimhan, and S.~Yao.
+\newblock Reflexion: Language agents with verbal reinforcement learning.
+\newblock {\em Advances in neural information processing systems}, 36:8634--8652, 2023.
+
+\bibitem{sreenivas2024llm}
+S.~T. Sreenivas, S.~Muralidharan, R.~Joshi, M.~Chochowski, A.~S. Mahabaleshwarkar, G.~Shen, J.~Zeng, Z.~Chen, Y.~Suhara, S.~Diao, et~al.
+\newblock Llm pruning and distillation in practice: The minitron approach.
+\newblock {\em arXiv preprint arXiv:2408.11796}, 2024.
+
+\bibitem{stiennon2020learning}
+N.~Stiennon, L.~Ouyang, J.~Wu, D.~Ziegler, R.~Lowe, C.~Voss, A.~Radford, D.~Amodei, and P.~F. Christiano.
+\newblock Learning to summarize with human feedback.
+\newblock {\em Advances in neural information processing systems}, 33:3008--3021, 2020.
+
+\bibitem{su2024roformer}
+J.~Su, M.~Ahmed, Y.~Lu, S.~Pan, W.~Bo, and Y.~Liu.
+\newblock Roformer: Enhanced transformer with rotary position embedding.
+\newblock {\em Neurocomputing}, 568:127063, 2024.
+
+\bibitem{vaswani2017attention}
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez, {\L}.~Kaiser, and I.~Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em Advances in neural information processing systems}, 30, 2017.
+
+\bibitem{wang2024survey}
+L.~Wang, C.~Ma, X.~Feng, Z.~Zhang, H.~Yang, J.~Zhang, Z.~Chen, J.~Tang, X.~Chen, Y.~Lin, et~al.
+\newblock A survey on large language model based autonomous agents.
+\newblock {\em Frontiers of Computer Science}, 18(6):186345, 2024.
+
+\bibitem{wang2020linformer}
+S.~Wang, B.~Z. Li, M.~Khabsa, H.~Fang, and H.~Ma.
+\newblock Linformer: Self-attention with linear complexity.
+\newblock {\em arXiv preprint arXiv:2006.04768}, 2020.
+
+\bibitem{wang2022self}
+X.~Wang, J.~Wei, D.~Schuurmans, Q.~Le, E.~Chi, S.~Narang, A.~Chowdhery, and D.~Zhou.
+\newblock Self-consistency improves chain of thought reasoning in language models.
+\newblock {\em arXiv preprint arXiv:2203.11171}, 2022.
+
+\bibitem{wei2022emergent}
+J.~Wei, Y.~Tay, R.~Bommasani, C.~Raffel, B.~Zoph, S.~Borgeaud, D.~Yogatama, M.~Bosma, D.~Zhou, D.~Metzler, et~al.
+\newblock Emergent abilities of large language models.
+\newblock {\em arXiv preprint arXiv:2206.07682}, 2022.
+
+\bibitem{wei2022chain}
+J.~Wei, X.~Wang, D.~Schuurmans, M.~Bosma, F.~Xia, E.~Chi, Q.~V. Le, D.~Zhou, et~al.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock {\em Advances in neural information processing systems}, 35:24824--24837, 2022.
+
+\bibitem{xiao2023smoothquant}
+G.~Xiao, J.~Lin, M.~Seznec, H.~Wu, J.~Demouth, and S.~Han.
+\newblock Smoothquant: Accurate and efficient post-training quantization for large language models.
+\newblock In {\em International conference on machine learning}, pages 38087--38099. PMLR, 2023.
+
+\bibitem{xu2023qa}
+Y.~Xu, L.~Xie, X.~Gu, X.~Chen, H.~Chang, H.~Zhang, Z.~Chen, X.~Zhang, and Q.~Tian.
+\newblock Qa-lora: Quantization-aware low-rank adaptation of large language models.
+\newblock {\em arXiv preprint arXiv:2309.14717}, 2023.
+
+\bibitem{yao2023tree}
+S.~Yao, D.~Yu, J.~Zhao, I.~Shafran, T.~Griffiths, Y.~Cao, and K.~Narasimhan.
+\newblock Tree of thoughts: Deliberate problem solving with large language models.
+\newblock {\em Advances in neural information processing systems}, 36:11809--11822, 2023.
+
+\bibitem{yao2022react}
+S.~Yao, J.~Zhao, D.~Yu, N.~Du, I.~Shafran, K.~R. Narasimhan, and Y.~Cao.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock In {\em The eleventh international conference on learning representations}, 2022.
 
 \end{thebibliography}
