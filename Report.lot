@@ -3,6 +3,7 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces Bag-of-Words representation of two syntactically different but lexically identical sentences.}}{3}{table.caption.5}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Capability-Function Traceability Summary}}{31}{table.caption.13}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Retrieval performance obtained during the Storage Manager validation.}}{37}{table.caption.15}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Position of the correct document within the retrieved Top-5 results.}}{37}{table.caption.16}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Retrieval performance obtained during the Storage Manager validation.}}{48}{table.caption.41}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Position of the correct document within the retrieved Top-5 results.}}{48}{table.caption.42}%

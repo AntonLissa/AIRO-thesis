@@ -12,12 +12,12 @@
 \@istfilename{Report.ist}
 \@glsorder{word}
 \babel@aux{english}{}
-\@writefile{toc}{\contentsline {chapter}{List of Figures}{iv}{chapter*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{List of Figures}{v}{chapter*.2}\protected@file@percent }
 \citation{vaswani2017attention}
 \citation{vaswani2017attention}
 \citation{wang2024survey}
 \citation{wang2024survey}
-\@writefile{toc}{\contentsline {chapter}{List of Tables}{v}{chapter*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{List of Tables}{vi}{chapter*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -129,39 +129,75 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}The Mission Manager's Role and Challenges}{25}{section.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}FUNES System Overview}{25}{section.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}System and Software Requirement Specification according to ECSS}{26}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1} Citare ECSS-E-ST-10C Rev.1 per system engineering ECSS-E-ST-40C Rev.1 per software engineering ECSS-Q-ST-80C per software product assurance }{27}{subsection.3.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}System Engineering Approach}{27}{section.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.6}System Requirements Definition}{27}{section.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.7}Software Architecture}{28}{section.3.7}\protected@file@percent }
-\newlabel{sec:software architecture}{{3.7}{28}{Software Architecture}{section.3.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.8}Software Requirement Document}{28}{section.3.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Proof of Concept Development}{29}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Software Requirement Specification}{28}{section.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.1}Functional Decomposition and Allocation}{28}{subsection.3.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C-01: Mission Data Ingestion Capability}{28}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C-02: AI-based Analysis and Decision Support Capability}{29}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C-03: Mission Status Visualization and Operator Interaction Capability}{29}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C-04: Configuration and Model Lifecycle Management Capability}{30}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C-05: Persistent Storage and Historical Retrieval Capability}{30}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.2}Software Architecture}{30}{subsection.3.7.2}\protected@file@percent }
+\newlabel{sec:software architecture}{{3.7.2}{30}{Software Architecture}{subsection.3.7.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Capability-Function Traceability Summary}}{31}{table.caption.13}\protected@file@percent }
+\newlabel{tab:function_allocation}{{3.1}{31}{Capability-Function Traceability Summary}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Configuration Items Breakdown}{31}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{CI-1 -- Data Processing Manager (DPM)}{31}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{CI-2 -- AI Analytics Manager (AIM)}{32}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{CI-3 -- Decision Support Interface (DSI / User Interface)}{32}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{CI-4 -- Configuration \& Model Management (CMM)}{33}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{CI-5 -- Storage Manager (SM)}{33}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{External System Interfaces}{33}{section*.20}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces The Funes high level software architecture is composed of 5 Configuration Items. The data flows from external subsystems to the Data Processing Manager (DPM) module which will turn them into an internal standard data representation after performing cleaning and validation. The data is then fed to the Storage Manager (SM) for beign stored and to the AI Analytics for AI processing. The user utilizes the system through the Decision Support Interface (DSI). The Config \& model management module is responsible for the system configuration and AI control. }}{34}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:funes architecture}{{3.1}{34}{The Funes high level software architecture is composed of 5 Configuration Items. The data flows from external subsystems to the Data Processing Manager (DPM) module which will turn them into an internal standard data representation after performing cleaning and validation. The data is then fed to the Storage Manager (SM) for beign stored and to the AI Analytics for AI processing. The user utilizes the system through the Decision Support Interface (DSI). The Config \& model management module is responsible for the system configuration and AI control}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.3}Software Design}{34}{subsection.3.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{CI-1 - Data Processing Manager}{34}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{CI-2 - AI Analytics Manager}{35}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{CI-3 - Decision Support Interface}{35}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{CI-4 - Configuration and Model Management}{36}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{CI-5 - Storage Manager}{36}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Deployment and Integration Environment}{36}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.4}System Data Flows and Operational Use Cases}{37}{subsection.3.7.4}\protected@file@percent }
+\newlabel{sec:data_flows}{{3.7.4}{37}{System Data Flows and Operational Use Cases}{subsection.3.7.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{UC-1: Near Real-Time Anomaly Detection and Recommendation (Nominal, Fully Automatic)}{37}{section*.28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Data flow of use case 1}}{38}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:funes df 1}{{3.2}{38}{Data flow of use case 1}{figure.caption.29}{}}
+\@writefile{toc}{\contentsline {paragraph}{UC-2: Operator Conversational Investigation via AI-Assisted Chatbot}{38}{section*.30}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Data flow of use case 2 }}{38}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:funes df 2}{{3.3}{38}{Data flow of use case 2}{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {paragraph}{UC-3: Operator-Initiated Dashboard Investigation}{39}{section*.32}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Data flow of use case 3}}{39}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:funes df 3}{{3.4}{39}{Data flow of use case 3}{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Proof of Concept Development}{40}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{29}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Storage Manager}{30}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{30}{subsection.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Rag System}{30}{subsection.4.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Document Chunking}{31}{section*.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Document chunking workflow implemented in the Storage Manager. The document is preprocessed for metadata extraction like: "chunk\_id", "content\_hash", "source", "title", "author", "last\_modified", "page\_number", "chunk\_index\_in\_page", "chunk\_size" and "format". Then the repetitive parrterns like page headers and footers are removed. The text is then cleaned and transformed into markdown. Finally the chunking process will turn the text into vectors that are going to be associated with the metadata and the original text.}}{33}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:chunking_pipeline}{{4.1}{33}{Document chunking workflow implemented in the Storage Manager. The document is preprocessed for metadata extraction like: "chunk\_id", "content\_hash", "source", "title", "author", "last\_modified", "page\_number", "chunk\_index\_in\_page", "chunk\_size" and "format". Then the repetitive parrterns like page headers and footers are removed. The text is then cleaned and transformed into markdown. Finally the chunking process will turn the text into vectors that are going to be associated with the metadata and the original text}{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {paragraph}{Embedding Generation}{33}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Vector Storage}{33}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Knowledge Memory Management}{34}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{40}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Storage Manager}{41}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{41}{subsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Rag System}{41}{subsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Document Chunking}{42}{section*.34}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Document chunking workflow implemented in the Storage Manager. The document is preprocessed for metadata extraction like: "chunk\_id", "content\_hash", "source", "title", "author", "last\_modified", "page\_number", "chunk\_index\_in\_page", "chunk\_size" and "format". Then the repetitive parrterns like page headers and footers are removed. The text is then cleaned and transformed into markdown. Finally the chunking process will turn the text into vectors that are going to be associated with the metadata and the original text.}}{44}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:chunking_pipeline}{{4.1}{44}{Document chunking workflow implemented in the Storage Manager. The document is preprocessed for metadata extraction like: "chunk\_id", "content\_hash", "source", "title", "author", "last\_modified", "page\_number", "chunk\_index\_in\_page", "chunk\_size" and "format". Then the repetitive parrterns like page headers and footers are removed. The text is then cleaned and transformed into markdown. Finally the chunking process will turn the text into vectors that are going to be associated with the metadata and the original text}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {paragraph}{Embedding Generation}{44}{section*.36}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Vector Storage}{44}{section*.37}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Knowledge Memory Management}{45}{section*.38}\protected@file@percent }
 \citation{cormack2009reciprocal}
 \citation{cormack2009reciprocal}
-\newlabel{eq:rrf}{{4.2}{35}{Knowledge Memory Management}{equation.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \textbf  {Architecture of the Hybrid RAG System.} The system integrates a \textit  {Storage Pipeline} (top) that cleans, dynamically chunks, and deduplicates raw documents using SHA-1 hashing, indexing unique content simultaneously into a dense vector database (\texttt  {ChromaDB}) and a sparse lexical in-memory index (\texttt  {BM25Okapi}, serialized via \texttt  {pickle}); and a \textit  {Retrieval Pipeline} (bottom) that executes parallel dense-semantic and sparse-keyword searches for a given query, merges the candidate results using Reciprocal Rank Fusion (RRF) based on a unified \texttt  {chunk\_id}, and re-ranks them using a Cross-Encoder model (\texttt  {BAAI/bge-reranker-base}) to output the top-$k$ most contextually relevant passages for the downstream LLM.}}{36}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:rag_architecture}{{4.2}{36}{\textbf {Architecture of the Hybrid RAG System.} The system integrates a \textit {Storage Pipeline} (top) that cleans, dynamically chunks, and deduplicates raw documents using SHA-1 hashing, indexing unique content simultaneously into a dense vector database (\texttt {ChromaDB}) and a sparse lexical in-memory index (\texttt {BM25Okapi}, serialized via \texttt {pickle}); and a \textit {Retrieval Pipeline} (bottom) that executes parallel dense-semantic and sparse-keyword searches for a given query, merges the candidate results using Reciprocal Rank Fusion (RRF) based on a unified \texttt {chunk\_id}, and re-ranks them using a Cross-Encoder model (\texttt {BAAI/bge-reranker-base}) to output the top-$k$ most contextually relevant passages for the downstream LLM}{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {paragraph}{RAG Validation}{36}{section*.14}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Retrieval performance obtained during the Storage Manager validation.}}{37}{table.caption.15}\protected@file@percent }
-\newlabel{tab:rag_validation}{{4.1}{37}{Retrieval performance obtained during the Storage Manager validation}{table.caption.15}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Position of the correct document within the retrieved Top-5 results.}}{37}{table.caption.16}\protected@file@percent }
-\newlabel{tab:position_distribution}{{4.2}{37}{Position of the correct document within the retrieved Top-5 results}{table.caption.16}{}}
-\@writefile{toc}{\contentsline {paragraph}{Limitations}{38}{section*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{38}{subsection.4.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{38}{subsection.4.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{40}{subsection.4.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}AI Manager Module}{40}{section.4.3}\protected@file@percent }
+\newlabel{eq:rrf}{{4.2}{46}{Knowledge Memory Management}{equation.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \textbf  {Architecture of the Hybrid RAG System.} The system integrates a \textit  {Storage Pipeline} (top) that cleans, dynamically chunks, and deduplicates raw documents using SHA-1 hashing, indexing unique content simultaneously into a dense vector database (\texttt  {ChromaDB}) and a sparse lexical in-memory index (\texttt  {BM25Okapi}, serialized via \texttt  {pickle}); and a \textit  {Retrieval Pipeline} (bottom) that executes parallel dense-semantic and sparse-keyword searches for a given query, merges the candidate results using Reciprocal Rank Fusion (RRF) based on a unified \texttt  {chunk\_id}, and re-ranks them using a Cross-Encoder model (\texttt  {BAAI/bge-reranker-base}) to output the top-$k$ most contextually relevant passages for the downstream LLM.}}{47}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:rag_architecture}{{4.2}{47}{\textbf {Architecture of the Hybrid RAG System.} The system integrates a \textit {Storage Pipeline} (top) that cleans, dynamically chunks, and deduplicates raw documents using SHA-1 hashing, indexing unique content simultaneously into a dense vector database (\texttt {ChromaDB}) and a sparse lexical in-memory index (\texttt {BM25Okapi}, serialized via \texttt {pickle}); and a \textit {Retrieval Pipeline} (bottom) that executes parallel dense-semantic and sparse-keyword searches for a given query, merges the candidate results using Reciprocal Rank Fusion (RRF) based on a unified \texttt {chunk\_id}, and re-ranks them using a Cross-Encoder model (\texttt {BAAI/bge-reranker-base}) to output the top-$k$ most contextually relevant passages for the downstream LLM}{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {paragraph}{RAG Validation}{47}{section*.40}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Retrieval performance obtained during the Storage Manager validation.}}{48}{table.caption.41}\protected@file@percent }
+\newlabel{tab:rag_validation}{{4.1}{48}{Retrieval performance obtained during the Storage Manager validation}{table.caption.41}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Position of the correct document within the retrieved Top-5 results.}}{48}{table.caption.42}\protected@file@percent }
+\newlabel{tab:position_distribution}{{4.2}{48}{Position of the correct document within the retrieved Top-5 results}{table.caption.42}{}}
+\@writefile{toc}{\contentsline {paragraph}{Limitations}{49}{section*.43}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{49}{subsection.4.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{49}{subsection.4.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{51}{subsection.4.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}AI Manager Module}{51}{section.4.3}\protected@file@percent }
 \bibdata{Include/Backmatter/Bibliography}
 \bibcite{alansari2025large}{{1}{}{{}}{{}}}
 \bibcite{alkayyal2025llm}{{2}{}{{}}{{}}}
@@ -175,7 +211,7 @@
 \bibcite{brown2020language}{{10}{}{{}}{{}}}
 \bibcite{chen2023extendingcontextwindowlarge}{{11}{}{{}}{{}}}
 \bibcite{christiano2017deep}{{12}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{41}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{52}{section.4.3}\protected@file@percent }
 \bibcite{cormack2009reciprocal}{{13}{}{{}}{{}}}
 \bibcite{NEURIPS2022_67d57c32}{{14}{}{{}}{{}}}
 \bibcite{devlin2019bert}{{15}{}{{}}{{}}}
@@ -231,4 +267,4 @@
 \bibcite{yao2023tree}{{65}{}{{}}{{}}}
 \bibcite{yao2022react}{{66}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{53}
+\gdef \@abspage@last{65}

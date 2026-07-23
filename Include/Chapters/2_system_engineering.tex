@@ -36,9 +36,7 @@ The system we are going to develop is called FUNES: Foresight Understanding for 
 
 \section{FUNES System Overview}
 
-FUNES (Foresight Understanding for Nominal and Emergency Scenarios) is an AI-based Decision Support Tool designed to support mission operations within an Earth Observation ground segment environment.
-
-The system acts as an intermediate layer between existing mission operational systems and human operators, collecting heterogeneous operational data, analysing mission conditions, and providing decision-support outputs.
+FUNES (Foresight Understanding for Nominal and Emergency Scenarios) is an AI-based Decision Support Tool designed to support mission operations within an Earth Observation ground segment environment. The system acts as an intermediate layer between existing mission operational systems and human operators, collecting heterogeneous operational data, analysing mission conditions, and providing decision-support outputs.
 
 FUNES does not replace mission operators or execute autonomous spacecraft operations. Instead, it supports human decision-making by improving situational awareness, reducing information fragmentation, and providing recommendations based on available mission knowledge and operational data.
 
@@ -63,7 +61,7 @@ Following the ECSS requirement engineering approach, the FUNES development proce
 \begin{itemize}
     \item \textbf{System Requirements Document (SRD):} defining the technical requirements of the FUNES system as a complete entity within the mission ground segment environment;
     
-    \item \textbf{Software Requirements Document (SRS):} defining the software-level requirements derived from the system specification and allocated to the software components.
+    \item \textbf{Software Requirements Specification (SRS):} defining the software-level requirements derived from the system specification and allocated to the software components.
 \end{itemize}
 
 The System Requirements Document represents the first level of technical specification. It describes the expected behaviour of the system independently from the implementation details and defines the capabilities required to satisfy operational needs.
@@ -80,25 +78,23 @@ The SRD includes:
 
 According to ECSS principles, each requirement is written using a structured and verifiable formulation based on the "shall" statement. Requirements are required to be necessary, unambiguous, atomic, implementation-independent, verifiable, and traceable.
 
-The Software Requirements Document is derived from the system specification by allocating system functions to software components. It defines the expected behaviour of the software architecture, including software functionalities, internal interfaces, data processing requirements, AI module interactions, and verification criteria.
+The Software Requirements Specification is derived from the system specification by allocating system functions to software components. It defines the expected behaviour of the software architecture, including software functionalities, internal interfaces, data processing requirements, AI module interactions, and verification criteria.
 
 The relationship between the two documents follows a hierarchical requirement flow where system-level requirements are progressively refined into software-level requirements while maintaining bidirectional traceability through a Requirement Traceability Matrix (RTM).
 
+
+\subsection{
 Citare ECSS-E-ST-10C Rev.1 per system engineering
 ECSS-E-ST-40C Rev.1 per software engineering
 ECSS-Q-ST-80C per software product assurance
-
+}
 
 
 \section{System Engineering Approach}
 
-The development of the FUNES system followed a system engineering approach based on the principles defined by the ECSS.
+The development of the FUNES system followed a system engineering approach based on the principles defined by the ECSS. The objective of the system engineering process was to transform operational needs identified within the mission control environment into a structured and traceable set of system and software requirements.
 
-The objective of the system engineering process was to transform operational needs identified within the mission control environment into a structured and traceable set of system and software requirements.
-
-The adopted approach followed a top-down requirement derivation process, starting from the analysis of the operational scenario and stakeholder expectations, and progressively refining them into functional, performance, interface, operational, and AI-specific requirements.
-
-The requirement definition process was performed according to the principles of ECSS-E-ST-10C, ensuring that each requirement was necessary, unambiguous, verifiable, traceable, atomic, and implementation-independent.
+The adopted approach followed a top-down requirement derivation process, starting from the analysis of the operational scenario and stakeholder expectations, and progressively refining them into functional, performance, interface, operational, and AI-specific requirements. The requirement definition process was performed according to the principles of ECSS-E-ST-10C, ensuring that each requirement was necessary, unambiguous, verifiable, traceable, atomic, and implementation-independent.
 
 The identification of stakeholder needs represents the first step of the system engineering process. For the FUNES system, the primary stakeholders were identified within the mission operations environment, including Mission Managers, spacecraft operators, ground segment operators, and system maintenance personnel.
 
@@ -110,26 +106,375 @@ During nominal and non-nominal operations, the integration and interpretation of
 
 \section{System Requirements Definition}
 
-The System Requirements Document (SRD) was developed to define the complete set of technical requirements governing the FUNES system behaviour and operational constraints.
+The System Requirements Document (SRD) defines the technical requirements governing the functional behavior and operational constraints of the FUNES system.
 
-The requirements were organized according to their functional role and operational impact. The main requirement categories identified were:
+Following the ECSS-E-ST-10C standard, a total of around 129 requirements were formulated to guarantee end-to-end traceability between operational needs and verification activities. The main requirements are:
 
 \begin{itemize}
-    \item \textbf{Functional Requirements (FUN):} defining the capabilities provided by FUNES, including data acquisition, anomaly analysis, recommendation generation, explainability, and human-in-the-loop interaction;
+    \item \textbf{Functional Requirements (FUN - 86 requirements):} Core system capabilities, including data acquisition, anomaly detection, recommendation generation, explainability, and human-in-the-loop interaction.
     
-    \item \textbf{Performance Requirements (PER):} defining measurable constraints related to accuracy, latency, reliability, scalability, and resource utilization;
+    \item \textbf{Performance Requirements (PER - 6 requirements):} Quantitative constraints on accuracy, latency, reliability, scalability, and resource consumption.
     
-    \item \textbf{Interface Requirements (INT):} defining interactions between FUNES and external mission systems, including telemetry sources, mission planning systems, databases, and operator interfaces;
+    \item \textbf{Interface Requirements (INT - 12 requirements):} External integrations with telemetry sources, mission planning systems, databases, and user interfaces.
     
-    \item \textbf{Operational Requirements (OPE):} defining system behaviour during nominal, validation, training, and maintenance operations;
+    \item \textbf{Operational Requirements (OPR - 12 requirements):} System behavior during nominal, validation, training, and maintenance operations.
     
-    \item \textbf{AI-specific Requirements (AI):} defining constraints related to AI lifecycle management, explainability, dataset governance, bias mitigation, and generative AI security.
+    \item \textbf{Non-functional Requirements (NFR - 13 requirements):} Cross-cutting quality attributes addressing system robustness, interface reliability, and operational constraints.
 \end{itemize}
 
-All requirements were defined following ECSS-E-ST-10C principles, ensuring traceability between operational needs, system functions, and verification activities.
 
 
 
-\section{Software Architecture} \label{sec:software architecture}
+\section{Software Requirement Specification}
+The Software Requirements Specification (SRS) was derived from the System Requirements Document following the ECSS top-down requirement engineering process. While the SRD defines the expected behaviour of the system from an operational perspective, the SRS allocates these requirements to software components and specifies the software architecture required to implement them.
 
-\section{Software Requirement Document}
+
+
+\subsection{Functional Decomposition and Allocation}
+
+Starting from the system-level requirements defined in the SRD, the FUNES system was decomposed into a set of functional capabilities representing the main operational objectives of the Decision Support System.
+
+Following the ECSS top-down requirement engineering approach, each capability was further refined into a set of lower-level system functions. These functions describe the internal behaviours required to implement the corresponding capability and provide the basis for the allocation of requirements to software Configuration Items.
+
+
+The main capability-to-component allocation is summarized in Table \ref{tab:function_allocation}.
+
+\paragraph{C-01: Mission Data Ingestion Capability}
+The system shall be capable of acquiring, normalizing, validating, and correlating heterogeneous mission data from multiple external sources in near real-time. This capability is decomposed in the following set of functions:
+\begin{itemize}
+    \item \textbf{F-01 Data acquisition from external systems:} Establishes and manages secure communication channels with external sources to ingest mission data streams.
+    \item \textbf{F-02 Data format normalization and harmonization:} Converts heterogeneous incoming data structures into a unified, standardized internal data model.
+    \item \textbf{F-03 Data validation and quality assessment:} Inspects ingested data against predefined syntactic and semantic rules to filter out corrupted or non-compliant payloads.
+    \item \textbf{F-04 Timestamping and cross-source correlation:} Appends synchronized system timestamps and correlates data packages sharing spatial, temporal, or logical relationships.
+    \item \textbf{F-05 Secure ingestion and integrity verification:} Cryptographically verifies data origin and integrity (e.g., via checksums/signatures) to prevent tampering during ingestion.
+\end{itemize}
+
+\paragraph{C-02: AI-based Analysis and Decision Support Capability}
+The system shall be capable of performing AI-driven analysis of mission data to detect anomalies, assess system performance, and generate operational recommendations with associated confidence and explainability information. This capability is decomposed in the following set of functions:
+\begin{itemize}
+    \item \textbf{F-06 Anomaly detection inference:} Evaluates data streams to identify deviations from nominal events.
+    \item \textbf{F-07 Trend and pattern analysis:} Processes historical and real-time data to identify long-term behaviors, recurring operational patterns, and performance degradation.
+    \item \textbf{F-08 Operational recommendation generation:} Translates analytical insights and detected anomalies into actionable mitigation strategies or operational decisions for the operator.
+    \item \textbf{F-09 Confidence scoring of analytical outputs:} Computes a probabilistic metric representing the certainty level of each detected anomaly and generated recommendation.
+    \item \textbf{F-10 Explainability artifact generation:} Produces human-readable justifications and feature-importance metrics to explain the rationale behind AI-driven outputs.
+\end{itemize}
+
+\paragraph{C-03: Mission Status Visualization and Operator Interaction Capability}
+The system shall be capable of providing mission status visualization, including alerts, recommendations, and operational reports, and supporting operator interaction and feedback collection. This capability is decomposed in the following set of functions:
+\begin{itemize}
+    \item \textbf{F-11 Conversational Interface:} Handles the conversation with the LLM-based system.
+    \item \textbf{F-12 Mission status dashboard generation:} Renders the primary user interface, displaying real-time system metrics, operational KPIs, and overall mission health.
+    \item \textbf{F-13 Alert and anomaly visualization:} Highlights detected anomalies and system alerts using visual hierarchies, sound cues, and priority levels to capture operator attention.
+    \item \textbf{F-14 Recommendation presentation and prioritization:} Displays generated operational recommendations, sorted by confidence score, priority, and critical urgency.
+    \item \textbf{F-15 Operational reporting and historical view rendering:} Compiles standard operational reports and allows the operator to query, filter, and view historical telemetry and past events.
+    \item \textbf{F-16 Operator interaction and feedback handling:} Captures explicit operator inputs, acknowledgments of alerts, and qualitative feedback on recommendations, routing them to relevant subsystems.
+\end{itemize}
+
+\paragraph{C-04: Configuration and Model Lifecycle Management Capability}
+The system shall be capable of managing system configuration, AI model lifecycle, versioning, deployment, and retraining workflows under controlled operational governance. This capability is decomposed in the following set of functions:
+\begin{itemize}
+    \item \textbf{F-17 System configuration management:} Controls, tracks, and validates system-wide operational parameters, thresholds, and environmental settings.
+    \item \textbf{F-18 AI model versioning and deployment control:} Manages the repository of trained AI models, overseeing version control, seamless deployment to production, and rollback capabilities.
+    \item \textbf{F-19 Dataset versioning and metadata management:} Tracks and catalogues training, validation, and testing datasets, preserving metadata regarding data lineage and provenance.
+    \item \textbf{F-20 Adaptation trigger definition and orchestration:} Monitors model performance metrics and system-defined thresholds to identify conditions requiring model retraining or adaptation and orchestrates the corresponding workflow triggers.
+    \item \textbf{F-21 System rollback and restore point management:} Generates system state snapshots and coordinates rollbacks to previous stable configurations in the event of deployment failures.
+\end{itemize}
+
+\paragraph{C-05: Persistent Storage and Historical Retrieval Capability}
+The system shall be capable of persistently storing operational data, analytical artifacts, configuration snapshots, and historical records, and providing controlled retrieval interfaces to authorized components. This capability is decomposed in the following set of functions:
+\begin{itemize}
+    \item \textbf{F-22 Persistent data storage:} Manages the secure, long-term physical or logical storage of all incoming data, normalized records, and system states.
+    \item \textbf{F-23 Historical data retrieval:} Exposes high-performance querying and indexing APIs to allow system components to fetch historical records.
+    \item \textbf{F-24 Audit log persistence:} Records an unalterable sequential log of all user actions, system state transitions, and security-relevant events for compliance.
+    \item \textbf{F-25 Data integrity and consistency enforcement:} Executes periodic checks, replication routines, and database constraints to guarantee data consistency and prevent corruption.
+    \item \textbf{F-26 Data retention policy enforcement:} Automatically archives or purges older data records according to predefined regulatory or operational storage lifecycle policies.
+\end{itemize}
+
+
+\begin{table}[htbp]
+    \centering
+    \caption{Capability-Function Traceability Summary}
+    \label{tab:function_allocation}
+    \begin{tabular}{|c|p{7cm}|p{4.5cm}|}
+        \hline
+        \textbf{Capability ID} & \textbf{Capability} & \textbf{Functions} \\ \hline
+        C-01 & Mission Data Ingestion Capability & F-01, F-02, F-03, F-04, F-05 \\ \hline
+        C-02 & AI-based Analysis and Decision Support Capability & F-06, F-07, F-08, F-09, F-10 \\ \hline
+        C-03 & Mission Status Visualization and Operator Interaction Capability & F-11, F-12, F-13, F-14, F-15, F-16 \\ \hline
+        C-04 & Configuration and Model Lifecycle Management Capability & F-17, F-18, F-19, F-20, F-21 \\ \hline
+        C-05 & Persistent Storage and Historical Retrieval Capability & F-22, F-23, F-24, F-25, F-26 \\ \hline
+    \end{tabular}
+\end{table}
+
+
+
+
+\subsection{Software Architecture} \label{sec:software architecture}
+
+The software architecture of the FUNES system was derived through a progressive refinement process starting from the operational needs identified during the system engineering phase and the requirements defined in the System Requirements Document (SRD).
+
+Following the ECSS top-down requirement engineering approach, system-level capabilities were progressively decomposed into system functions and allocated to dedicated software components. This process allowed the transition from an operational view of the system, focused on mission manager needs and decision-support capabilities, to a software-oriented view defining the internal organization of the FUNES platform.
+
+The main architectural driver was the need to support heterogeneous mission data processing, AI-based analysis, operator interaction, configuration control, and historical data management while maintaining modularity, scalability, and verification independence.
+
+Starting from the system requirements, the main functional capabilities were decomposed and allocated to five independent \textbf{Configuration Items (CIs)}, each representing a logically separated software subsystem responsible for a specific functional domain (Fig. \ref{fig:funes architecture}).
+
+
+\subsubsection{Configuration Items Breakdown}
+
+Below is the detailed functional decomposition and allocation for each Configuration Item defined in the System Requirements Specification (SRS).
+
+% --- CI-1 ---
+\paragraph{CI-1 -- Data Processing Manager (DPM)}
+The Data Processing Manager is responsible for data ingestion, format normalization, quality validation, and spatio-temporal correlation of heterogeneous mission information coming from multiple space and ground segment sources.
+\begin{itemize}
+    \item \textbf{Inputs:} Spacecraft telemetry, operational status, Mission Planning System (MPS) schedules, Ground Station \& antenna status, Payload Data Ground Segment (PDGS) outputs, Flight Dynamics System (FDS) orbit/attitude data, infrastructure/network telemetry, and ticketing incident data.
+    \item \textbf{Outputs:} Normalized data records formatted according to the Unified Internal Data Model
+    \item \textbf{Key Responsibilities:}
+    \begin{itemize}
+        \item Multi-source data acquisition via standardized Interface Control Documents (ICDs).
+        \item Timestamp assignment, cross-source correlation, and cryptographic integrity check.
+        \item Isolation of faulty or corrupted data streams to ensure system fault tolerance.
+        \item Persistence of normalized records to CI-5.
+    \end{itemize}
+    \item \textbf{Allocated Functions:} \texttt{F-01, F-02, F-03, F-04, F-05}.
+\end{itemize}
+
+% --- CI-2 ---
+\paragraph{CI-2 -- AI Analytics Manager (AIM)}
+The AI Analytics Manager executes AI-driven analytical processing using an ensemble of neural models, deterministic processing rules, and tool-assisted workflows to evaluate anomalies and generate actionable operational guidance.
+\begin{itemize}
+    \item \textbf{Inputs:} Normalized and correlated data records from CI-1; historical context data from CI-5.
+    \item \textbf{Outputs:} Structured analytical artifacts containing: \texttt{anomaly\_flag}, \texttt{confidence\_score}, \texttt{affected\_system}, \texttt{recommended\_action}, \texttt{model\_version}, and \texttt{explainability\_reference}.
+    \item \textbf{Key Responsibilities:}
+    \begin{itemize}
+        \item Stream and batch execution of AI model inference (anomaly detection, trend analysis, root cause analysis).
+        \item Recommendation generation, prioritization, and explainability artifact generation (XAI).
+        \item AI model performance monitoring, bias detection, and operator feedback integration.
+    \end{itemize}
+    \item \textbf{Allocated Functions:} \texttt{F-06, F-07, F-08, F-09, F-10}.
+\end{itemize}
+\begin{quote}
+\textit{Note:} All analytical outputs generated by CI-2 are explicitly designated as advisory. Operator evaluation is strictly required prior to operational application.
+\end{quote}
+
+% --- CI-3 ---
+\paragraph{CI-3 -- Decision Support Interface (DSI / User Interface)}
+The Decision Support Interface provides operator-facing dashboards and interaction capabilities for real-time mission monitoring, situation awareness, and decision support.
+\begin{itemize}
+    \item \textbf{Inputs:} Real-time alerts, rankings, recommendations, and XAI artifacts from CI-2; historical reports from CI-5; configuration status from CI-4.
+    \item \textbf{Outputs:} Operator queries, recommendation feedback (commit, reject, modify, rate), operational reports, and configuration requests.
+    \item \textbf{Key Responsibilities:}
+    \begin{itemize}
+        \item Interactive dashboard rendering for alerts and recommendations.
+        \item Authentication, Role-Based Access Control (RBAC), and Multi-Factor Authentication (MFA).
+        \item Displaying system state transitions, safe-state entry, and retraining notifications.
+    \end{itemize}
+    \item \textbf{Allocated Functions:} \texttt{F-12, F-13, F-14, F-15, F-16}.
+\end{itemize}
+
+% --- CI-4 ---
+\paragraph{CI-4 -- Configuration \& Model Management (CMM)}
+This component governs the global configuration parameters of the FUNES system, AI model lifecycles, prompt/dataset versioning, and deployment operations.
+\begin{itemize}
+    \item \textbf{Inputs:} Configuration requests from operators (via CI-3); model performance degraded-metrics and retraining triggers from CI-2.
+    \item \textbf{Outputs:} System configuration updates, model versioning commands, and rollback procedures.
+    \item \textbf{Key Responsibilities:}
+    \begin{itemize}
+        \item Centralized configuration parameters and operational mode state machine management.
+        \item AI model repository control, prompt engineering versioning, and fine-tuning dataset management.
+        \item Orchestrating model retraining workflows and creating pre-update restore points.
+    \end{itemize}
+    \item \textbf{Allocated Functions:} \texttt{F-17, F-18, F-19, F-20, F-21}.
+\end{itemize}
+
+% --- CI-5 ---
+\paragraph{CI-5 -- Storage Manager (SM)}
+The Storage Manager provides centralized, secure, and high-performance persistent storage services for all system components.
+\begin{itemize}
+    \item \textbf{Inputs:} Raw and normalized records, analytical artifacts, audit logs, and configuration snapshots from CI-1, CI-2, CI-3, and CI-4.
+    \item \textbf{Outputs:} Historical datasets, retrieved records, system configuration snapshots, and audit logs.
+    \item \textbf{Key Responsibilities:}
+    \begin{itemize}
+        \item Providing continuous storage and retrieval APIs for all CIs.
+        \item Enforcing data retention, consistency, and integrity policies across logical data stores.
+    \end{itemize}
+    \item \textbf{Allocated Functions:} \texttt{F-22, F-23, F-24, F-25, F-26}.
+\end{itemize}
+
+\subsubsection{External System Interfaces}
+To operate effectively within the ground segment ecosystem, FUNES establishes continuous interfaces with several external systems:
+\begin{itemize}
+    \item \textbf{Spacecraft Telemetry Systems:} Telemetry stream ingestion (HKTM).
+    \item \textbf{Mission Planning System (MPS):} Timelines, scheduled operational events, and plan execution states.
+    \item \textbf{Ground Segment \& Antenna Monitoring:} Ground station health status and RF link metrics.
+    \item \textbf{Flight Dynamics System (FDS):} Orbital ephemerides, attitude state vectors, and maneuver plans.
+    \item \textbf{Ticketing \& Incident Management:} Operational anomaly records and maintenance logs.
+\end{itemize}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Figures/funes_architecture.png}
+    \caption{The Funes high level software architecture is composed of 5 Configuration Items. The data flows from external subsystems to the Data Processing Manager (DPM) module which will turn them into an internal standard data representation after performing cleaning and validation. The data is then fed to the Storage Manager (SM) for beign stored and to the AI Analytics for AI processing. The user utilizes the system through the Decision Support Interface (DSI). The Config \& model management module is responsible for the system configuration and AI control. }
+    \label{fig:funes architecture}
+\end{figure}
+
+
+
+
+\subsection{Software Design}
+
+
+The software design phase refines the architectural decomposition introduced in the previous sections by defining the implementation technologies, software frameworks, and deployment strategies adopted for the FUNES system.
+
+The technology selection was driven by the software requirements identified in the Software Requirements Specification (SRS), with particular attention to modularity, scalability, maintainability, interoperability with existing ground segment infrastructures, and suitability for AI-based mission support applications.
+
+The system is primarily implemented using Python as the common development language across all Configuration Items. Python was selected due to its mature ecosystem for artificial intelligence, machine learning, data processing, and scientific computing, as well as its widespread adoption in data-intensive software applications. The use of a common development environment simplifies integration between traditional software modules and AI-based components.
+
+Where strict performance constraints may arise, particularly in high-throughput data processing tasks, lower-level implementations through C++ or Rust extensions can be introduced at module level without affecting the overall software architecture.
+
+The implementation of the individual Configuration Items is described below.
+
+\subsubsection{CI-1 - Data Processing Manager}
+
+The Data Processing Manager is responsible for the acquisition, ingestion, normalization, validation, and correlation of heterogeneous mission data sources.
+
+To support continuous data ingestion and asynchronous processing, CI-1 relies on Apache Kafka as the underlying event-streaming platform. Kafka provides fault-tolerant message handling, ordered data delivery, and scalable processing capabilities suitable for heterogeneous mission data streams.
+
+The incoming data are validated and transformed into the Unified Internal Data Model before being distributed to the other system components. Data validation and schema enforcement are implemented using Pydantic, enabling structured validation rules and consistency checks before data propagation.
+
+The design of CI-1 supports integration with multiple external mission systems, including telemetry providers, mission planning systems, flight dynamics systems, and ground infrastructure monitoring systems.
+
+\subsubsection{CI-2 - AI Analytics Manager}
+
+The AI Analytics Manager represents the core analytical component of FUNES and is responsible for anomaly detection, trend analysis, operational recommendation generation, and explainability artifact production.
+
+The component is based on a self-hosted Large Language Model (LLM) inference architecture, selected to support deployment within controlled mission environments where data sovereignty, operational security, and predictable performance are required.
+
+LLM inference is performed through vLLM, which provides optimized high-throughput serving of open-weight models compatible with the HuggingFace model ecosystem. Candidate model families considered for deployment include LLaMA, Qwen, and Mistral, selected due to their open-weight availability and suitability for on-premise execution.
+
+The orchestration of complex analytical workflows, including retrieval-augmented generation (RAG), tool-assisted reasoning, and multi-step agent workflows, is implemented using frameworks such as LangGraph and LlamaIndex.
+
+In addition to generative AI capabilities, CI-2 integrates classical machine learning components for anomaly detection and trend analysis. These models are implemented using established frameworks such as Scikit-learn and PyTorch.
+
+The AI outputs generated by CI-2, including anomaly assessments, confidence scores, recommendations, and explanations, remain advisory and are provided to support, rather than replace, mission operator decision-making.
+
+\subsubsection{CI-3 - Decision Support Interface}
+
+The Decision Support Interface provides the interaction layer between the FUNES system and mission operators.
+
+The interface is implemented as a web-based application using React for the frontend and FastAPI as the backend service layer. This architecture enables the development of modular user interface components while maintaining efficient communication with the internal FUNES services.
+
+Real-time updates, including alerts, dashboard information, and analytical results, are delivered through WebSocket communication channels, enabling continuous monitoring of mission conditions.
+
+Authentication and authorization mechanisms are implemented through Keycloak, providing role-based access control and supporting multiple authentication methods, including username/password authentication, multi-factor authentication, and certificate-based authentication.
+
+The interface provides mission dashboards, conversational interaction with the AI system, visualization of anomalies and recommendations, and mechanisms for collecting operator feedback.
+
+\subsubsection{CI-4 - Configuration and Model Management}
+
+The Configuration and Model Management component provides centralized control of system parameters, AI model lifecycle management, and configuration versioning.
+
+The component uses MLflow to manage AI model versions, experiment tracking, deployment workflows, and model artifact registration. Dataset versioning and metadata management are also supported to preserve information regarding data provenance, lifecycle, and usage.
+
+CI-4 manages model deployment, rollback procedures, retraining workflows, and configuration changes while maintaining reproducibility and traceability of system states.
+
+These capabilities support the requirements related to AI lifecycle management and operational governance defined in the SRS.
+
+\subsubsection{CI-5 - Storage Manager}
+
+The Storage Manager provides persistent storage capabilities and standardized data access services for the other FUNES components.
+
+The storage architecture follows a multi-store approach, where different types of information are stored according to their operational characteristics.
+
+Time-series operational data, including normalized telemetry and ingestion records, are stored using TimescaleDB, a PostgreSQL extension optimized for time-dependent data workloads.
+
+AI-related artifacts, including model files, datasets, and explainability outputs, are stored within an S3-compatible object storage system. This approach enables flexible deployment both in on-premise environments through solutions such as MinIO and in cloud-based infrastructures through compatible object storage services.
+
+Audit logs and immutable operational records are maintained through PostgreSQL storage with append-only policies to preserve historical traceability.
+
+Semantic embeddings generated for retrieval-augmented generation workflows are stored using vector indexing capabilities provided by pgvector, enabling similarity-based retrieval of historical mission data, operational procedures, anomaly reports, and previously generated analytical artifacts.
+
+All access to persistent data is mediated through standardized storage interfaces, with encrypted communication channels and access control mechanisms applied at database and object storage levels.
+
+\subsubsection{Deployment and Integration Environment}
+
+The FUNES system is designed for deployment within hybrid cloud environments using containerized software components.
+
+Docker is adopted for software packaging and environment isolation, while Kubernetes is used for service orchestration, scalability management, health monitoring, and deployment automation.
+
+Communication between components follows a hybrid approach. Synchronous interactions are implemented through gRPC-based interfaces, while asynchronous information exchange relies on Kafka messaging mechanisms.
+
+This deployment strategy enables flexible allocation of computational resources, particularly for AI-intensive workloads, while maintaining the modularity and operational robustness required for mission support applications.
+
+
+\subsection{System Data Flows and Operational Use Cases} \label{sec:data_flows}
+
+This section describes the dynamic data flows of the FUNES system through representative operational use cases. Each use case illustrates the path data follows across the Configuration Items ($CI\text{-}1$ to $CI\text{-}5$), the transformations applied, and the interaction points where human-in-the-loop validation is required. Four primary use cases are defined to cover nominal automatic operations, interactive investigations, model maintenance, and degraded operational conditions.
+
+% ---------------------------------------------------------
+% UC-1
+% ---------------------------------------------------------
+\paragraph{UC-1: Near Real-Time Anomaly Detection and Recommendation (Nominal, Fully Automatic)}
+This represents the primary nominal end-to-end data processing pipeline. Data arrives continuously from external space and ground sources, gets processed, analyzed, and presented to the operator. No operator intervention is required during the ingestion and analysis phases; human interaction is strictly required only at the final recommendation review and execution stage, adhering to the system's advisory-only design philosophy. See Fig. \ref{fig:funes df 1}
+
+\begin{enumerate}
+    \item \textbf{Data Acquisition \& Normalization ($CI\text{-}1$):} External data streams (telemetry, MPS schedules, network logs) are ingested by $CI\text{-}1$ via dedicated ICD adapters ($F\text{-}01$). $CI\text{-}1$ normalizes payloads into the Unified Internal Data Model ($F\text{-}02$), validates syntax/semantics ($F\text{-}03$), appends system timestamps, and correlates records ($F\text{-}04$).
+    \item \textbf{Persistence ($CI\text{-}5$):} Normalized streams are continuously written to $CI\text{-}5$ for time-series persistence ($F\text{-}22$).
+    \item \textbf{AI Inference \& Detection ($CI\text{-}2$):} Simultaneously, $CI\text{-}1$ emits normalized event streams to $CI\text{-}2$. $CI\text{-}2$ executes real-time anomaly detection inference ($F\text{-}06$). Upon detecting an anomaly, $CI\text{-}2$ generates an operational recommendation ($F\text{-}08$), calculates confidence scores ($F\text{-}09$), and produces explainability artifacts ($F\text{-}10$).
+    \item \textbf{Visualization \& Notification ($CI\text{-}3$):} $CI\text{-}2$ transmits structured anomaly payloads to $CI\text{-}3$, which triggers visual/auditory alerts on the operator dashboard ($F\text{-}13$) and presents the prioritized recommendation ($F\text{-}14$).
+    \item \textbf{Operator Feedback \& Decision ($CI\text{-}3$):} The operator evaluates the recommendation and explainability details. The operator explicitly commits, modifies, or rejects the suggestion ($F\text{-}16$). The feedback action is stored in $CI\text{-}5$ for compliance and future model optimization ($F\text{-}24$).
+\end{enumerate}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Figures/funes_data_flow_uc1.drawio.png}
+    \caption{Data flow of use case 1}
+
+    \label{fig:funes df 1}
+\end{figure}
+
+
+% ---------------------------------------------------------
+% UC-2
+% ---------------------------------------------------------
+\paragraph{UC-2: Operator Conversational Investigation via AI-Assisted Chatbot}
+This use case covers interactive decision support. The operator uses a natural language interface embedded in the dashboard to perform ad-hoc diagnostic queries, explore root causes, or analyze complex operational scenarios. See Fig. \ref{fig:funes df 2}
+
+\begin{enumerate}
+    \item \textbf{Query Submission ($CI\text{-}3$):} The operator formulates a free-text prompt within the conversational interface of $CI\text{-}3$ ($F\text{-}11$). $CI\text{-}3$ attaches session tokens, operator identity (RBAC), and forwards the request to $CI\text{-}2$.
+    \item \textbf{Agentic Workflow \& Tool Execution ($CI\text{-}2$):} $CI\text{-}2$ parses the prompt using an LLM-based agent. To construct an accurate answer, $CI\text{-}2$ dynamically queries $CI\text{-}5$ via historical retrieval APIs ($F\text{-}23$) to fetch historical telemetry, past anomalies, or configuration snapshots.
+    \item \textbf{Response Generation \& Grounding ($CI\text{-}2$):} $CI\text{-}2$ executes Retrieval-Augmented Generation (RAG), synthesize retrieved telemetry data into a structured response, and appends confidence scores ($F\text{-}09$) and source citations ($F\text{-}10$).
+    \item \textbf{Rendering \& Multi-turn Dialogue ($CI\text{-}3$):} $CI\text{-}3$ renders the response, supporting interactive tables or chart widgets ($F\text{-}11, F\text{-}15$). The conversation may continue across multiple dialogue turns.
+\end{enumerate}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Figures/funes_data_Flow_uc2.png}
+    \caption{Data flow of use case 2 }
+    \label{fig:funes df 2}
+\end{figure}
+
+% ---------------------------------------------------------
+% UC-3
+% ---------------------------------------------------------
+\paragraph{UC-3: Operator-Initiated Dashboard Investigation}
+This use case describes a scenario where an operator observes a suspicious trend or receives an external notice (e.g., ground station maintenance) and manually triggers a deep-dive investigation across monitoring dashboards. See Fig. \ref{fig:funes df 3}
+
+\begin{enumerate}
+    \item \textbf{Manual Trigger \& Filtering ($CI\text{-}3$):} The operator accesses the historical and real-time visualization views in $CI\text{-}3$ ($F\text{-}12, F\text{-}15$) and applies custom time-range, satellite, or ground station filters.
+    \item \textbf{Data Fetching ($CI\text{-}5$):} $CI\text{-}3$ issues high-performance query requests to $CI\text{-}5$, fetching raw/normalized historical parameters ($F\text{-}23$).
+    \item \textbf{On-Demand Analysis Trigger ($CI\text{-}2$):} The operator selects a telemetry window and requests an on-demand pattern/trend analysis ($F\text{-}07$). $CI\text{-}2$ processes the designated subset and returns comparative metrics or degradation curves to $CI\text{-}3$.
+    \item \textbf{Audit Logging ($CI\text{-}5$):} All query filters, manual inspection views, and operator actions are recorded in the audit log ($F\text{-}24$).
+\end{enumerate}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Figures/funes_data_Flow_uc3.png}
+    \caption{Data flow of use case 3}
+    \label{fig:funes df 3}
+\end{figure}

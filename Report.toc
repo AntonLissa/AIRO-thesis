@@ -1,6 +1,6 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{List of Figures}{iv}{chapter*.2}%
-\contentsline {chapter}{List of Tables}{v}{chapter*.3}%
+\contentsline {chapter}{List of Figures}{v}{chapter*.2}%
+\contentsline {chapter}{List of Tables}{vi}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}The Evolution of Natural Language Processing and Decision Support Systems}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Early Symbolic Approaches}{2}{section.2.1}%
@@ -21,23 +21,48 @@
 \contentsline {section}{\numberline {3.2}The Mission Manager's Role and Challenges}{25}{section.3.2}%
 \contentsline {section}{\numberline {3.3}FUNES System Overview}{25}{section.3.3}%
 \contentsline {section}{\numberline {3.4}System and Software Requirement Specification according to ECSS}{26}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1} Citare ECSS-E-ST-10C Rev.1 per system engineering ECSS-E-ST-40C Rev.1 per software engineering ECSS-Q-ST-80C per software product assurance }{27}{subsection.3.4.1}%
 \contentsline {section}{\numberline {3.5}System Engineering Approach}{27}{section.3.5}%
 \contentsline {section}{\numberline {3.6}System Requirements Definition}{27}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Software Architecture}{28}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Software Requirement Document}{28}{section.3.8}%
-\contentsline {chapter}{\numberline {4}Proof of Concept Development}{29}{chapter.4}%
-\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{29}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Storage Manager}{30}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{30}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Rag System}{30}{subsection.4.2.2}%
-\contentsline {paragraph}{Document Chunking}{31}{section*.8}%
-\contentsline {paragraph}{Embedding Generation}{33}{section*.10}%
-\contentsline {paragraph}{Vector Storage}{33}{section*.11}%
-\contentsline {paragraph}{Knowledge Memory Management}{34}{section*.12}%
-\contentsline {paragraph}{RAG Validation}{36}{section*.14}%
-\contentsline {paragraph}{Limitations}{38}{section*.17}%
-\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{38}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{38}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{40}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}AI Manager Module}{40}{section.4.3}%
-\contentsline {chapter}{Bibliography}{41}{section.4.3}%
+\contentsline {section}{\numberline {3.7}Software Requirement Specification}{28}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Functional Decomposition and Allocation}{28}{subsection.3.7.1}%
+\contentsline {paragraph}{C-01: Mission Data Ingestion Capability}{28}{section*.8}%
+\contentsline {paragraph}{C-02: AI-based Analysis and Decision Support Capability}{29}{section*.9}%
+\contentsline {paragraph}{C-03: Mission Status Visualization and Operator Interaction Capability}{29}{section*.10}%
+\contentsline {paragraph}{C-04: Configuration and Model Lifecycle Management Capability}{30}{section*.11}%
+\contentsline {paragraph}{C-05: Persistent Storage and Historical Retrieval Capability}{30}{section*.12}%
+\contentsline {subsection}{\numberline {3.7.2}Software Architecture}{30}{subsection.3.7.2}%
+\contentsline {subsubsection}{Configuration Items Breakdown}{31}{section*.14}%
+\contentsline {paragraph}{CI-1 -- Data Processing Manager (DPM)}{31}{section*.15}%
+\contentsline {paragraph}{CI-2 -- AI Analytics Manager (AIM)}{32}{section*.16}%
+\contentsline {paragraph}{CI-3 -- Decision Support Interface (DSI / User Interface)}{32}{section*.17}%
+\contentsline {paragraph}{CI-4 -- Configuration \& Model Management (CMM)}{33}{section*.18}%
+\contentsline {paragraph}{CI-5 -- Storage Manager (SM)}{33}{section*.19}%
+\contentsline {subsubsection}{External System Interfaces}{33}{section*.20}%
+\contentsline {subsection}{\numberline {3.7.3}Software Design}{34}{subsection.3.7.3}%
+\contentsline {subsubsection}{CI-1 - Data Processing Manager}{34}{section*.22}%
+\contentsline {subsubsection}{CI-2 - AI Analytics Manager}{35}{section*.23}%
+\contentsline {subsubsection}{CI-3 - Decision Support Interface}{35}{section*.24}%
+\contentsline {subsubsection}{CI-4 - Configuration and Model Management}{36}{section*.25}%
+\contentsline {subsubsection}{CI-5 - Storage Manager}{36}{section*.26}%
+\contentsline {subsubsection}{Deployment and Integration Environment}{36}{section*.27}%
+\contentsline {subsection}{\numberline {3.7.4}System Data Flows and Operational Use Cases}{37}{subsection.3.7.4}%
+\contentsline {paragraph}{UC-1: Near Real-Time Anomaly Detection and Recommendation (Nominal, Fully Automatic)}{37}{section*.28}%
+\contentsline {paragraph}{UC-2: Operator Conversational Investigation via AI-Assisted Chatbot}{38}{section*.30}%
+\contentsline {paragraph}{UC-3: Operator-Initiated Dashboard Investigation}{39}{section*.32}%
+\contentsline {chapter}{\numberline {4}Proof of Concept Development}{40}{chapter.4}%
+\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{40}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Storage Manager}{41}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{41}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Rag System}{41}{subsection.4.2.2}%
+\contentsline {paragraph}{Document Chunking}{42}{section*.34}%
+\contentsline {paragraph}{Embedding Generation}{44}{section*.36}%
+\contentsline {paragraph}{Vector Storage}{44}{section*.37}%
+\contentsline {paragraph}{Knowledge Memory Management}{45}{section*.38}%
+\contentsline {paragraph}{RAG Validation}{47}{section*.40}%
+\contentsline {paragraph}{Limitations}{49}{section*.43}%
+\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{49}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{49}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{51}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}AI Manager Module}{51}{section.4.3}%
+\contentsline {chapter}{Bibliography}{52}{section.4.3}%
