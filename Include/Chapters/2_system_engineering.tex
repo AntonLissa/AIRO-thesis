@@ -56,7 +56,7 @@ The system operates within the existing ground segment infrastructure and interf
 
 \section{System and Software Requirement Specification according to ECSS}
 
-Following the ECSS requirement engineering approach, the FUNES development process produced two main specification documents:
+Following the ECSS requirement engineering approach—incorporating standard guidelines for system engineering \cite{ecss-e-st-10c-rev1}, software development \cite{ecss-e-st-40c-rev1}, and software product assurance \cite{ecss-q-st-80c-rev2}. The FUNES development process produced two main specification documents:
 
 \begin{itemize}
     \item \textbf{System Requirements Document (SRD):} defining the technical requirements of the FUNES system as a complete entity within the mission ground segment environment;
@@ -65,7 +65,6 @@ Following the ECSS requirement engineering approach, the FUNES development proce
 \end{itemize}
 
 The System Requirements Document represents the first level of technical specification. It describes the expected behaviour of the system independently from the implementation details and defines the capabilities required to satisfy operational needs.
-
 The SRD includes:
 
 \begin{itemize}
@@ -83,11 +82,7 @@ The Software Requirements Specification is derived from the system specification
 The relationship between the two documents follows a hierarchical requirement flow where system-level requirements are progressively refined into software-level requirements while maintaining bidirectional traceability through a Requirement Traceability Matrix (RTM).
 
 
-\subsection{
-Citare ECSS-E-ST-10C Rev.1 per system engineering
-ECSS-E-ST-40C Rev.1 per software engineering
-ECSS-Q-ST-80C per software product assurance
-}
+
 
 
 \section{System Engineering Approach}
@@ -108,7 +103,7 @@ During nominal and non-nominal operations, the integration and interpretation of
 
 The System Requirements Document (SRD) defines the technical requirements governing the functional behavior and operational constraints of the FUNES system.
 
-Following the ECSS-E-ST-10C standard, a total of around 129 requirements were formulated to guarantee end-to-end traceability between operational needs and verification activities. The main requirements are:
+Following the ECSS-E-ST-10C standard, a total of around 160 requirements were formulated to guarantee end-to-end traceability between operational needs and verification activities. The main requirements are:
 
 \begin{itemize}
     \item \textbf{Functional Requirements (FUN - 86 requirements):} Core system capabilities, including data acquisition, anomaly detection, recommendation generation, explainability, and human-in-the-loop interaction.
@@ -120,6 +115,8 @@ Following the ECSS-E-ST-10C standard, a total of around 129 requirements were fo
     \item \textbf{Operational Requirements (OPR - 12 requirements):} System behavior during nominal, validation, training, and maintenance operations.
     
     \item \textbf{Non-functional Requirements (NFR - 13 requirements):} Cross-cutting quality attributes addressing system robustness, interface reliability, and operational constraints.
+    
+    \item \textbf{AI Requirements (AI - 42 requirements):} Requirements related to the Artificial Intelligence (AI) capabilities of the FUNES system, including model selection, data usage, explainability, bias mitigation, and lifecycle management.
 \end{itemize}
 
 
@@ -320,6 +317,53 @@ To operate effectively within the ground segment ecosystem, FUNES establishes co
     \label{fig:funes architecture}
 \end{figure}
 
+
+
+\subsection{Software Requirements Derivation}
+
+Following the functional decomposition presented in the previous section, the Software Requirements Specification (SRS) was obtained through the progressive refinement of the system requirements defined in the System Requirements Document (SRD).
+
+In accordance with the ECSS top-down requirement engineering methodology, each system requirement was first allocated to one or more functional capabilities and subsequently decomposed into lower-level system functions. These functions were then further refined into a set of atomic software requirements, each describing a single software behaviour that can be independently implemented, verified, and traced throughout the software lifecycle.
+
+The decomposition process follows the principle of \emph{requirement atomicity}. Whenever a system requirement specifies multiple independent behaviours, it is split into several software requirements, each addressing only one responsibility. This refinement improves requirement clarity, facilitates implementation, and enables independent verification of every software function.
+
+For example, the system requirement
+
+\begin{quote}
+\textit{FUNES-AI-12.1-003: ``The FUNES system shall support semantic retrieval of operational records, historical decisions, and mission outcomes for AI-assisted reasoning processes.''}
+\end{quote}
+
+contains three distinct retrieval capabilities. During the software specification phase, it is decomposed into three independent software requirements:
+
+\begin{itemize}
+    \item \textbf{SRS-AI-005}: The software shall support semantic retrieval of operational records for AI-assisted reasoning.
+    \item \textbf{SRS-AI-006}: The software shall support semantic retrieval of historical decisions for AI-assisted reasoning.
+    \item \textbf{SRS-AI-007}: The software shall support semantic retrieval of mission outcomes for AI-assisted reasoning.
+\end{itemize}
+
+Although these software requirements originate from the same parent system requirement, each one can be independently allocated to software components, implemented, and verified.
+
+Every software requirement maintains bidirectional traceability with its originating system requirement while being assigned to the Configuration Item responsible for its implementation. Furthermore, following the ECSS verification philosophy, each software requirement is associated with a verification method selected among Test (T), Analysis (A), Inspection (I), or Review of Design (RoD). This information establishes a complete traceability chain from the original operational requirement to the corresponding implementation and verification activities.
+
+The adopted refinement process resulted in a Software Requirements Specification comprising \textbf{358 atomic software requirements}. Each requirement is uniquely identified, allocated to a specific Configuration Item, linked to its parent system requirement, and associated with the corresponding ECSS verification method.
+
+The resulting traceability chain adopted throughout the development process is illustrated below:
+
+\[
+\begin{aligned}
+\text{System Requirement}
+&\rightarrow
+\text{System Function}
+\rightarrow
+\text{Atomic Software Requirement} \\
+&\rightarrow
+\text{Configuration Item}
+\rightarrow
+\text{Verification Method}
+\end{aligned}
+\]
+
+This hierarchical organization guarantees complete traceability between operational needs, software implementation, and verification activities, while ensuring compliance with the model-based systems engineering process adopted for the development of the FUNES platform.
 
 
 

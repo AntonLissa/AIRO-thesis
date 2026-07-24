@@ -84,6 +84,21 @@ J.~L. Elman.
 \newblock Finding structure in time.
 \newblock {\em Cognitive science}, 14(2):179--211, 1990.
 
+\bibitem{ecss-e-st-10c-rev1}
+{European Cooperation for Space Standardization}.
+\newblock {Space Engineering: System Engineering General Requirements}.
+\newblock ECSS Standard ECSS-E-ST-10C Rev.1, ESA Requirements and Standards Division, ESTEC, Noordwijk, The Netherlands, Feb. 2017.
+
+\bibitem{ecss-e-st-40c-rev1}
+{European Cooperation for Space Standardization}.
+\newblock {Space Engineering: Software}.
+\newblock ECSS Standard ECSS-E-ST-40C Rev.1, ESA Requirements and Standards Division, ESTEC, Noordwijk, The Netherlands, Apr. 2025.
+
+\bibitem{ecss-q-st-80c-rev2}
+{European Cooperation for Space Standardization}.
+\newblock {Space Product Assurance: Software Product Assurance}.
+\newblock ECSS Standard ECSS-Q-ST-80C Rev.2, ESA Requirements and Standards Division, ESTEC, Noordwijk, The Netherlands, Apr. 2025.
+
 \bibitem{fink2014n}
 G.~A. Fink.
 \newblock n-gram models.
