@@ -522,3 +522,56 @@ This use case describes a scenario where an operator observes a suspicious trend
     \caption{Data flow of use case 3}
     \label{fig:funes df 3}
 \end{figure}
+
+
+\subsection{LLM Model Selection}
+
+The selection of the Large Language Model (LLM) represents a key design decision for the AI Analytics Manager (CI-2), as the model capabilities directly influence the reliability of the multi-agent reasoning workflows implemented within the FUNES framework.
+
+The selection process was driven by the software requirements allocated to CI-2, with particular attention to instruction following capability, reasoning performance, structured output reliability, context management, and deployment feasibility in controlled operational environments.
+
+Since the FUNES system is designed for deployment within mission-critical and potentially restricted environments, proprietary cloud-based models were excluded from the evaluation. The analysis therefore focused on open-weight Large Language Models that can be deployed locally while maintaining control over data processing, model execution, and system integration.
+
+The candidate model families considered during the evaluation were:
+
+\begin{itemize}
+    \item LLaMA;
+    \item Qwen;
+    \item DeepSeek.
+\end{itemize}
+
+The evaluation was performed using publicly available benchmark results, adopted as proxy indicators of model suitability due to the absence of standardized benchmarks specifically targeting agent-based decision support systems. The following benchmark categories were considered:
+
+\begin{itemize}
+    \item \textbf{General knowledge and reasoning capability:} evaluated through MMLU-Pro;
+    \item \textbf{Multi-step reasoning and long-context understanding:} evaluated through MUSR;
+    \item \textbf{Instruction following and structured output reliability:} evaluated through IFEVAL.
+\end{itemize}
+
+These evaluation criteria were selected according to the main operational requirements of the AI Analytics Manager:
+
+\begin{itemize}
+    \item reliable execution of multi-step analytical workflows;
+    \item consistent adherence to tool-use constraints and structured output formats;
+    \item capability to integrate heterogeneous information retrieved from external knowledge sources;
+    \item robustness when operating inside stateful multi-agent orchestration frameworks.
+\end{itemize}
+
+Because the FUNES architecture relies on LLM-based agents executing predefined workflows, instruction-following capability represents a critical selection parameter. For this reason, a minimum threshold of IFEVAL $\geq 80$ was introduced to exclude models with insufficient compliance with structured prompts and orchestration constraints.
+
+Following this filtering phase, the evaluated candidates were:
+
+\begin{itemize}
+    \item Qwen2.5-14B-Instruct-1M;
+    \item Qwen2.5-32B-Instruct;
+    \item Llama-3.3-70B-Instruct;
+    \item Qwen2.5-72B-Instruct.
+\end{itemize}
+
+The final model selection was performed through a multi-objective trade-off analysis considering reasoning capability, instruction adherence, supported context length, and computational requirements.
+
+Although larger models generally provide improved reasoning performance, their deployment introduces increased hardware requirements, latency, and operational complexity. Therefore, the selected model needed to provide sufficient reasoning capability while remaining compatible with an on-premise execution environment.
+
+Based on this analysis, the Qwen2.5 family was selected, with the 14B and 32B variants identified as the most suitable configurations for the FUNES architecture.
+
+The selected models provide an effective compromise between reasoning performance, instruction-following reliability, and computational efficiency. This configuration enables the execution of multi-agent decision-support workflows while maintaining control over deployment constraints, latency, and system complexity.

@@ -1,6 +1,6 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{List of Figures}{v}{chapter*.2}%
-\contentsline {chapter}{List of Tables}{vi}{chapter*.3}%
+\contentsline {chapter}{List of Tables}{vii}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}The Evolution of Natural Language Processing and Decision Support Systems}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Early Symbolic Approaches}{2}{section.2.1}%
@@ -50,19 +50,42 @@
 \contentsline {paragraph}{UC-1: Near Real-Time Anomaly Detection and Recommendation (Nominal, Fully Automatic)}{38}{section*.28}%
 \contentsline {paragraph}{UC-2: Operator Conversational Investigation via AI-Assisted Chatbot}{39}{section*.30}%
 \contentsline {paragraph}{UC-3: Operator-Initiated Dashboard Investigation}{40}{section*.32}%
-\contentsline {chapter}{\numberline {4}Proof of Concept Development}{41}{chapter.4}%
-\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{41}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Storage Manager}{42}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{42}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Rag System}{42}{subsection.4.2.2}%
-\contentsline {paragraph}{Document Chunking}{43}{section*.34}%
-\contentsline {paragraph}{Embedding Generation}{45}{section*.36}%
-\contentsline {paragraph}{Vector Storage}{45}{section*.37}%
-\contentsline {paragraph}{Knowledge Memory Management}{46}{section*.38}%
-\contentsline {paragraph}{RAG Validation}{48}{section*.40}%
-\contentsline {paragraph}{Limitations}{50}{section*.43}%
-\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{50}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{50}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{52}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}AI Manager Module}{52}{section.4.3}%
-\contentsline {chapter}{Bibliography}{53}{section.4.3}%
+\contentsline {subsection}{\numberline {3.7.6}LLM Model Selection}{40}{subsection.3.7.6}%
+\contentsline {chapter}{\numberline {4}Proof of Concept Development}{42}{chapter.4}%
+\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{42}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Storage Manager}{43}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{43}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Rag System}{43}{subsection.4.2.2}%
+\contentsline {paragraph}{Document Chunking}{44}{section*.34}%
+\contentsline {paragraph}{Embedding Generation}{46}{section*.36}%
+\contentsline {paragraph}{Vector Storage}{46}{section*.37}%
+\contentsline {paragraph}{Knowledge Memory Management}{47}{section*.38}%
+\contentsline {paragraph}{RAG Validation}{49}{section*.40}%
+\contentsline {paragraph}{Limitations}{51}{section*.43}%
+\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{51}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{51}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{53}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}AI Manager Module}{53}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Overview}{53}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Software Architecture and Implementation}{54}{subsection.4.3.2}%
+\contentsline {subsubsection}{Configuration Layer}{55}{section*.45}%
+\contentsline {subsubsection}{Agent and LLM Management Layer}{55}{section*.46}%
+\contentsline {subsection}{\numberline {4.3.3}Multi-Agent Architecture}{55}{subsection.4.3.3}%
+\contentsline {subsubsection}{Agent Specialization}{56}{section*.47}%
+\contentsline {subsubsection}{Agent Responsibilities and Communication}{57}{section*.48}%
+\contentsline {subsubsection}{Shared State and Collaboration Mechanisms}{57}{section*.49}%
+\contentsline {subsection}{\numberline {4.3.4}Graph-Based Orchestration with LangGraph}{58}{subsection.4.3.4}%
+\contentsline {subsubsection}{State Management}{58}{section*.50}%
+\contentsline {subsubsection}{Graph Engine}{59}{section*.51}%
+\contentsline {subsubsection}{Agent Nodes}{59}{section*.52}%
+\contentsline {subsubsection}{Tool Integration}{60}{section*.53}%
+\contentsline {subsection}{\numberline {4.3.5}LLM Agent Implementation}{60}{subsection.4.3.5}%
+\contentsline {subsubsection}{Base LLM Class}{60}{section*.54}%
+\contentsline {subsubsection}{Specialized Agents}{61}{section*.55}%
+\contentsline {paragraph}{Planner Agent}{62}{section*.56}%
+\contentsline {paragraph}{Synthesizer Agent}{62}{section*.57}%
+\contentsline {paragraph}{Critic Agent}{63}{section*.58}%
+\contentsline {paragraph}{Query Agent}{63}{section*.59}%
+\contentsline {paragraph}{Planning Agent}{63}{section*.60}%
+\contentsline {paragraph}{Ticket Agent}{63}{section*.61}%
+\contentsline {chapter}{Bibliography}{65}{figure.caption.62}%
