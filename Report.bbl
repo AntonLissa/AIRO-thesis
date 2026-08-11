@@ -343,4 +343,9 @@ S.~Yao, J.~Zhao, D.~Yu, N.~Du, I.~Shafran, K.~R. Narasimhan, and Y.~Cao.
 \newblock React: Synergizing reasoning and acting in language models.
 \newblock In {\em The eleventh international conference on learning representations}, 2022.
 
+\bibitem{zheng2023judging}
+L.~Zheng, W.-L. Chiang, Y.~Sheng, S.~Zhuang, Z.~Wu, Y.~Zhuang, Z.~Lin, Z.~Li, D.~Li, E.~Xing, et~al.
+\newblock Judging llm-as-a-judge with mt-bench and chatbot arena.
+\newblock {\em Advances in neural information processing systems}, 36:46595--46623, 2023.
+
 \end{thebibliography}

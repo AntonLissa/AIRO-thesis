@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  3 JUL 2026 15:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  10 AUG 2026 16:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Report-frn
+**Report-frn.tex
 (./Report-frn.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -116,20 +116,20 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count289
 )
 No file Report-frn.aux.
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -186,19 +186,19 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <Figures/Logo/logo_sapienza_new.jpg, id=1, 597.432pt x 213.6783pt>
 File: Figures/Logo/logo_sapienza_new.jpg Graphic file (type jpg)
 <use Figures/Logo/logo_sapienza_new.jpg>
-Package pdftex.def Info: Figures/Logo/logo_sapienza_new.jpg  used on input line 28.
+Package pdftex.def Info: Figures/Logo/logo_sapienza_new.jpg  used on input line 29.
 (pdftex.def)             Requested size: 318.21452pt x 113.81102pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <24> not available
-(Font)              size <24.88> substituted on input line 28.
+(Font)              size <24.88> substituted on input line 29.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 28.
+(Font)              <12> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 28.
+(Font)              <8> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 28.
+(Font)              <6> on input line 29.
 [1
 
 {c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Figures/Logo/logo_sapienza_new.jpg>]
@@ -215,13 +215,13 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  2924 strings out of 469472
  48615 string characters out of 5466873
- 465795 words of memory out of 5000000
+ 465823 words of memory out of 5000000
  31575 multiletter control sequences out of 15000+600000
  631987 words of font info for 54 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 57i,14n,84p,213b,274s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,14n,84p,217b,274s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on Report-frn.pdf (1 page, 639821 bytes).
+Output written on Report-frn.pdf (1 page, 639298 bytes).
 PDF statistics:
  29 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream

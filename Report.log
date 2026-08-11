@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  27 JUL 2026 17:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  11 AUG 2026 10:53
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -738,16 +738,16 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 \c@blind@pangramcount=\count395
 \c@blind@pangrammax=\count396
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 77.
+Package hyperref Info: Option `colorlinks' set `true' on input line 83.
 \@nomenclaturefile=\write6
 \openout6 = `Report.nlo'.
 
-Package nomencl Info: Writing nomenclature file Report.nlo on input line 81.
+Package nomencl Info: Writing nomenclature file Report.nlo on input line 87.
 \glswrite=\write7
 \glo@acronym@file=\write8
 \openout8 = `Report.acn'.
 
-Package glossaries Info: Writing glossary file Report.acn on input line 82.
+Package glossaries Info: Writing glossary file Report.acn on input line 88.
 ) (c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fundus-calligra/calligra.sty
 Package: calligra 2012/04/10 v1.9 LaTeX package calligra
 )
@@ -843,7 +843,7 @@ Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count403
 Package tocbasic Info: setting babel extension for `lol' on input line 13.
  (./Report.glsdefs) (./Include/Frontmatter/Titlepage.tex
-<Report-frn.pdf, id=188, 597.50829pt x 845.0471pt>
+<Report-frn.pdf, id=260, 597.50829pt x 845.0471pt>
 File: Report-frn.pdf Graphic file (type pdf)
 <use Report-frn.pdf>
 Package pdftex.def Info: Report-frn.pdf  used on input line 1.
@@ -884,13 +884,13 @@ Overfull \hbox (40.46373pt too wide) in paragraph at lines 12--12
  \T1/cmr/m/n/10.95 "ti-tle", "au-thor", "last_modified", "page_number", "chunk_index_in_page", "chunk_size" 
  []
 
-)
+[6
+
+])
 \tf@lof=\write12
 \openout12 = `Report.lof'.
 
- [6
-
-] [7] (./Report.lot)
+ [7] (./Report.lot)
 \tf@lot=\write13
 \openout13 = `Report.lot'.
 
@@ -974,7 +974,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [10]
-<Figures/transformer_arch.png, id=468, 532.99126pt x 713.66624pt>
+<Figures/transformer_arch.png, id=576, 532.99126pt x 713.66624pt>
 File: Figures/transformer_arch.png Graphic file (type png)
 <use Figures/transformer_arch.png>
 Package pdftex.def Info: Figures/transformer_arch.png  used on input line 300.
@@ -1052,7 +1052,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [18]
-<Figures/llm-autonomous-agents.png, id=599, 776.9025pt x 341.47575pt>
+<Figures/llm-autonomous-agents.png, id=707, 776.9025pt x 341.47575pt>
 File: Figures/llm-autonomous-agents.png Graphic file (type png)
 <use Figures/llm-autonomous-agents.png>
 Package pdftex.def Info: Figures/llm-autonomous-agents.png  used on input line 442.
@@ -1175,7 +1175,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [32]
-<Figures/funes_architecture.png, id=702, 543.02875pt x 372.39125pt>
+<Figures/funes_architecture.png, id=810, 543.02875pt x 372.39125pt>
 File: Figures/funes_architecture.png Graphic file (type png)
 <use Figures/funes_architecture.png>
 Package pdftex.def Info: Figures/funes_architecture.png  used on input line 315.
@@ -1225,7 +1225,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [37]
-<Figures/funes_data_flow_uc1.drawio.png, id=734, 362.35374pt x 251.94125pt>
+<Figures/funes_data_flow_uc1.drawio.png, id=842, 362.35374pt x 251.94125pt>
 File: Figures/funes_data_flow_uc1.drawio.png Graphic file (type png)
 <use Figures/funes_data_flow_uc1.drawio.png>
 Package pdftex.def Info: Figures/funes_data_flow_uc1.drawio.png  used on input line 477.
@@ -1239,7 +1239,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [38]
-<Figures/funes_data_Flow_uc2.png, id=746, 362.35374pt x 322.20375pt>
+<Figures/funes_data_Flow_uc2.png, id=854, 362.35374pt x 322.20375pt>
 File: Figures/funes_data_Flow_uc2.png Graphic file (type png)
 <use Figures/funes_data_Flow_uc2.png>
 Package pdftex.def Info: Figures/funes_data_Flow_uc2.png  used on input line 500.
@@ -1253,7 +1253,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [39 <./Figures/funes_data_flow_uc1.drawio.png> <./Figures/funes_data_Flow_uc2.png>]
-<Figures/funes_data_Flow_uc3.png, id=760, 356.33125pt x 201.75375pt>
+<Figures/funes_data_Flow_uc3.png, id=867, 356.33125pt x 201.75375pt>
 File: Figures/funes_data_Flow_uc3.png Graphic file (type png)
 <use Figures/funes_data_Flow_uc3.png>
 Package pdftex.def Info: Figures/funes_data_Flow_uc3.png  used on input line 521.
@@ -1323,7 +1323,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [44]
-<Figures/chunking_funes.png, id=792, 872.25874pt x 62.2325pt>
+<Figures/chunking_funes.png, id=900, 872.25874pt x 62.2325pt>
 File: Figures/chunking_funes.png Graphic file (type png)
 <use Figures/chunking_funes.png>
 Package pdftex.def Info: Figures/chunking_funes.png  used on input line 105.
@@ -1383,7 +1383,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [48]
-<Figures/doc_ingestion_funes.png, id=823, 895.345pt x 533.995pt>
+<Figures/doc_ingestion_funes.png, id=931, 895.345pt x 533.995pt>
 File: Figures/doc_ingestion_funes.png Graphic file (type png)
 <use Figures/doc_ingestion_funes.png>
 Package pdftex.def Info: Figures/doc_ingestion_funes.png  used on input line 193.
@@ -1433,7 +1433,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [53]
-<Figures/funes_llms_logic.png, id=851, 415.5525pt x 452.69125pt>
+<Figures/funes_llms_logic.png, id=959, 415.5525pt x 452.69125pt>
 File: Figures/funes_llms_logic.png Graphic file (type png)
 <use Figures/funes_llms_logic.png>
 Package pdftex.def Info: Figures/funes_llms_logic.png  used on input line 362.
@@ -1539,7 +1539,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [62]
-<Figures/funes_agents.png, id=906, 671.50874pt x 462.72874pt>
+<Figures/funes_agents.png, id=1014, 671.50874pt x 462.72874pt>
 File: Figures/funes_agents.png Graphic file (type png)
 <use Figures/funes_agents.png>
 Package pdftex.def Info: Figures/funes_agents.png  used on input line 642.
@@ -1552,7 +1552,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[63])
+[63]) (./Include/Chapters/4_validation.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1560,10 +1560,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[64 <./Figures/funes_agents.png>] (./Report.bbl [65
-
+[64 <./Figures/funes_agents.png>]
+Chapter 5.
+[65
 
 ]
+<Figures/funes_scenario.png, id=1034, 624.3325pt x 623.32875pt>
+File: Figures/funes_scenario.png Graphic file (type png)
+<use Figures/funes_scenario.png>
+Package pdftex.def Info: Figures/funes_scenario.png  used on input line 42.
+(pdftex.def)             Requested size: 281.68517pt x 281.23721pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1579,7 +1586,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[67]
+[67 <./Figures/funes_scenario.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1595,7 +1602,114 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[69])
+[69]
+
+LaTeX Warning: Reference `tab:evaluation questions' on page 70 undefined on input line 108.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[70]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[71]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[72]
+Overfull \hbox (12.0pt too wide) in alignment at lines 292--292
+[][][][][][][] 
+ []
+
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[73]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[74]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[75]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[76]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[77] (./Report.bbl [78
+
+
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[79]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[80]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[81]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[82])
 runsystem(cd ""& del "Report.oldaux" )...executed.
 
 
@@ -1606,27 +1720,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[70] (./Report.aux)
+[83] (./Report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 260FC37CAD5453468639DDE2DED7AF70;9963.
+(rerunfilecheck)             Checksum: 08923600F11BC2172AFD7D3ADA3C831E;13089.
  ) 
 Here is how much of TeX's memory you used:
- 26717 strings out of 469472
- 501337 string characters out of 5466873
- 1067629 words of memory out of 5000000
- 54629 multiletter control sequences out of 15000+600000
+ 26801 strings out of 469472
+ 502927 string characters out of 5466873
+ 1107048 words of memory out of 5000000
+ 54674 multiletter control sequences out of 15000+600000
  649594 words of font info for 88 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 115i,12n,136p,2597b,837s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,12n,136p,2597b,835s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report.pdf (79 pages, 1636362 bytes).
+Output written on Report.pdf (92 pages, 1719352 bytes).
 PDF statistics:
- 1796 PDF objects out of 2073 (max. 8388607)
- 957 compressed objects within 10 object streams
- 280 named destinations out of 1000 (max. 500000)
- 424 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2003 PDF objects out of 2073 (max. 8388607)
+ 1116 compressed objects within 12 object streams
+ 316 named destinations out of 1000 (max. 500000)
+ 573 words of extra memory for PDF output out of 10000 (max. 10000000)
 
