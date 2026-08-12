@@ -3,46 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Report.aux
 The style file: abbrv.bst
 Database file #1: Include/Backmatter/Bibliography.bib
-Warning--can't use both volume and number fields in besta2024graph
-You've used 70 entries,
+You've used 1 entry,
             2118 wiz_defined-function locations,
-            871 strings with 20073 characters,
-and the built_in function-call counts, 30844 in all, are:
-= -- 2822
-> -- 2298
-< -- 20
-+ -- 907
-- -- 832
-* -- 2522
-:= -- 5341
-add.period$ -- 216
-call.type$ -- 70
-change.case$ -- 602
+            504 strings with 4045 characters,
+and the built_in function-call counts, 660 in all, are:
+= -- 57
+> -- 58
+< -- 0
++ -- 23
+- -- 22
+* -- 65
+:= -- 122
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 71
-duplicate$ -- 911
-empty$ -- 1796
-format.name$ -- 832
-if$ -- 6126
+cite$ -- 1
+duplicate$ -- 11
+empty$ -- 31
+format.name$ -- 22
+if$ -- 121
 int.to.chr$ -- 0
-int.to.str$ -- 70
-missing$ -- 66
-newline$ -- 351
-num.names$ -- 148
-pop$ -- 589
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 8
+num.names$ -- 2
+pop$ -- 11
 preamble$ -- 1
-purify$ -- 533
+purify$ -- 12
 quote$ -- 0
-skip$ -- 690
+skip$ -- 8
 stack$ -- 0
-substring$ -- 1453
-swap$ -- 220
-text.length$ -- 20
+substring$ -- 42
+swap$ -- 1
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 278
-warning$ -- 1
-while$ -- 224
-width$ -- 72
-write$ -- 762
-(There was 1 warning)
+type$ -- 4
+warning$ -- 0
+while$ -- 4
+width$ -- 2
+write$ -- 13
