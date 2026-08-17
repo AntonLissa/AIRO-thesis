@@ -459,6 +459,7 @@ Instead of implementing the interaction between agents through direct function c
 This approach provides a centralized mechanism for controlling the interaction between the Planner, specialized tools, Synthesizer, and Critic agents. Each component modifies specific portions of the shared state, while the graph structure defines the execution order and the possible transitions between investigation steps.
 
 \subsubsection{State Management}
+\label{sec: state management}
 
 The communication between the different components of the workflow is handled through a shared state object defined by the \texttt{AgentState} TypedDict. This state acts as the central memory of the investigation process, storing both intermediate reasoning artifacts and the information required by subsequent nodes.
 
