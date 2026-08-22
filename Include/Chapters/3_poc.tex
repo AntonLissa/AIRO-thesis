@@ -63,7 +63,6 @@ To ensure modularity, the chunking functionality is defined through the abstract
 
 The concrete implementation developed for the Proof of Concept, named \texttt{LocalSemanticChunker}, performs semantic chunking locally by exploiting the \textit{all-MiniLM-L6-v2} Sentence Transformer model. Instead of dividing documents into fixed-size windows, the adopted strategy identifies semantically coherent boundaries between consecutive text segments. This approach produces chunks that better preserve the original context, improving the quality of the subsequent embedding generation and retrieval phases.
 The selected Sentence Transformer model produces dense embeddings of 384 dimensions, providing a favorable trade-off between computational efficiency and semantic representation quality. 
-The model was selected because it provides a favorable trade-off between embedding quality and computational cost, allowing all embeddings to be generated locally without requiring external APIs.
 
 The semantic chunking process is implemented using the LangChain SemanticChunker with the \texttt{standard\_deviation} breakpoint strategy. A breakpoint threshold of 1.5 is adopted, producing larger semantic segments by splitting only where the semantic distance between consecutive sentences significantly exceeds the average. Additionally, a buffer size of five sentences is used to avoid generating excessively small chunks. Moreover, chunks containing fewer than 50 characters or less than eight words are discarded, as they may provide insufficient contextual information and may negatively affect retrieval quality.
 
@@ -75,7 +74,7 @@ To minimize noise and prevent non-informative repetitive text (such as running h
 Unlike traditional static rule-based cleaning methods (e.g., rigid regular expressions), the proposed approach dynamically identifies document-specific boilerplate text through fuzzy string matching across page boundaries. The cleaning pipeline consists of three core steps:
 
 \begin{enumerate}
-    \item \textbf{Dynamic Pattern Discovery via Sampling:} To optimize computational efficiency—especially for large technical documents, the algorithm performs an initial sampling over the first $N$ pages ($N = 5$ by default). Each sampled page is decomposed into discrete line blocks.
+    \item \textbf{Dynamic Pattern Discovery via Sampling:} To optimize computational efficiency, especially for large technical documents, the algorithm performs an initial sampling over the first $N$ pages ($N = 5$ by default). Each sampled page is decomposed into discrete line blocks.
     
     \item \textbf{Cross-Page Fuzzy Similarity Analysis:} For every line block $b_i$ in page $i$, the algorithm compares its content against all line blocks $b_j$ in other sampled pages $j \neq i$. To account for minor textual variations (e.g., page numbers changing within a running header), textual overlap is computed using the matching algorithm via Python's \texttt{SequenceMatcher}. 
     
@@ -183,10 +182,8 @@ The resulting memory architecture therefore implements a complete retrieval pipe
     \item relevance refinement through Cross-Encoder reranking.
 \end{itemize}
 
-This multi-stage approach improves the robustness of the knowledge retrieval process, reducing the limitations of relying on a single retrieval strategy and providing higher-quality contextual information to the decision-support agents.
+This multi-stage approach improves the robustness of the knowledge retrieval process, reducing the limitations of relying on a single retrieval strategy and providing higher-quality contextual information to the decision-support agents. The RAG system is summarized in figure Fig. \ref{fig:rag_architecture}
 
-
-The RAG system is summarized in figure Fig. \ref{fig:rag_architecture}
 
 \begin{figure}[htbp]
     \centering
@@ -359,8 +356,8 @@ The resulting architecture, summarized in Fig. \ref{fig:funes llm logic},  imple
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{Figures/funes_llms_logic.png}
-    \caption{The flow of the LLM-based decision support system.}
+    \includegraphics[width=0.6\textwidth]{Figures/funes_llms_logic.png}
+    \caption{Multi-agent reasoning workflow of the AI Manager, showing the iterative interaction between the Planner, tool-based evidence retrieval, Synthesizer, and Critic agents.}
     \label{fig:funes llm logic}
 \end{figure}
 
@@ -387,9 +384,9 @@ The \texttt{agent\_registry.py} component maintains the association between agen
 
 The \texttt{AgentFactory} class implements the creation mechanism for agent instances. Instead of directly instantiating specific agent classes throughout the system, components request agents through the factory interface, improving modularity and reducing dependencies between software components. The factory dynamically loads the configuration associated with the requested agent and returns an initialized instance through the method:
 
-\begin{verbatim}
-factory.create_agent(agent_name: str)
-\end{verbatim}
+\[
+\texttt{factory.create\_agent(agent\_name: str)}
+\]
 
 The LLM provider management is implemented through an abstraction layer based on the \texttt{BaseProvider} abstract class. The \texttt{GroqProvider} class extends this interface by implementing the \texttt{call()} method required to interact with the selected LLM service. The method receives the model configuration, including model name, system prompt, user prompt, and generation parameters such as temperature, and returns the generated response.
 
@@ -420,35 +417,29 @@ The main agents composing the AI Manager Module are:
 
     \item \textbf{Ticket Agent:} responsible for analyzing available anomaly and ticket information and selecting only the items relevant to the current investigation. The agent receives the investigation requirements generated by the Planner Agent and filters the available ticket information to reduce irrelevant data.
 
+    \item \textbf{Knowledge Base Agent:} responsible for filtering and prioritizing the documents retrieved by the Retrieval-Augmented Generation (RAG) component. The agent identifies the documents most relevant to the current investigation and forwards only the selected evidence to the Synthesizer Agent, reducing irrelevant information and unnecessary context.
+
 
 \end{itemize}
 
 The architecture therefore separates information acquisition, evidence synthesis, and validation activities into independent components. This separation enables the extension of the system with additional specialized agents or data sources without requiring modifications to the overall decision-support workflow.
 
 
-\subsubsection{Agent Responsibilities and Communication}
+\subsubsection{Agent Responsibilities and Collaboration Mechanism}
 
-The interaction among agents is not implemented through direct agent-to-agent communication. Instead, agents cooperate through a centralized orchestration mechanism where intermediate results are stored and propagated through a shared execution state.
+The interaction among agents is not implemented through direct agent-to-agent communication. Instead, the agents cooperate through a centralized orchestration mechanism based on a shared execution state. The orchestration layer is responsible for coordinating the execution of the different agents, maintaining the investigation context, and propagating intermediate results throughout the workflow.
 
-The investigation workflow starts when the Planner Agent receives the Mission Manager query and generates an execution plan. The selected tools are then executed in parallel to retrieve the required information from the available mission data sources. The retrieved evidence is passed to the Synthesizer Agent, which generates an operational assessment by correlating the available information.
+The shared state contains the information generated during the investigation lifecycle, including the original Mission Manager request, conversation history, generated execution plans, retrieved tool results, synthesizer responses, critic feedback, and information about previously executed tools. This representation allows each agent to access the results produced by previous steps without requiring direct communication with other agents.
 
-The generated assessment is subsequently analyzed by the Critic Agent. If the evidence is considered insufficient to provide a complete answer, the Critic Agent identifies the missing information and produces a feedback message containing the additional tool requests required for completing the investigation. This feedback is then provided to the Planner Agent, which generates a new execution plan according to the identified information gaps.
-The critic agent is necessary because there might be issues that are found only after one tool is called. For example the user may ask a simple question like "Check the network state", in this case the planner agent would call the network tool which would return the network state, but if the network state is degraded then we would need to investigate firther into the reasons why this happened by checking the open tickets.
+The investigation workflow starts when the Planner Agent receives the Mission Manager query and generates an execution plan identifying the tools and information required to address the request. The selected tools can then be executed in parallel to retrieve evidence from the available mission data sources. The retrieved information is stored in the shared state and provided to the Synthesizer Agent, which correlates the available evidence and generates an operational assessment.
 
-The resulting workflow implements an iterative investigation loop, as described in Fig. \ref{fig:funes llm logic}.
+The generated assessment is subsequently analyzed by the Critic Agent. Its role is to determine whether the available evidence is sufficient to provide a complete and reliable answer to the original query. If the investigation is considered incomplete, the Critic Agent identifies the missing information and produces feedback containing additional tool requests required to complete the investigation. This feedback is stored in the shared state and provided to the Planner Agent, which generates a new execution plan based on the identified information gaps.
 
-This approach enables a controlled evidence acquisition process, where additional information is collected only when required to answer the original query.
+This iterative mechanism is particularly important because relevant information gaps may only become apparent after the execution of an initial tool. For example, if the Mission Manager asks the system to ``check the network state'', the Planner Agent may initially invoke the network monitoring tool. If the tool reports a degraded network condition, however, the initial result does not explain the underlying cause. The Critic Agent can identify this information gap and request additional evidence, such as open tickets or other relevant operational data, allowing the Planner Agent to extend the investigation accordingly.
 
+The resulting workflow therefore implements an iterative investigation loop, as illustrated in Fig.~\ref{fig:funes llm logic}. Rather than operating as a set of independent autonomous agents, the components form a coordinated workflow in which each agent performs a specialized reasoning function and the orchestration layer controls the sequencing and exchange of information.
 
-\subsubsection{Shared State and Collaboration Mechanisms}
-
-The collaboration among agents is enabled through a shared state representation managed by the orchestration layer. The state contains all relevant information generated during the investigation lifecycle and allows each component to access previous results without requiring direct interaction with other agents.
-
-The shared state includes the user request, conversation history, generated execution plans, retrieved tool results, synthesizer response, critic feedback, and information about previously executed tools. This mechanism allows the system to maintain context throughout multiple investigation iterations and supports the feedback loop between the Critic and Planner agents.
-
-The use of a shared state provides two main advantages. First, it improves the traceability of the decision-support process by maintaining the intermediate information produced during the investigation. Second, it enables iterative reasoning cycles, where new evidence can be incorporated into the assessment process while avoiding redundant tool executions.
-
-Therefore, the multi-agent architecture can be considered as a coordinated workflow of specialized reasoning components rather than a set of independent autonomous agents. Each component contributes a specific capability, while the orchestration layer ensures the correct sequencing and exchange of information required to support operational decision-making.
+The use of a shared execution state provides two main advantages. First, it improves the traceability of the decision-support process by preserving the intermediate information generated during the investigation. Second, it enables iterative reasoning cycles while allowing the system to retain previously retrieved evidence and avoid unnecessary or redundant tool executions. This mechanism supports a controlled evidence acquisition process in which additional information is collected only when required to answer the original query.
 
  
 \subsection{Graph-Based Orchestration with LangGraph}
@@ -463,7 +454,7 @@ This approach provides a centralized mechanism for controlling the interaction b
 
 The communication between the different components of the workflow is handled through a shared state object defined by the \texttt{AgentState} TypedDict. This state acts as the central memory of the investigation process, storing both intermediate reasoning artifacts and the information required by subsequent nodes.
 
-The state contains the original user query and conversation messages, the execution plan generated by the Planner Agent, the retrieved evidence produced by the tools, the synthesized answer generated by the Master Agent, and the feedback produced by the Critic Agent.
+The state contains the original user query and conversation messages, the execution plan generated by the Planner Agent, the retrieved evidence produced by the tools, the synthesized answer generated by the Synthesizer Agent, and the feedback produced by the Critic Agent.
 
 The main state variables are:
 
@@ -474,7 +465,7 @@ The main state variables are:
     
     \item \texttt{tool\_results}: stores the evidence retrieved from the different mission subsystems and makes it available to the Synthesizer Agent.
     
-    \item \texttt{synthesized\_response}: contains the operational assessment generated by the Master Agent.
+    \item \texttt{synthesized\_response}: contains the operational assessment generated by the Synthesizer Agent.
     
     \item \texttt{critic\_feedback}: stores the decision of the Critic Agent and, when required, the additional tool calls needed for a new investigation cycle.
     
@@ -595,7 +586,7 @@ We will just have to implement this method in its class definition:
 \end{verbatim}
 
 
-\subsubsection{Specialized Agents}
+\subsubsection{Specialized Agents Details}
 
 The AI Manager Module is composed of multiple specialized LLM agents, each designed to perform a well-defined task within the investigation workflow. Instead of assigning all reasoning capabilities to a single model, the proposed architecture distributes the decision-support process among agents with complementary responsibilities.
 
@@ -612,7 +603,7 @@ To facilitate deterministic orchestration, the Planner Agent is instructed to re
 
 \paragraph{Synthesizer Agent}
 
-The Synthesizer Agent, also referred to as the Master Agent, is responsible for producing the final operational assessment. After the execution of the selected tools, it receives all the collected evidence and correlates the information originating from the different mission subsystems. The generated response is exclusively based on the retrieved evidence by the evidence-grounded prompt strategy and includes operational impacts, supporting evidence, possible mitigation actions, and any remaining knowledge gaps. The Master Agent is explicitly instructed not to generate unsupported conclusions or information that is not grounded in the available evidence.
+The Synthesizer Agent, also referred to as the Master Agent, is responsible for producing the final operational assessment. After the execution of the selected tools, it receives all the collected evidence and correlates the information originating from the different mission subsystems. The generated response is exclusively based on the retrieved evidence by the evidence-grounded prompt strategy and includes operational impacts, supporting evidence, possible mitigation actions, and any remaining knowledge gaps. The Synthesizer Agent is explicitly instructed not to generate unsupported conclusions or information that is not grounded in the available evidence.
 The system prompt explicitly constrains the agent to correlate information only when the relationships are supported by the collected evidence. Rather than behaving as a general-purpose conversational assistant, the Synthesizer acts as an evidence integration component, combining information originating from planning, network monitoring, ticketing, and knowledge base retrieval into a coherent operational assessment.
 To improve the readability of the generated assessment, the prompt enforces a predefined response structure including a situation summary, supporting evidence, operational impact, recommended actions, identified knowledge gaps, and the final answer to the Mission Manager. This organization simplifies the interpretation of the assessment while maintaining traceability between conclusions and supporting evidence.
 
@@ -636,14 +627,43 @@ The Planning Agent is integrated within the Planning Tool and acts as an intelli
 
 The Ticket Agent is used by the Ticket Tool to analyze the set of available anomaly reports and operational tickets. Based on the investigation requirements generated by the Planner Agent, it filters the available tickets and returns only those relevant to the current investigation. This approach significantly reduces the amount of irrelevant information propagated to the Master Agent while preserving the evidence required for the final operational assessment. 
 
-The workflow of the agents is summarized in Fig. \ref{fig:funes workflow}.
+\paragraph{Knowledge Base Agent}
+
+The Knowledge Base Agent is integrated within the Knowledge Base Tool and is responsible for filtering and prioritizing the documents retrieved by the Retrieval-Augmented Generation (RAG) subsystem. After the initial retrieval phase, the agent receives the set of candidate documents identified as potentially relevant to the Mission Manager's query. It analyzes their content and relevance with respect to the investigation objective and selects the most informative documents to be provided to the Synthesizer Agent.
+
+The agent acts as a relevance filtering layer between the retrieval and synthesis stages. Its purpose is to reduce the amount of irrelevant or redundant information propagated to the Synthesizer while preserving the documents containing the evidence most relevant to the current investigation. This approach limits the context that must be processed by the Synthesizer Agent and improves the focus and consistency of the final operational assessment.
+
+The selected documents, together with their associated metadata and source information, are then returned to the orchestration workflow as evidence for the Synthesizer Agent. In this way, the Knowledge Base Agent does not generate the final answer, but supports the evidence-grounding process by ensuring that the synthesis stage receives a more focused and relevant set of retrieved information.
+
+
+The LLM model assigned to each specialized agent is summarized in Table \ref{tab:agent_models}, while the workflow of the agents is summarized in Fig. \ref{fig:funes workflow}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/funes_agents.png}
-    \caption{This figure summarizes the workflow of the divverent agents of the system. The mission manager query is passed to the planner agent that decides what tools and agents have to be called to answer. The results are then passed to the Synthesizer that will provide a final answer. The synthesizer's response and the tools results are then passed to the critic that will determine if other tools are necessary for a more complete response. If so the critic will generate a feedback that is given to the planner for a plan refinement and another tool calling, only the new tools are going to be called if the inputs for the others are unchanged.}
+    \caption{This figure summarizes the workflow of the different agents of the system. The mission manager query is passed to the planner agent that decides what tools and agents have to be called to answer. The results are then passed to the Synthesizer that will provide a final answer. The synthesizer's response and the tools results are then passed to the critic that will determine if other tools are necessary for a more complete response. If so the critic will generate a feedback that is given to the planner for a plan refinement and another tool calling, only the new tools are going to be called if the inputs for the others are unchanged.}
     \label{fig:funes workflow}
 \end{figure}
 
 
-Overall, the proposed prompting strategy transforms the individual LLMs into specialized modules with clearly defined responsibilities rather than general conversational agents. Combined with structured outputs and graph-based orchestration, this design reduces ambiguity in the interaction among components and improves the robustness and reproducibility of the decision-support workflow
+\begin{table}[htbp]
+    \centering
+    \caption{LLM models employed by the specialized agents of the AI Manager Module. The model allocation follows the functional complexity of the agents. The core orchestration agents use the larger Llama 3.3 70B model, as they are responsible for planning, evidence synthesis, and investigation validation. In contrast, the tool-support agents use the smaller Llama 3.1 8B model, since their tasks are more constrained and domain-specific, such as query reformulation, parameter extraction, and relevance filtering.}
+    \label{tab:agent_models}
+    \begin{tabular}{lll}
+        \hline
+        \textbf{Agent} & \textbf{Category} & \textbf{LLM Model} \\
+        \hline
+        Planner Agent    & Core orchestration & llama 3.3 70B Versatile \\
+        Synthesizer Agent & Core orchestration & llama 3.3 70B Versatile \\
+        Critic Agent     & Core orchestration & llama 3.3 70B Versatile \\
+        Query Agent      & Tool-support & llama 3.1 8B Instant \\
+        Planning Agent   & Tool-support & llama 3.1 8B Instant \\
+        Knowledge Base Agent     & Tool-support & llama 3.1 8B Instant \\
+        Ticket Agent     & Tool-support & llama 3.1 8B Instant \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Overall, the proposed prompting strategy transforms the individual LLMs into specialized modules with clearly defined responsibilities rather than general conversational agents. Combined with structured outputs and graph-based orchestration, this design reduces ambiguity in the interaction among components and improves the robustness and reproducibility of the decision-support workflow.
+

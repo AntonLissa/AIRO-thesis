@@ -1,11 +1,11 @@
 \thispagestyle{plain}			% Supress header 
 \setlength{\parskip}{0pt plus 1.0pt}
 \section*{Abstract}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Modern space mission operations rely on multiple heterogeneous systems providing information related to mission planning, spacecraft monitoring, network status, anomaly management, and operational knowledge. The distribution of this information across different sources places a significant cognitive burden on mission operators, who must correlate heterogeneous evidence to maintain situational awareness and support timely operational decisions.
 
-% KEYWORDS (MAXIMUM 10 WORDS)
-\vfill
-Keywords: lorem, ipsum, dolor, sit, amet, consectetur, adipisicing, elit, sed, do.
+This thesis presents FUNES (Foresight Understanding for Nominal and Emergency Scenarios), an AI-based Decision Support System designed to assist mission managers in satellite ground-segment operations. FUNES adopts a multi-agent architecture based on Large Language Models, Retrieval-Augmented Generation, and tool-based information retrieval. Rather than providing a general-purpose LLM with the complete operational context, the proposed architecture explicitly plans information acquisition, selects the relevant operational sources, refines the retrieved evidence, and synthesizes the final response through specialized agents coordinated by a graph-based orchestration layer.
 
+Our proposed architecture was evaluated through a Proof of Concept against a baseline consisting of a general-purpose Llama 3.3 70B Instruct model operating directly on the complete operational context. The results show that FUNES achieved an overall score of 89.9\%, compared with 63.0\% for the baseline, corresponding to an improvement of 26.9 percentage points. 
+The results indicate that explicit information selection and orchestration can improve the effectiveness of LLM-based decision support, particularly when relevant information is distributed across heterogeneous operational sources. However, the evaluation also highlights limitations in complex operational reasoning and final answer synthesis.
 \thispagestyle{empty}
 \mbox{}

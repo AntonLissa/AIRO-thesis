@@ -2,121 +2,120 @@
 \contentsline {chapter}{List of Figures}{v}{chapter*.2}%
 \contentsline {chapter}{List of Tables}{vii}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2}The Evolution of Natural Language Processing and Decision Support Systems}{2}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Early Symbolic Approaches}{2}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Early Neural Approaches}{4}{section.2.2}%
-\contentsline {section}{\numberline {2.3}From Static Embeddings to Sequential Modeling}{6}{section.2.3}%
-\contentsline {section}{\numberline {2.4}The Transformer Revolution}{9}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Scaling Laws and Emergent Abilities}{12}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Foundation Models and General-Purpose AI}{12}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Alignment and Instruction Tuning}{13}{section.2.7}%
-\contentsline {section}{\numberline {2.8}The Reliability Gap: Hallucinations and Uncertainty}{14}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Computational Burden and Compression Strategies for LLMs}{15}{section.2.9}%
-\contentsline {section}{\numberline {2.10}Reasoning Frameworks for Decision Support}{16}{section.2.10}%
-\contentsline {section}{\numberline {2.11}Long-Context Modeling and Context Management}{17}{section.2.11}%
-\contentsline {section}{\numberline {2.12}Agentic Large Language Models}{18}{section.2.12}%
-\contentsline {section}{\numberline {2.13}Modern LLM-based Decision Support Systems}{20}{section.2.13}%
-\contentsline {chapter}{\numberline {3}System Engineering \& Requirement Analysis}{24}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Domain and Mission Context}{24}{section.3.1}%
-\contentsline {section}{\numberline {3.2}The Mission Manager's Role and Challenges}{25}{section.3.2}%
-\contentsline {section}{\numberline {3.3}FUNES System Overview}{25}{section.3.3}%
-\contentsline {section}{\numberline {3.4}System and Software Requirement Specification according to ECSS}{26}{section.3.4}%
-\contentsline {section}{\numberline {3.5}System Engineering Approach}{27}{section.3.5}%
-\contentsline {section}{\numberline {3.6}System Requirements Definition}{27}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Software Requirement Specification}{28}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Functional Decomposition and Allocation}{28}{subsection.3.7.1}%
-\contentsline {paragraph}{C-01: Mission Data Ingestion Capability}{28}{section*.8}%
-\contentsline {paragraph}{C-02: AI-based Analysis and Decision Support Capability}{29}{section*.9}%
-\contentsline {paragraph}{C-03: Mission Status Visualization and Operator Interaction Capability}{29}{section*.10}%
-\contentsline {paragraph}{C-04: Configuration and Model Lifecycle Management Capability}{29}{section*.11}%
-\contentsline {paragraph}{C-05: Persistent Storage and Historical Retrieval Capability}{30}{section*.12}%
-\contentsline {subsection}{\numberline {3.7.2}Software Architecture}{30}{subsection.3.7.2}%
-\contentsline {subsubsection}{Configuration Items Breakdown}{31}{section*.14}%
-\contentsline {paragraph}{CI-1 -- Data Processing Manager (DPM)}{31}{section*.15}%
-\contentsline {paragraph}{CI-2 -- AI Analytics Manager (AIM)}{32}{section*.16}%
-\contentsline {paragraph}{CI-3 -- Decision Support Interface (DSI / User Interface)}{32}{section*.17}%
-\contentsline {paragraph}{CI-4 -- Configuration \& Model Management (CMM)}{32}{section*.18}%
-\contentsline {paragraph}{CI-5 -- Storage Manager (SM)}{33}{section*.19}%
-\contentsline {subsubsection}{External System Interfaces}{33}{section*.20}%
-\contentsline {subsection}{\numberline {3.7.3}Software Requirements Derivation}{34}{subsection.3.7.3}%
-\contentsline {subsection}{\numberline {3.7.4}Software Design}{35}{subsection.3.7.4}%
-\contentsline {subsubsection}{CI-1 - Data Processing Manager}{36}{section*.22}%
-\contentsline {subsubsection}{CI-2 - AI Analytics Manager}{36}{section*.23}%
-\contentsline {subsubsection}{CI-3 - Decision Support Interface}{36}{section*.24}%
-\contentsline {subsubsection}{CI-4 - Configuration and Model Management}{37}{section*.25}%
-\contentsline {subsubsection}{CI-5 - Storage Manager}{37}{section*.26}%
-\contentsline {subsubsection}{Deployment and Integration Environment}{37}{section*.27}%
-\contentsline {subsection}{\numberline {3.7.5}System Data Flows and Operational Use Cases}{38}{subsection.3.7.5}%
-\contentsline {paragraph}{UC-1: Near Real-Time Anomaly Detection and Recommendation (Nominal, Fully Automatic)}{38}{section*.28}%
-\contentsline {paragraph}{UC-2: Operator Conversational Investigation via AI-Assisted Chatbot}{39}{section*.30}%
-\contentsline {paragraph}{UC-3: Operator-Initiated Dashboard Investigation}{40}{section*.32}%
-\contentsline {subsection}{\numberline {3.7.6}LLM Model Selection}{40}{subsection.3.7.6}%
-\contentsline {chapter}{\numberline {4}Proof of Concept Development}{42}{chapter.4}%
-\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{42}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Storage Manager}{43}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{43}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Rag System}{43}{subsection.4.2.2}%
-\contentsline {paragraph}{Document Chunking}{44}{section*.34}%
-\contentsline {paragraph}{Embedding Generation}{46}{section*.36}%
-\contentsline {paragraph}{Vector Storage}{46}{section*.37}%
-\contentsline {paragraph}{Knowledge Memory Management}{47}{section*.38}%
-\contentsline {paragraph}{RAG Validation}{49}{section*.40}%
-\contentsline {paragraph}{Limitations}{51}{section*.43}%
-\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{51}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{51}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{53}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}AI Manager Module}{53}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Overview}{53}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Software Architecture and Implementation}{54}{subsection.4.3.2}%
-\contentsline {subsubsection}{Configuration Layer}{55}{section*.45}%
-\contentsline {subsubsection}{Agent and LLM Management Layer}{55}{section*.46}%
-\contentsline {subsection}{\numberline {4.3.3}Multi-Agent Architecture}{55}{subsection.4.3.3}%
-\contentsline {subsubsection}{Agent Specialization}{56}{section*.47}%
-\contentsline {subsubsection}{Agent Responsibilities and Communication}{57}{section*.48}%
-\contentsline {subsubsection}{Shared State and Collaboration Mechanisms}{57}{section*.49}%
-\contentsline {subsection}{\numberline {4.3.4}Graph-Based Orchestration with LangGraph}{58}{subsection.4.3.4}%
-\contentsline {subsubsection}{State Management}{58}{section*.50}%
-\contentsline {subsubsection}{Graph Engine}{59}{section*.51}%
-\contentsline {subsubsection}{Agent Nodes}{59}{section*.52}%
-\contentsline {subsubsection}{Tool Integration}{60}{section*.53}%
-\contentsline {subsection}{\numberline {4.3.5}LLM Agent Implementation}{60}{subsection.4.3.5}%
-\contentsline {subsubsection}{Base LLM Class}{60}{section*.54}%
-\contentsline {subsubsection}{Specialized Agents}{61}{section*.55}%
-\contentsline {paragraph}{Planner Agent}{62}{section*.56}%
-\contentsline {paragraph}{Synthesizer Agent}{62}{section*.57}%
-\contentsline {paragraph}{Critic Agent}{63}{section*.58}%
-\contentsline {paragraph}{Query Agent}{63}{section*.59}%
-\contentsline {paragraph}{Planning Agent}{63}{section*.60}%
-\contentsline {paragraph}{Ticket Agent}{63}{section*.61}%
-\contentsline {chapter}{\numberline {5}Proof of Concept Evaluation}{65}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Evaluation Objectives}{65}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Evaluation Scenario}{66}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Mission Planning}{66}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Ground Segment and Network Status}{68}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Operational Events and Tickets}{68}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Mission Knowledge Base}{69}{subsection.5.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}Scenario Design Rationale}{69}{subsection.5.2.5}%
-\contentsline {section}{\numberline {5.3}Evaluation Tasks and Experimental Setup}{70}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Evaluation Tasks}{70}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Experimental Setup}{70}{subsection.5.3.2}%
-\contentsline {section}{\numberline {5.4}Evaluation Methodology}{71}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Results}{72}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Overall Results}{72}{subsection.5.5.1}%
+\contentsline {chapter}{\numberline {2}The Evolution of Natural Language Processing and Decision Support Systems}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Early Symbolic Approaches}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Early Neural Approaches}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}From Static Embeddings to Sequential Modeling}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}The Transformer Revolution}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Scaling Laws and Emergent Abilities}{13}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Foundation Models and General-Purpose AI}{13}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Alignment and Instruction Tuning}{14}{section.2.7}%
+\contentsline {section}{\numberline {2.8}The Reliability Gap: Hallucinations and Uncertainty}{15}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Computational Burden and Compression Strategies for LLMs}{16}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Reasoning Frameworks for Decision Support}{17}{section.2.10}%
+\contentsline {section}{\numberline {2.11}Long-Context Modeling and Context Management}{18}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Agentic Large Language Models}{19}{section.2.12}%
+\contentsline {section}{\numberline {2.13}Modern LLM-based Decision Support Systems}{21}{section.2.13}%
+\contentsline {chapter}{\numberline {3}System Engineering \& Requirement Analysis}{25}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Domain and Mission Context}{25}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The Mission Manager's Role and Challenges}{26}{section.3.2}%
+\contentsline {section}{\numberline {3.3}FUNES System Overview}{26}{section.3.3}%
+\contentsline {section}{\numberline {3.4}System and Software Requirement Specification according to ECSS}{27}{section.3.4}%
+\contentsline {section}{\numberline {3.5}System Engineering Approach}{28}{section.3.5}%
+\contentsline {section}{\numberline {3.6}System Requirements Definition}{29}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Software Requirement Specification}{29}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Functional Decomposition and Allocation}{29}{subsection.3.7.1}%
+\contentsline {paragraph}{C-01: Mission Data Ingestion Capability}{30}{section*.9}%
+\contentsline {paragraph}{C-02: AI-based Analysis and Decision Support Capability}{30}{section*.10}%
+\contentsline {paragraph}{C-03: Mission Status Visualization and Operator Interaction Capability}{31}{section*.11}%
+\contentsline {paragraph}{C-04: Configuration and Model Lifecycle Management Capability}{31}{section*.12}%
+\contentsline {paragraph}{C-05: Persistent Storage and Historical Retrieval Capability}{32}{section*.13}%
+\contentsline {subsection}{\numberline {3.7.2}Software Architecture}{32}{subsection.3.7.2}%
+\contentsline {subsubsection}{Configuration Items Breakdown}{33}{section*.15}%
+\contentsline {paragraph}{CI-1 -- Data Processing Manager (DPM)}{33}{section*.16}%
+\contentsline {paragraph}{CI-2 -- AI Analytics Manager (AIM)}{33}{section*.17}%
+\contentsline {paragraph}{CI-3 -- Decision Support Interface (DSI / User Interface)}{34}{section*.18}%
+\contentsline {paragraph}{CI-4 -- Configuration \& Model Management (CMM)}{34}{section*.19}%
+\contentsline {paragraph}{CI-5 -- Storage Manager (SM)}{34}{section*.20}%
+\contentsline {subsubsection}{External System Interfaces}{35}{section*.21}%
+\contentsline {subsection}{\numberline {3.7.3}Software Requirements Derivation}{36}{subsection.3.7.3}%
+\contentsline {subsection}{\numberline {3.7.4}Software Design}{37}{subsection.3.7.4}%
+\contentsline {subsubsection}{CI-1 - Data Processing Manager}{38}{section*.24}%
+\contentsline {subsubsection}{CI-2 - AI Analytics Manager}{38}{section*.25}%
+\contentsline {subsubsection}{CI-3 - Decision Support Interface}{38}{section*.26}%
+\contentsline {subsubsection}{CI-4 - Configuration and Model Management}{39}{section*.27}%
+\contentsline {subsubsection}{CI-5 - Storage Manager}{39}{section*.28}%
+\contentsline {subsubsection}{Deployment and Integration Environment}{39}{section*.29}%
+\contentsline {subsection}{\numberline {3.7.5}System Data Flows and Operational Use Cases}{40}{subsection.3.7.5}%
+\contentsline {paragraph}{UC-1: Near Real-Time Anomaly Detection and Recommendation (Nominal, Fully Automatic)}{40}{section*.30}%
+\contentsline {paragraph}{UC-2: Operator Conversational Investigation via AI-Assisted Chatbot}{41}{section*.32}%
+\contentsline {paragraph}{UC-3: Operator-Initiated Dashboard Investigation}{42}{section*.34}%
+\contentsline {subsection}{\numberline {3.7.6}LLM Model Selection}{42}{subsection.3.7.6}%
+\contentsline {chapter}{\numberline {4}Proof of Concept Development}{44}{chapter.4}%
+\contentsline {section}{\numberline {4.1}PoC Overview and Architecture}{44}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Storage Manager}{45}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Architecture and Design Principles}{45}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Rag System}{45}{subsection.4.2.2}%
+\contentsline {paragraph}{Document Chunking}{46}{section*.36}%
+\contentsline {paragraph}{Embedding Generation}{48}{section*.38}%
+\contentsline {paragraph}{Vector Storage}{48}{section*.39}%
+\contentsline {paragraph}{Knowledge Memory Management}{49}{section*.40}%
+\contentsline {paragraph}{RAG Validation}{51}{section*.42}%
+\contentsline {paragraph}{Limitations}{53}{section*.45}%
+\contentsline {subsection}{\numberline {4.2.3}Additional Data Interfaces}{53}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Chat Storage}{53}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Storage Manager Limitations}{55}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}AI Manager Module}{55}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Overview}{55}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Software Architecture and Implementation}{57}{subsection.4.3.2}%
+\contentsline {subsubsection}{Configuration Layer}{57}{section*.47}%
+\contentsline {subsubsection}{Agent and LLM Management Layer}{57}{section*.48}%
+\contentsline {subsection}{\numberline {4.3.3}Multi-Agent Architecture}{58}{subsection.4.3.3}%
+\contentsline {subsubsection}{Agent Specialization}{58}{section*.49}%
+\contentsline {subsubsection}{Agent Responsibilities and Collaboration Mechanism}{59}{section*.50}%
+\contentsline {subsection}{\numberline {4.3.4}Graph-Based Orchestration with LangGraph}{60}{subsection.4.3.4}%
+\contentsline {subsubsection}{State Management}{60}{section*.51}%
+\contentsline {subsubsection}{Graph Engine}{61}{section*.52}%
+\contentsline {subsubsection}{Agent Nodes}{62}{section*.53}%
+\contentsline {subsubsection}{Tool Integration}{62}{section*.54}%
+\contentsline {subsection}{\numberline {4.3.5}LLM Agent Implementation}{63}{subsection.4.3.5}%
+\contentsline {subsubsection}{Base LLM Class}{63}{section*.55}%
+\contentsline {subsubsection}{Specialized Agents Details}{64}{section*.56}%
+\contentsline {paragraph}{Planner Agent}{64}{section*.57}%
+\contentsline {paragraph}{Synthesizer Agent}{65}{section*.58}%
+\contentsline {paragraph}{Critic Agent}{65}{section*.59}%
+\contentsline {paragraph}{Query Agent}{66}{section*.60}%
+\contentsline {paragraph}{Planning Agent}{66}{section*.61}%
+\contentsline {paragraph}{Ticket Agent}{66}{section*.62}%
+\contentsline {paragraph}{Knowledge Base Agent}{66}{section*.63}%
+\contentsline {chapter}{\numberline {5}Proof of Concept Evaluation}{68}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Evaluation Objectives}{68}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Evaluation Scenario}{69}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Mission Planning}{69}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Ground Segment and Network Status}{71}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Operational Events and Tickets}{71}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Mission Knowledge Base}{72}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Scenario Design Rationale}{72}{subsection.5.2.5}%
+\contentsline {section}{\numberline {5.3}Evaluation Tasks and Experimental Setup}{73}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Evaluation Tasks}{73}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Experimental Setup}{73}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Evaluation Methodology}{74}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Results}{76}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Overall Results}{76}{subsection.5.5.1}%
 \contentsline {subsection}{\numberline {5.5.2}Results by question complexity}{76}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Tool calling Results}{78}{subsection.5.5.3}%
-\contentsline {section}{\numberline {5.6}Discussion}{78}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Overall Comparison}{78}{subsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.6.2}Effect of task complexity}{79}{subsection.5.6.2}%
-\contentsline {subsubsection}{Easy task}{79}{section*.71}%
-\contentsline {subsubsection}{Medium Tasks}{80}{section*.72}%
-\contentsline {subsubsection}{Hard Task}{81}{section*.73}%
-\contentsline {subsection}{\numberline {5.6.3}Where FUNES Helps and Where It Does Not}{82}{subsection.5.6.3}%
-\contentsline {subsection}{\numberline {5.6.4}Architectural Implications}{83}{subsection.5.6.4}%
-\contentsline {section}{\numberline {5.7}Limitations}{85}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Future Work}{87}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Architectural Improvements}{87}{section.6.1}%
-\contentsline {section}{\numberline {6.2}LLM and Reasoning Strategies}{88}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Benchmark and Evaluation Extensions}{89}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Operational Validation}{90}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Conclusion}{92}{chapter.7}%
-\contentsline {chapter}{Bibliography}{94}{chapter.7}%
+\contentsline {section}{\numberline {5.6}Discussion}{82}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Overall Comparison}{82}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Effect of task complexity}{83}{subsection.5.6.2}%
+\contentsline {subsubsection}{Easy task}{83}{section*.74}%
+\contentsline {subsubsection}{Medium Tasks}{83}{section*.75}%
+\contentsline {subsubsection}{Hard Task}{84}{section*.76}%
+\contentsline {subsection}{\numberline {5.6.3}Where FUNES Helps and Where It Does Not}{86}{subsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.6.4}Architectural Implications}{87}{subsection.5.6.4}%
+\contentsline {section}{\numberline {5.7}Limitations}{89}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Future Work}{91}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Architectural Improvements}{91}{section.6.1}%
+\contentsline {section}{\numberline {6.2}LLM and Reasoning Strategies}{92}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Benchmark and Evaluation Extensions}{93}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Operational Validation}{94}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Conclusion}{96}{chapter.7}%
+\contentsline {chapter}{Bibliography}{98}{chapter.7}%

@@ -75,7 +75,7 @@ The inclusion of irrelevant but plausible tickets is particularly important for 
 
 \subsection{Mission Knowledge Base}
 
-The scenario is complemented by a knowledge base containing 20 documents covering mission and system information. These documents provide contextual knowledge that is not directly represented in the operational planning, network, or ticket data.
+The scenario is complemented by a knowledge base containing 20 documents covering system informations and ECSS standards. These documents provide contextual knowledge that is not directly represented in the operational planning, network, or ticket data.
 
 The knowledge base is used to support questions requiring background information about the mission and its systems, as well as questions in which operational observations need to be interpreted using previously defined system knowledge. Its inclusion allows the evaluation to distinguish between direct retrieval of operational data and the use of persistent domain knowledge during the reasoning process.
 
@@ -123,23 +123,33 @@ The resulting evaluation therefore considers two complementary aspects of the pr
 \label{sec:evaluation methodology}
 
 The evaluation was conducted through a scenario-based methodology designed to reproduce a representative operational situation within an Earth Observation ground segment described in \ref{subsec: eval_task}.
-The evaluation was performed using two systems. The first system was the FUNES PoC, including its retrieval, tool-selection, multi-agent orchestration, and reasoning capabilities. The second system was a baseline based on the Llama 3.3 70B Instruct model. The baseline was provided with the complete operational context of 24K tokensand was asked to answer the same questions without the selective retrieval and multi-source orchestration mechanisms implemented by FUNES. The final user prompt given to the baseline is the same that would be given to FUNES if every tool was called and every tool returned the full possible set of informations. This configuration was selected to provide a comparison between the proposed architecture and a general-purpose LLM operating directly on the available operational context.
+The evaluation was performed using two systems. The first system was the FUNES PoC, including its retrieval, tool-selection, multi-agent orchestration, and reasoning capabilities. The second system was a baseline based on the Llama 3.3 70B Instruct model. The baseline was provided with the complete operational context of around 24K tokens and was asked to answer the same questions without the selective retrieval and multi-source orchestration mechanisms implemented by FUNES. The final user prompt given to the baseline is the same that would be given to FUNES if every tool was called and every tool returned the full possible set of informations. This configuration was selected to provide a comparison between the proposed architecture and a general-purpose LLM operating directly on the available operational context.
 
-For each question, both systems generated an answer independently. The resulting answers were subsequently evaluated using an LLM-as-a-Judge \cite{zheng2023judging} approach. Llama 3.3 70b instruct with \texttt{temperature = 0} was employed as an independent evaluator and was provided with the operational context, the question, and the two generated answers. The identities of the systems were not considered part of the evaluation criteria, and the assessment focused exclusively on the content and operational validity of the generated responses. For each question, the individual criterion scores were recorded and subsequently aggregated to enable comparison between FUNES and the baseline across the different task complexity levels and evaluation dimensions.
+For each question, both systems generated an answer independently. The resulting answers were subsequently evaluated using an LLM-as-a-Judge approach \cite{zheng2023judging}. Llama 3.3 70b instruct with \texttt{temperature = 0} was employed as an independent evaluator and was provided with the operational context, the question, and the two generated answers. The identities of the systems were not considered part of the evaluation criteria, and the assessment focused exclusively on the content and operational validity of the generated responses. For each question, the individual criterion scores were recorded and subsequently aggregated to enable comparison between FUNES and the baseline across the different task complexity levels and evaluation dimensions.
 
 The use of an LLM-as-a-Judge was selected to provide a consistent evaluation procedure for responses where correctness cannot always be expressed through exact matching. In particular, complex decision-support questions may admit multiple valid formulations or operationally reasonable recommendations. The evaluator therefore assesses the consistency of each response with the evidence and operational constraints defined by the scenario rather than requiring an exact reference answer. To reduce potential evaluator bias related to the identity or position of the compared systems, the association between the two responses and the system identities was randomized during the evaluation.
 
 
 
-The evaluation criteria were defined to reflect the main capabilities expected from an operational Decision Support System. Each criterion was evaluated using a three-level ordinal scale:
-
+The evaluation criteria were defined to reflect the main capabilities expected from an operational Decision Support System. Each criterion was evaluated using a three-level ordinal scale, where 0 indicates that the criterion is not satisfied, 1 indicates partial satisfaction, and 2 indicates full satisfaction. The criteria were evaluated independently for each answer against the operational context provided to the evaluator. Non-applicable criteria were excluded from the total score rather than being assigned a zero value.
 
 The following criteria were considered in the evaluation:
 
+\begin{itemize}
+    \item \textbf{Answer Correctness (AC):} evaluates whether the answer correctly addresses the question using the available operational evidence. This includes the correct reporting of requested information, values, identifiers, operational states, and conclusions, while penalizing factual errors and unsupported claims that materially affect the answer.
+
+    \item \textbf{Anomaly Identification (AI):} evaluates the ability to identify and correctly characterize the operational anomalies relevant to the question. The criterion considers whether relevant anomalies, their status, and associated technical information are correctly reported without introducing unrelated or unsupported anomalies.
+
+    \item \textbf{Evidence Correlation (EC):} evaluates the ability to establish correct relationships between evidence originating from different operational sources, such as network monitoring, incident reports, planning information, and the knowledge base. Unsupported causal or operational relationships are not considered valid correlations.
+
+    \item \textbf{Noise Filtering (NF):} evaluates the ability to distinguish information relevant to the question from unrelated information contained in the operational context. A high score indicates that the answer uses relevant evidence without introducing unrelated information or unsupported relationships.
+
+    \item \textbf{DSS Role Adherence (DSS):} evaluates whether the answer behaves consistently with the role of an operational Decision Support System. The criterion considers whether the system provides evidence-based situational awareness, appropriately identifies operational implications and uncertainties, supports human decision-making, and avoids presenting unsupported conclusions or assuming autonomous operational authority.
+
+    \item \textbf{Operational Recommendation Quality (ORQ):} evaluates the quality of operational recommendations when the question explicitly requires mitigation actions or a proposed course of action. Recommendations are assessed according to their relevance, consistency with the available evidence, operational usefulness, and respect for known constraints and uncertainties.
+\end{itemize}
 
 Not all evaluation criteria are applicable to every question. The applicable criteria depend on the information and reasoning capabilities required by the specific task. For example, a single-source network status query primarily evaluates information retrieval and anomaly identification, whereas a question concerning the impact of an incident on scheduled acquisitions requires evidence correlation and planning accuracy. Similarly, recommendation-oriented questions require the additional assessment of Decision Support System adherence and operational action quality. This criterion-dependent evaluation avoids penalising a response for not providing information or reasoning that was not required by the question, Table \ref{tab:criteria_applicability} shows what criteria are applicable to each question.
-
-In addition to the quality of the generated answers, the evaluation considered \textbf{tool selection accuracy}, evaluated for questions requiring the use of FUNES tools or operational data sources. This metric measures whether the system selected the appropriate information sources required to answer the query. 
 
 
 The methodology is intended to provide a comparative evaluation of the PoC rather than a statistically exhaustive validation of an operational system. The results should therefore be interpreted within the scope of the considered scenario, question set, and evaluation procedure. In particular, the use of an external LLM as an evaluator introduces an additional source of potential evaluation bias, while the proprietary nature of the evaluator prevents complete inspection of its internal decision process. These aspects are considered when discussing the results and limitations of the evaluation.
@@ -150,7 +160,7 @@ The set of questions is reported in Table \ref{tab:evaluation_questions}, togeth
 
 \begin{table}[htbp]
 \centering
-\caption{Evaluation question set.}
+\caption{Evaluation question set. The evaluation is composed of 10 easy questions, 6 medium questions, and 4 hard questions.}
 \label{tab:evaluation_questions}
 \begin{tabularx}{\textwidth}{cX} % <--- Imposta la larghezza pari alla pagina e la colonna X va a capo da sola
 \hline
@@ -282,7 +292,7 @@ The overall performance obtained by FUNES and the baseline across the three task
 
 \begin{table}[htbp]
     \centering
-    \caption{Benchmark overall performance results for Llama 3.3 vs FUNES grouped by task difficulty. The scores are computed by aggregating the points obtained across all evaluation criteria applicable to the questions belonging to each difficulty category, their details are in Tables \ref{tab:easy_question_results}, \ref{tab:medium_question_results}, and \ref{tab:hard_question_results}.}
+    \caption{Benchmark overall performance results for Llama 3.3 vs FUNES grouped by task difficulty. The scores are computed by aggregating the points obtained across all evaluation criteria applicable to the questions belonging to each difficulty category, their details are in Tables \ref{tab: easy_question_results}, \ref{tab: medium_question_results}, and \ref{tab: hard_question_results}.}
     \label{tab:performance_difficulty}
     \begin{tabular}{l c c}
         \toprule
@@ -302,7 +312,7 @@ FUNES achieves a higher aggregate score than the baseline across all three task-
 
 
 \subsection{Results by question complexity}
-The results were further analysed at the individual-question level to identify differences in system performance across tasks with different levels of complexity. Tables \ref{tab:easy_question_results}, \ref{tab:medium_question_results}, and \ref{tab:hard_question_results} report the scores obtained by FUNES and the baseline for easy, medium, and hard questions, respectively. The tables also provide the scores obtained for each applicable evaluation criterion, allowing the differences between the two systems to be examined at a more detailed level.
+The results were further analysed at the individual-question level to identify differences in system performance across tasks with different levels of complexity. Tables \ref{tab: easy_question_results}, \ref{tab: medium_question_results}, and \ref{tab: hard_question_results} report the scores obtained by FUNES and the baseline for easy, medium, and hard questions, respectively. The tables also provide the scores obtained for each applicable evaluation criterion, allowing the differences between the two systems to be examined at a more detailed level.
 
 \begin{table}[htbp]
 \centering
@@ -349,7 +359,7 @@ Q10 & llama & 0 & 1 & - & 0 & - & - & 1/6 \\
 \end{tabular}
 \end{table}
 
-For the easy tasks (Table \ref{tab: easy_question_results}), FUNES achieves a higher or equal score compared with the baseline for all questions. FUNES obtains the maximum applicable score for eight of the ten questions, while the baseline reaches the maximum score for Q7 only. Equal performance is observed for Q7, where both systems obtain the same overall score. The largest differences are observed for Q2, Q3, Q5, Q8, Q9, and Q10, where FUNES obtains higher scores than the baseline. At the aggregate level, the easy-task results therefore show a consistent difference in favour of FUNES across the evaluated questions.
+For the easy tasks (Table \ref{tab: easy_question_results}), FUNES achieves a higher or equal score compared with the baseline for all questions. FUNES obtains the maximum applicable score for eight of the ten questions, while the baseline reaches the maximum score for Q7 only. Equal performance is observed for Q7, where both systems obtain the same overall score. At the aggregate level, the easy-task results therefore show a consistent difference in favour of FUNES across the evaluated questions.
 
 
 
@@ -388,9 +398,10 @@ Q16 & llama & \textbf{2} & 2 & \textbf{2} & \textbf{2} & 2 & \textbf{2} & \textb
 \end{tabular}
 \end{table}
 
-The medium-task results reported in Table \ref{tab: medium_question_results} show a smaller difference between the two systems compared with the easy-task category. FUNES obtains a higher score than the baseline for Q11, Q14, and Q15, while the two systems obtain the same score for Q12 and Q13. For Q16, the baseline obtains a higher score than FUNES. The results therefore show that the two systems perform similarly for most of the medium-complexity questions, with FUNES obtaining a higher score for three of the six questions. The aggregate results show that FUNES obtains a higher overall score than the baseline across all applicable evaluation criteria, with the largest differences observed for Answer Correctness and Evidence Correlation.
 
+The medium-task results reported in Table \ref{tab: medium_question_results} show a smaller difference between the two systems compared with the easy-task category. FUNES obtains a higher score than the baseline for Q11, Q14, and Q15, while the two systems obtain the same score for Q12 and Q13. For Q16, the baseline obtains a higher score than FUNES. The results therefore indicate comparable performance across most of the medium-complexity questions, with FUNES achieving a higher score in three of the six questions.
 
+Considering the aggregate scores across all applicable evaluation criteria, FUNES obtains 40/46 points compared with 33/46 for the baseline. The largest differences are observed in Answer Correctness and Evidence Correlation. These results indicate that, within the evaluated medium-task benchmark, FUNES achieved a higher aggregate score than the baseline, although the limited number of evaluated questions does not support generalizing this result to medium-complexity tasks in general.
 
 
 
@@ -428,12 +439,6 @@ Overall, the results show a progressively smaller performance difference between
 
 
 
-
-
-
-\subsection{Tool calling Results}
-
-
 \section{Discussion}
 \label{sec:evaluation discussion}
 
@@ -452,11 +457,11 @@ This result is consistent with one of the main objectives of the proposed archit
 
 \subsubsection{Easy task}
 
-The results for easy tasks show the largest performance difference between FUNES and the baseline. As reported in Table \ref{tab:performance_easy}, FUNES achieves 48/50 points (96.0\%), compared with 23/50 points (46.0\%) obtained by the baseline. The difference is particularly pronounced for questions requiring the retrieval of information from a single source, where the task complexity is primarily associated with identifying the relevant information rather than performing complex operational reasoning.
+The results for easy tasks show the largest performance difference between FUNES and the baseline. As reported in Table \ref{tab:performance_difficulty}, FUNES achieves 48/50 points (96.0\%), compared with 23/50 points (46.0\%) obtained by the baseline. The difference is particularly pronounced for questions requiring the retrieval of information from a single source, where the task complexity is primarily associated with identifying the relevant information rather than performing complex operational reasoning.
 
 A qualitative analysis of the individual questions provides an indication of the type of behaviour underlying this difference. For questions Q2 and Q3, which require the retrieval of document-based mission knowledge, the baseline included additional information concerning the current ground-segment operational situation, despite this information not being required to answer the questions. The responses therefore combined the requested document-based information with unrelated operational context. In contrast, FUNES selected the Knowledge Base as the relevant information source and restricted the retrieved context to the information required for answering the query. This resulted in higher scores for both answer correctness and noise filtering.
 
-A more pronounced example is provided by Q5, which asks for the number of passages scheduled for SAT-03 on a specific date. The baseline produced an incorrect count of 32 passages and additionally included information about the network status, operational tickets, potential impacts, and recommended actions. The relevant planning information was therefore not only incorrectly interpreted, but was also accompanied by substantial unrelated context. FUNES, instead, retrieved the relevant planning information and identified the 16 passages corresponding to PASS-017 through PASS-032, providing a concise answer focused on the requested information. The resulting score was 6/6 for FUNES compared with 0/6 for the baseline across the applicable evaluation criteria.
+A more pronounced example is provided by Q5, which asks for the number of passages scheduled for SAT-03 on a specific date. The baseline produced an incorrect count of 32 passages and additionally included information about the network status, operational tickets, potential impacts, and recommended actions. The relevant planning information was therefore not only incorrectly interpreted, but was also accompanied by substantial unrelated context. FUNES, instead, retrieved the relevant planning information and identified the 16 passages corresponding to PASS-017 through PASS-032, providing a concise answer focused on the requested information. The resulting score was 4/4 for FUNES compared with 0/4 for the baseline across the applicable evaluation criteria.
 
 These examples suggest that, for simple retrieval-oriented tasks, the availability of the complete operational context does not necessarily lead to effective use of the relevant information. The baseline had access to the information required by the query, but its response included unrelated operational information and, in Q5, produced an incorrect result. FUNES instead used its source-selection and retrieval mechanisms to constrain the context available to the subsequent reasoning process. The observed behaviour is therefore consistent with the intended role of the FUNES architecture in reducing irrelevant contextual information before answer generation. However, these examples alone do not establish a causal relationship between the individual architectural components and the observed performance improvement, as the evaluation does not include an ablation study.
 
