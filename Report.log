@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  22 AUG 2026 17:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  13 SEP 2026 16:18
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -985,7 +985,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Figures/transformer_arch.png, id=675, 532.99126pt x 713.66624pt>
 File: Figures/transformer_arch.png Graphic file (type png)
 <use Figures/transformer_arch.png>
-Package pdftex.def Info: Figures/transformer_arch.png  used on input line 300.
+Package pdftex.def Info: Figures/transformer_arch.png  used on input line 296.
 (pdftex.def)             Requested size: 234.73524pt x 314.30814pt.
 
 
@@ -1004,7 +1004,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [13]
-Overfull \hbox (2.26369pt too wide) in paragraph at lines 332--333
+Overfull \hbox (2.26369pt too wide) in paragraph at lines 328--329
 \T1/cmr/m/n/10.95 Although large lan-guage mod-els ac-quired broad lin-guis-tic knowl-edge through large-scale pre-training,
  []
 
@@ -1016,7 +1016,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [14]
-Overfull \hbox (3.22054pt too wide) in paragraph at lines 348--349
+Overfull \hbox (3.22054pt too wide) in paragraph at lines 344--345
 \T1/cmr/m/n/10.95 ex-ter-nal knowl-edge sources or re-trieved ev-i-dence. These tech-niques, of-ten im-ple-mented through
  []
 
@@ -1063,10 +1063,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Figures/llm-autonomous-agents.png, id=806, 776.9025pt x 341.47575pt>
 File: Figures/llm-autonomous-agents.png Graphic file (type png)
 <use Figures/llm-autonomous-agents.png>
-Package pdftex.def Info: Figures/llm-autonomous-agents.png  used on input line 442.
+Package pdftex.def Info: Figures/llm-autonomous-agents.png  used on input line 438.
 (pdftex.def)             Requested size: 469.4705pt x 206.35118pt.
 
-Overfull \hbox (4.9696pt too wide) in paragraph at lines 454--455
+Overfull \hbox (4.9696pt too wide) in paragraph at lines 450--451
 []\T1/cmr/m/n/10.95 Beyond plan-ning and act-ing, re-cent agen-tic sys-tems in-creas-ingly in-cor-po-rate ex-plicit self-reflection
  []
 
@@ -1102,7 +1102,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [23]
-Overfull \hbox (7.38535pt too wide) in paragraph at lines 523--524
+Overfull \hbox (7.38535pt too wide) in paragraph at lines 519--520
 []\T1/cmr/bx/n/10.95 Off-Nominal Con-tin-gency Man-age-ment: \T1/cmr/m/n/10.95 Pro-vides im-me-di-ate, context-aware trou-bleshoot-
  []
 
@@ -1563,11 +1563,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [65]
-<Figures/funes_agents.png, id=1130, 671.50874pt x 462.72874pt>
+<Figures/funes_agents.png, id=1130, 611.28375pt x 462.72874pt>
 File: Figures/funes_agents.png Graphic file (type png)
 <use Figures/funes_agents.png>
 Package pdftex.def Info: Figures/funes_agents.png  used on input line 643.
-(pdftex.def)             Requested size: 375.57784pt x 258.8086pt.
+(pdftex.def)             Requested size: 375.57784pt x 284.30466pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1651,7 +1651,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [75]
-Overfull \hbox (12.0pt too wide) in alignment at lines 280--280
+Overfull \hbox (12.0pt too wide) in alignment at lines 291--291
 [][][][][][][] 
  []
 
@@ -1766,7 +1766,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[89]) (./Include/Chapters/5_future_work.tex
+[89]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1774,19 +1774,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[90]
+[90]) (./Include/Chapters/5_future_work.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[91]
 Chapter 6.
-[91
+[92
 
 ]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[92]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1811,8 +1811,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [95]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[96]
 Chapter 7.
-[96
+[97
 
 ])
 
@@ -1822,18 +1830,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[97] (./Report.bbl [98
+[98] (./Report.bbl [99
 
 
 ]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[99]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1857,7 +1857,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[102])
+[102]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[103])
 runsystem(cd ""& del "Report.oldaux" )...executed.
 
 
@@ -1868,7 +1876,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[103] (./Report.aux)
+[104] (./Report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1877,18 +1885,18 @@ Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: 856BE2DF1FFC53AFB866F4B9C5323666;14650.
  ) 
 Here is how much of TeX's memory you used:
- 26851 strings out of 469472
- 504013 string characters out of 5466873
- 1111636 words of memory out of 5000000
+ 26852 strings out of 469472
+ 504021 string characters out of 5466873
+ 1114636 words of memory out of 5000000
  54681 multiletter control sequences out of 15000+600000
  650220 words of font info for 90 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  115i,17n,136p,2597b,835s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/anton/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Users/anton/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report.pdf (112 pages, 1809992 bytes).
+Output written on Report.pdf (113 pages, 1810479 bytes).
 PDF statistics:
- 2253 PDF objects out of 2487 (max. 8388607)
- 1310 compressed objects within 14 object streams
- 355 named destinations out of 1000 (max. 500000)
+ 2257 PDF objects out of 2487 (max. 8388607)
+ 1313 compressed objects within 14 object streams
+ 356 named destinations out of 1000 (max. 500000)
  650 words of extra memory for PDF output out of 10000 (max. 10000000)
 
