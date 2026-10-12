@@ -89,8 +89,6 @@ For this reason, the scenario was designed with increasing levels of information
 
 The presence of both relevant and irrelevant information was also intentional. The objective was not to create an artificially clean dataset in which every available record contributes to the answer, but to approximate the information overload encountered in operational environments. This allows the evaluation to consider not only whether FUNES can retrieve information, but also whether it can identify the information that is relevant to the specific operational question.
 
-Overall, the scenario was designed to provide a controlled but sufficiently heterogeneous environment in which the principal capabilities of the proposed FUNES architecture can be exercised: retrieval of mission knowledge and operational data, correlation of information across different sources, identification of operational impacts, and generation of decision-support outputs.
-
 
 \section{Evaluation Tasks and Experimental Setup}
 \label{sec:evaluation tasks and setup}
@@ -116,14 +114,14 @@ As a baseline, \textit{Llama 3.3 70B Instruct} was provided with the complete op
 
 The two systems were evaluated using the same set of operational questions and the same underlying scenario. For each question, the generated response and, for FUNES, the information sources selected during the reasoning process were recorded. This allowed the evaluation to consider both the quality of the final answers and the behaviour of the underlying information-selection mechanism.
 
-The resulting evaluation therefore considers two complementary aspects of the proposed architecture. First, the quality of the decision-support responses is assessed across tasks with increasing levels of complexity. Second, the behaviour of the information retrieval and orchestration mechanisms is analysed by considering tool selection and contextual input requirements. This setup provides a basis for evaluating not only whether the system produces appropriate answers, but also whether the architectural mechanisms introduced by FUNES contribute to the observed behaviour.
 
 
 \section{Evaluation Methodology}
 \label{sec:evaluation methodology}
 
 The evaluation was conducted through a scenario-based methodology designed to reproduce a representative operational situation within an Earth Observation ground segment described in \ref{subsec: eval_task}.
-The evaluation was performed using two systems. The first system was the FUNES PoC, including its retrieval, tool-selection, multi-agent orchestration, and reasoning capabilities. The second system was a baseline based on the Llama 3.3 70B Instruct model. The baseline was provided with the complete operational context of around 24K tokens and was asked to answer the same questions without the selective retrieval and multi-source orchestration mechanisms implemented by FUNES. The final user prompt given to the baseline is the same that would be given to FUNES if every tool was called and every tool returned the full possible set of informations. This configuration was selected to provide a comparison between the proposed architecture and a general-purpose LLM operating directly on the available operational context.
+The evaluation was performed using two systems: the first system was the FUNES PoC, the second system was a baseline based on the Llama 3.3 70B Instruct model.
+The baseline was provided with the complete operational context of around 24K tokens and was asked to answer the same questions without the selective retrieval and multi-source orchestration mechanisms implemented by FUNES. The final user prompt given to the baseline is the same that would be given to FUNES if every tool was called and every tool returned the full possible set of informations. This configuration was selected to provide a comparison between the proposed architecture and a general-purpose LLM operating directly on the available operational context.
 
 For each question, both systems generated an answer independently. The resulting answers were subsequently evaluated using an LLM-as-a-Judge approach \cite{zheng2023judging}. Llama 3.3 70b instruct with \texttt{temperature = 0} was employed as an independent evaluator and was provided with the operational context, the question, and the two generated answers. The identities of the systems were not considered part of the evaluation criteria, and the assessment focused exclusively on the content and operational validity of the generated responses. For each question, the individual criterion scores were recorded and subsequently aggregated to enable comparison between FUNES and the baseline across the different task complexity levels and evaluation dimensions.
 
@@ -281,12 +279,12 @@ Q20 & X & X & X & X & X & X \\
 \multicolumn{7}{p{\linewidth}}{%
 \vspace{0.1cm}\small
 \textbf{Legend:}
-\textit{*AC*}: Answer Correctness;
-\textit{*AI*}: Anomaly Identification;
-\textit{*EC*}: Evidence Correlation;
-\textit{*NF*}: Noise Filtering;
-\textit{*DSS*}: DSS Role Adherence;
-\textit{*ORQ*}: Operational Recommendation Quality.
+\textit{AC}: Answer Correctness;
+\textit{AI}: Anomaly Identification;
+\textit{EC}: Evidence Correlation;
+\textit{NF}: Noise Filtering;
+\textit{DSS}: DSS Role Adherence;
+\textit{ORQ}: Operational Recommendation Quality.
 }
 \end{tabularx}
 \end{table}
@@ -550,7 +548,7 @@ Finally, the results suggest that the main architectural advantage of FUNES shou
 
 The results presented in this evaluation should be interpreted in light of several limitations concerning the benchmark design, the comparison methodology, and the evaluation procedure.
 
-First, the evaluation is based on a limited number of questions within a single controlled operational scenario. Although the questions cover different task-complexity levels and involve heterogeneous operational information sources, they represent only a subset of the situations that may occur in a real satellite ground-segment environment. In particular, the benchmark includes 20 questions in total, with 10 easy, 6 medium, and 4 hard questions. The relatively small number of questions, especially for the medium- and hard-complexity categories, limits the statistical robustness of comparisons within individual task-complexity levels. In particular, the results for hard tasks are based on only four questions and may therefore be sensitive to the specific characteristics of the selected test cases. The observed performance differences should therefore be interpreted as evidence of the behaviour of the two evaluated systems within the considered benchmark, rather than as evidence of general performance across operational scenarios.
+First, the evaluation is based on a limited number of questions within a single controlled operational scenario. Although the questions cover different task-complexity levels and involve heterogeneous operational information sources, they represent only a subset of the situations that may occur in a real satellite ground-segment environment. In particular, the benchmark includes 20 questions in total, with 10 easy, 6 medium, and 4 hard questions. The relatively small number of questions, especially for the medium and hard-complexity categories, limits the statistical robustness of comparisons within individual task-complexity levels. In particular, the results for hard tasks are based on only four questions and may therefore be sensitive to the specific characteristics of the selected test cases. The observed performance differences should therefore be interpreted as evidence of the behaviour of the two evaluated systems within the considered benchmark, rather than as evidence of general performance across operational scenarios.
 
 Second, the comparison considers a single baseline model, Llama 3.3 70B Instruct. The results therefore establish a comparison between FUNES and this specific baseline configuration, but do not determine whether similar improvements would be obtained with other LLMs or alternative prompting and context-management strategies. In particular, the observed performance difference should not be interpreted as evidence that FUNES universally outperforms general-purpose LLMs.
 
