@@ -102,20 +102,20 @@
 \contentsline {section}{\numberline {5.4}Evaluation Methodology}{73}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Results}{75}{section.5.5}%
 \contentsline {subsection}{\numberline {5.5.1}Overall Results}{75}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Results by question complexity}{79}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.2}Results by question complexity}{75}{subsection.5.5.2}%
 \contentsline {section}{\numberline {5.6}Discussion}{81}{section.5.6}%
 \contentsline {subsection}{\numberline {5.6.1}Overall Comparison}{81}{subsection.5.6.1}%
 \contentsline {subsection}{\numberline {5.6.2}Effect of task complexity}{82}{subsection.5.6.2}%
 \contentsline {subsubsection}{Easy task}{82}{section*.74}%
-\contentsline {subsubsection}{Medium Tasks}{83}{section*.75}%
-\contentsline {subsubsection}{Hard Task}{84}{section*.76}%
+\contentsline {subsubsection}{Medium Tasks}{82}{section*.75}%
+\contentsline {subsubsection}{Hard Task}{83}{section*.76}%
 \contentsline {subsection}{\numberline {5.6.3}Where FUNES Helps and Where It Does Not}{85}{subsection.5.6.3}%
-\contentsline {subsection}{\numberline {5.6.4}Architectural Implications}{86}{subsection.5.6.4}%
-\contentsline {section}{\numberline {5.7}Limitations}{88}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Future Work}{90}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Architectural Improvements}{90}{section.6.1}%
-\contentsline {section}{\numberline {6.2}LLM and Reasoning Strategies}{91}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Benchmark and Evaluation Extensions}{92}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Operational Validation}{93}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Conclusion}{95}{chapter.7}%
-\contentsline {chapter}{Bibliography}{97}{chapter.7}%
+\contentsline {subsection}{\numberline {5.6.4}Architectural Implications}{85}{subsection.5.6.4}%
+\contentsline {section}{\numberline {5.7}Limitations}{87}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Future Work}{89}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Architectural Improvements}{89}{section.6.1}%
+\contentsline {section}{\numberline {6.2}LLM and Reasoning Strategies}{90}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Benchmark and Evaluation Extensions}{91}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Operational Validation}{92}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Conclusion}{94}{chapter.7}%
+\contentsline {chapter}{Bibliography}{96}{chapter.7}%
